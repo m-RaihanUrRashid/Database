@@ -7,7 +7,7 @@ Showndorjo Dhara
 
 Nazifa Chowdhury
 
-Ikram Hossain Akif - 2130734@iub.edu.bd
+Ikram Hossain Akif
 
 Mohammad Gazi Mobasher
 
