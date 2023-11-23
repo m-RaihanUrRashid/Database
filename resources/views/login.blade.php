@@ -1,9 +1,6 @@
 @extends('layout')
 @section('title' , 'Login')
 @section('content')
-
-<!-- hello -->
-
 <style>
   .square-box {
     max-width: 600px;
