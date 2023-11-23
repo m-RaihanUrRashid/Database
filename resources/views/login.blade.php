@@ -9,6 +9,7 @@
 }
 </style>
 <div class= "container square-box d-flex justify-content-center align-items-center">
+  <img src="/img/image.png"  alt="cry">
   <form style = "width:500px; height:100px">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
