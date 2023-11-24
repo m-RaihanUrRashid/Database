@@ -5,7 +5,7 @@ This is a student project for the Database Management System course, Department 
 # Team
 Showndorjo Dhara
 
-Nazifa Chowdhury
+Nazifa Tasneem Chowdhury
 
 Ikram Hossain Akif
 
