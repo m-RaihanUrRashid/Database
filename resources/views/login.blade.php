@@ -5,7 +5,7 @@
   .square-box {
     max-width: 600px;
     min-height: 300px;
-    background-color: white;
+    background-color: lightblue;
   }
 
   .custom {
@@ -23,7 +23,7 @@
     <div> 
       <img src="/img/image.png" width="120" height="100" alt="cry">
     </div>
-    <div style= "padding: 0px 0px 0px 10px;"> 
+    <div style= "padding: 0px 0px 0px 100px;"> 
       <div id = "bottom"><h1 style = "font-family:'Serif' "> Mental Health Resources </h1></div>
     </div>
   </div>
