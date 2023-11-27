@@ -31,24 +31,18 @@
   </div>
   <br>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      <label for="exampleInputEmail1" class="form-label">Full Name: </label>
+      <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      
+      <label for="exampleInputEmail1" class="form-label">Email address:</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Set Password:</label>
       <input type="password" class="form-control" id="exampleInputPassword1">
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Remember me</label>
-    </div>
-    <button type="submit" class="btn btn-primary" style=background-color:cadetblue;>Login</button>
-    <div class="ORtext">OR create an account</div>
-    <a href = "/signup">
-      <button type="button" class="btn btn-primary signup" style=background-color:cadetblue;>Sign Up</button>
-    </a>
+    <button type="submit" class="btn btn-primary" style=background-color:cadetblue;>Sign Up</button>
   </form>
 </div>
 @endsection
