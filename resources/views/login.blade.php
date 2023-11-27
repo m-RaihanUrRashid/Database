@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title' , 'Login')
 @section('content')
+
 <style>
   .square-box {
     max-width: 600px;
@@ -11,12 +12,13 @@
   .custom {
     display: flex;
   }
-
-  #bottom{
-    display: flex;     /* Create the flex container */
-    align-items: flex-end;  /* Align text to the bottom */
+  
+  .signup{
+    margin-top: 5px;
   }
+
 </style>
+
 <div class= "container square-box d-flex justify-content-center align-items-center">
   <form style = "width:500px; height:100px">
   <div class = "custom">
@@ -34,7 +36,6 @@
       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
     <div class="mb-3">
-    <br>
       <label for="exampleInputPassword1" class="form-label">Password</label>
       
       <input type="password" class="form-control" id="exampleInputPassword1">
@@ -44,7 +45,9 @@
       <label class="form-check-label" for="exampleCheck1">Remember me</label>
     </div>
     <button type="submit" class="btn btn-primary" style=background-color:cadetblue;>Login</button>
-
+    <div id="emailHelp" class="form-text">OR create an account</div>
+    <button type="button" class="btn btn-primary signup" style=background-color:cadetblue;>Sign Up</button>
   </form>
+  
 </div>
 @endsection
