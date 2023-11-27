@@ -24,3 +24,7 @@ Route::get('/login', function () {
 Route::get('/patientHome', function () {
     return view('patientHome');
 });
+
+Route::get('/therapistHome', function () {
+    return view('therapistHome');
+});
