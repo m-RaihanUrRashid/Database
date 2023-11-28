@@ -17,6 +17,10 @@
     margin-top: 5px;
   }
 
+  .submit{
+    margin-bottom: 7px;
+  }
+
 </style>
 
 <div class= "container square-box d-flex justify-content-center align-items-center">
@@ -31,7 +35,7 @@
   </div>
   <br>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Full Name: </label>
+      <label for="exampleInputEmail1" class="form-label">Full name: </label>
       <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
@@ -39,10 +43,14 @@
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Set Password:</label>
+      <label for="exampleInputPassword1" class="form-label">Set password:</label>
       <input type="password" class="form-control" id="exampleInputPassword1">
     </div>
-    <button type="submit" class="btn btn-primary" style=background-color:cadetblue;>Sign Up</button>
+    <button type="submit" class="btn btn-primary submit" style=background-color:cadetblue;>Sign Up</button><br>
+    <a href = "/login">
+      <label for="back">Back>></label>
+    </a>
+    
   </form>
 </div>
 @endsection
