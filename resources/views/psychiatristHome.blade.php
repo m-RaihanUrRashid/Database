@@ -57,7 +57,7 @@
         
         width: 1256px;
         height: 100%;
-        background-color: #BEE0E8;
+        background-color: lightblue;
     }
 
     .box .overlap {
@@ -119,7 +119,7 @@
         position: absolute;
         width: 287px;
         top: 158px;
-        left: 612px;
+        left: 800px;
         font-family: "Georgia-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
@@ -139,7 +139,7 @@
         padding: 12px 20px;
         position: absolute;
         top: 304px;
-        left: 653px;
+        left: 835px;
         background-color: var(--white-color);
         border-radius: 8px;
         transition: all 0.3s ease;
