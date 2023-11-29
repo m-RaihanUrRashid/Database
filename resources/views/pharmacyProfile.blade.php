@@ -63,7 +63,7 @@
 
 <body>
 
-    <h1 id="heading">Pharmacy My Profile</h1>
+    <h1 id="heading">My Profile</h1>
 
     <form id="pharmacyForm">
         <div class="d-flex">
