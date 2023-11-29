@@ -53,7 +53,7 @@
 
 <!-- Navbar -->
 <div class="navbar" id="navbar">
-        <a style= "margin-left: 20px">MENTAL</a>
+        <a style= "margin-left: 20px" href="http://127.0.0.1:8000/therapistdb">HOME</a>
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/profile logo inv.png" width="20" height="20" alt="pl"></div>
@@ -62,7 +62,7 @@
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/notebook.png" width="30" height="30" alt="nb"></div>
-            <a>Notes</a> 
+            <a href="http://127.0.0.1:8000/therapistnotes">Notes</a> 
         </section>
         <span class="navb"></span>
         <section style= "display: flex;">
