@@ -35,3 +35,15 @@ Route::get('/therapistHome', function () {
 Route::get('/psychiatristHome', function () {
     return view('psychiatristHome');
 });
+
+Route::get('/psychAppt', function () {
+    return view('psychAppt');
+});
+
+Route::get('/psychInfo', function () {
+    return view('psychInfo');
+});
+
+Route::get('/psychPrescription', function () {
+    return view('psychPrescription');
+});
