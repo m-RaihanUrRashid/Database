@@ -35,7 +35,3 @@ Route::get('/therapistHome', function () {
 Route::get('/psychiatristHome', function () {
     return view('psychiatristHome');
 });
-
-Route::get('/calendar.calendar', function () {
-    return view('calendar.calendar');
-});
