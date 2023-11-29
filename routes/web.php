@@ -35,27 +35,3 @@ Route::get('/therapistHome', function () {
 Route::get('/psychiatristHome', function () {
     return view('psychiatristHome');
 });
-
-Route::get('/psychInfo', function () {
-    return view('psychInfo');
-});
-
-Route::get('/psychAppt', function () {
-    return view('psychAppt');
-});
-
-Route::get('/psychPrescription', function () {
-    return view('psychPrescription');
-});
-
-Route::get('/pharmacyHome', function () {
-    return view('pharmacyHome');
-});
-
-Route::get('/pharmacyProfile', function () {
-    return view('pharmacyProfile');
-});
-
-Route::get('/pharmacyPrescriptions', function () {
-    return view('pharmacyPrescriptions');
-});
