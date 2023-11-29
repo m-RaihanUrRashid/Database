@@ -96,12 +96,22 @@
         border-collapse: collapse; /* Optional, for better styling */
         margin: 0 auto;
     }
-    th:hover{color:aliceblue; cursor: pointer; transition: 0.2s!important;}
-    td:hover{color:aliceblue; cursor: pointer; transition: 0.2s!important;}
+    .buttonbox{
+        border-radius:  10px;
+        width: 80%;
+        height: 400px;
+        margin: 20px; /* Add margin for spacing */
+        margin: 0 auto;
+        margin-bottom: 80px;
+        background-color: azure;
+    }
+    th:hover{color:blue; cursor: pointer; transition: 0.2s!important;}
+    td:hover{color:blue; cursor: pointer; transition: 0.2s!important;}
 </style>
 
 <!-- Appointment table -->
-<table border="2">
+<div class="buttonbox"; style="width: 90%;">
+    <table border="2">
     <thead>
         <tr>
             <th>Header 1</th>
@@ -171,7 +181,8 @@
             <td>Data 8</td>
         </tr>
     </tbody>
-</table>
+    </table>
+</div>
 
 <!-- Edit Button properties -->
 <style>
@@ -192,12 +203,6 @@
         transition: 0.2s!important;
     }
 </style>
-
-
-
-
-
-
 
 </body>
 
