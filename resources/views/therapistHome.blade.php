@@ -1,13 +1,18 @@
 @extends('layout')
 @section('title' , 'Therapist Home')
 @section('content')
+
 <head>
     <style>h1, h2, p{color: darkblue; font-family: "Helvetica";}</style>
 </head>
 
 <body>
 <h1 style="text-align: center;">Therapist Home</h1> <br> <br> <br>
-<p style="font-size: 1.5em; padding-left: 170px">Appointment Chart</p> <br>
+
+<section style="display: flex; margin-bottom: 5%">
+    <p style="font-size: 1.5em; padding-left: 170px; margin-bottom: 0%">Appointment Chart</p>
+    <button class="eb">Edit</button>
+</section>
 
 <style>
     /* Add a border to all cells */
@@ -23,8 +28,8 @@
         border-collapse: collapse; /* Optional, for better styling */
         margin: 0 auto;
     }
-    th:hover{color:aliceblue; cursor: pointer;}
-    td:hover{color:aliceblue; cursor: pointer;}
+    th:hover{color:aliceblue; cursor: pointer; transition: 0.2s!important;}
+    td:hover{color:aliceblue; cursor: pointer; transition: 0.2s!important;}
 </style>
 
 <table border="2">
@@ -98,6 +103,25 @@
         </tr>
     </tbody>
 </table>
+
+<style>
+    .eb{
+        margin-left: 500px;
+        padding: 5px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 10px; /* Adjust the radius to control the roundness */
+        background-color: cadetblue; /* Change the background color */
+        color: white; /* Change the text color */
+        cursor: pointer;
+    }
+    .eb:hover{
+        background-color: #095151!important;
+        color: black;
+        transition: 0.2s!important;
+    }
+</style>
 
 
 
