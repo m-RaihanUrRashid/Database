@@ -14,6 +14,7 @@
     <button class="eb">Edit</button>
 </section>
 
+<!-- Appointment table properties -->
 <style>
     /* Add a border to all cells */
     table{
@@ -32,6 +33,7 @@
     td:hover{color:aliceblue; cursor: pointer; transition: 0.2s!important;}
 </style>
 
+<!-- Appointment table -->
 <table border="2">
     <thead>
         <tr>
@@ -104,6 +106,7 @@
     </tbody>
 </table>
 
+<!-- Edit Button properties -->
 <style>
     .eb{
         margin-left: 500px;
