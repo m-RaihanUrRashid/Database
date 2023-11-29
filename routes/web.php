@@ -47,3 +47,15 @@ Route::get('/psychAppt', function () {
 Route::get('/psychPrescription', function () {
     return view('psychPrescription');
 });
+
+Route::get('/pharmacyHome', function () {
+    return view('pharmacyHome');
+});
+
+Route::get('/pharmacyProfile', function () {
+    return view('pharmacyProfile');
+});
+
+Route::get('/pharmacyPrescriptions', function () {
+    return view('pharmacyPrescriptions');
+});
