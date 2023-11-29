@@ -31,6 +31,9 @@ Route::get('/patientHome', function () {
 Route::get('/therapistHome', function () {
     return view('therapistHome');
 });
+Route::get('/therapistdb', function () {
+    return view('therapistdb');
+});
 
 Route::get('/psychiatristHome', function () {
     return view('psychiatristHome');
