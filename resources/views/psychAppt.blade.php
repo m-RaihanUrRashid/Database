@@ -1,55 +1,97 @@
 @extends('layout')
-@section('title' , 'Psychitrist Home')
+@section('title' , 'My Appointments')
 @section('content')
 
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">ASSYLUM</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-    .box {
-        width: 1256px;
-        height: 659px;
-    }
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescriptions</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: lightblue;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        td {
+            border-right: 1px solid lightgrey; 
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
 
 <body>
-    <div class="box">
 
-    </div>
+    <h1>Appointments</h1>
+
+    <table id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
+        <thead style="background-color: #3498db; color: #fff; border-bottom: 2px solid lightblue;">
+            <tr>
+                <th style="padding: 6px;">Patient ID</th>
+                <th style="padding: 6px;">Date</th>
+                <th style="padding: 6px;">Time</th>
+                <th style="padding: 6px;">Contact</th>
+                <th style="padding: 6px;">Medical History</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
+                <td>1234</td>
+                <td>12/11/23</td>
+                <td>12:23PM</td>
+                <td>01754689</td>
+                <td>attachment</td>
+
+                
+            </tr>
+            <tr onclick="markAsDone(2)" style="margin: 10px; background-color: #fff;">
+                <td>3456</td>
+                <td>12/11/23</td>
+                <td>3:00PM</td>
+                <td>01754689</td>
+                <td>attachment</td>
+               
+            </tr>
+        </tbody>
+    </table>
+
+    <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
+
+    <script>
+        function markAsDone(x) {
+            //update DBMS here
+            alert('Appointment cleared');
+        }
+
+        function goHome() {
+            window.location.href = "/psychiatristHome";
+        }
+    </script>
+
 </body>
+
+</html>
+
+@endsection

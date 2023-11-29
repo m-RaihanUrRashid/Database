@@ -31,31 +31,22 @@ Route::get('/patientHome', function () {
 Route::get('/therapistHome', function () {
     return view('therapistHome');
 });
+Route::get('/therapistdb', function () {
+    return view('therapistdb');
+});
 
 Route::get('/psychiatristHome', function () {
     return view('psychiatristHome');
-});
-
-Route::get('/psychInfo', function () {
-    return view('psychInfo');
 });
 
 Route::get('/psychAppt', function () {
     return view('psychAppt');
 });
 
+Route::get('/psychInfo', function () {
+    return view('psychInfo');
+});
+
 Route::get('/psychPrescription', function () {
     return view('psychPrescription');
-});
-
-Route::get('/pharmacyHome', function () {
-    return view('pharmacyHome');
-});
-
-Route::get('/pharmacyProfile', function () {
-    return view('pharmacyProfile');
-});
-
-Route::get('/pharmacyPrescriptions', function () {
-    return view('pharmacyPrescriptions');
 });
