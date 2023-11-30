@@ -19,6 +19,15 @@
 
 </style>
 
+<div>
+  <a href="/patientHome"> Raihan: Patient </a><br>
+  <a href="/therapistdb"> Gaji: Therapist </a><br>
+  <a href="/pharmacyHome"> Okram: Pharmacy </a><br>
+  <a href="/psychiatristHome"> Dhora: Psychiatrist </a><br>
+  <a href="/rehabSupervisorHome"> Nafiza: Rehab </a><br>
+  <a href="/"> Marchel: NGO </a><br>
+</div>
+
 <div class= "container square-box d-flex justify-content-center align-items-center">
   <form style = "width:500px; height:100px">
   <div class = "custom">
