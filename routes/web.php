@@ -53,3 +53,7 @@ Route::get('/psychInfo', function () {
 Route::get('/psychPrescription', function () {
     return view('psychPrescription');
 });
+
+Route::get('/ngo', function () {
+    return view('ngo');
+});
