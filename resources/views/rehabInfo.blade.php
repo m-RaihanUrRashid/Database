@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title' , 'Psychitrist Home')
+@section('title' , 'Rehab Supervisor Information')
 @section('content')
 
 <!DOCTYPE html>
@@ -43,11 +43,11 @@
 
 <body>
     <h1>My Information</h1>
-    <p> Dr Gazi Mobasher</p>
-    <p>Schizophrenia Specialist</p>
+    <p>Nazifa Chowdhury</p>
+    <p>Head Supervisor</p>
     <p>Office Address: Dhanmondi 4 number road</p>
-    <p>ID No: 123455</p>
-    <p>Contact No: 017345738</p>
+    <p>ID No: 000000</p>
+    <p>Contact No: 01752549080</p>
     <p>Rehab: MS paint rehab ltd</p>
 
 
@@ -55,7 +55,7 @@
 
     <script>
         function goHome() {
-            window.location.href = "/psychiatristHome";
+            window.location.href = "/rehabSupervisorHome";
         }
     </script>
 </body>

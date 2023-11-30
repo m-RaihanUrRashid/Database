@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title' , 'Psychiatrist Home')
+@section('title' , 'Rehab Supervisor Home')
 @section('content')
 
 <!DOCTYPE html>
@@ -45,23 +45,30 @@
 </head>
 <body>
 
-    <h1>Welcome, Psychiatrist!</h1>
+    <h1>Welcome, Rehab Supervisor!</h1>
 
-    <button onclick="psychAppt()">My Appointments</button>
-    <button onclick="prescriptions()">Prescriptions</button>
-    <button onclick="myInfo()">My Information</button>
-
+    <button onclick="rehabInfo()">My Information</button>
+    <button onclick="rehabUpdateMyInfo()">Update My Information</button>
+    <button onclick="rehabManageSpecialist()">Manage Specialist</button>
+    <button onclick="rehabViewSpecialists()">View Specialists</button>
+    
+    
     <script>
-      function psychAppt() {
-        window.location.href = "/psychAppt";
+      function rehabUpdateMyInfo() {
+        window.location.href = "/rehabUpdateMyInfo";
       }
 
-      function prescriptions() {
-        window.location.href = "/psychPrescription";
+      function rehabManageSpecialist() {
+        window.location.href = "/rehabManageSpecialist";
       }
 
-      function myInfo() {
-        window.location.href = "/psychInfo";
+
+      function rehabViewSpecialists() {
+        window.location.href = "/rehabViewSpecialists";
+      }
+
+      function rehabInfo() {
+        window.location.href = "/rehabInfo";
       }
     </script>
 </body>

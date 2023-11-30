@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title' , 'Psychitrist Home')
+@section('title' , 'Manage Specialists')
 @section('content')
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prescriptions</title>
+
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -42,20 +42,26 @@
 
 
 <body>
-    <h1>My Information</h1>
-    <p> Dr Gazi Mobasher</p>
-    <p>Schizophrenia Specialist</p>
-    <p>Office Address: Dhanmondi 4 number road</p>
-    <p>ID No: 123455</p>
-    <p>Contact No: 017345738</p>
-    <p>Rehab: MS paint rehab ltd</p>
+    <h1>Manage Specialists</h1>
+    <button onclick="rehabAddSpecialist()">Add Specialist</button>
+    <br/>
+    <button onclick="rehabRemoveSpecialist()">Remove Specialist</button>
+
 
 
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
     <script>
+        function rehabAddSpecialist() {
+            window.location.href = "/rehabAddSpecialist";
+        }
+
+        function rehabRemoveSpecialist() {
+            window.location.href = "/rehabRemoveSpecialist";
+        }
+
         function goHome() {
-            window.location.href = "/psychiatristHome";
+            window.location.href = "/rehabSupervisorHome";
         }
     </script>
 </body>

@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title' , 'Therapist Appointment Chart')
+@section('title' , 'Therapist Appointment')
 @section('content')
 
 <head>
@@ -20,6 +20,7 @@
 
     .navbar a{
         font-family: 'Georgia';
+        text-decoration: none;
         color: white;
         padding: 5px;
         margin: 5px;
@@ -33,7 +34,6 @@
         background-color: black; /* Adjust border color */
     }
 </style>
-
 
 <!-- Navbar script -->
 <script>
@@ -53,7 +53,7 @@
 
 <!-- Navbar -->
 <div class="navbar" id="navbar">
-        <a style= "margin-left: 20px">SALVATIUM</a>
+        <a style= "margin-left: 20px" href="http://127.0.0.1:8000/therapistdb">HOME</a>
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/profile logo inv.png" width="20" height="20" alt="pl"></div>
@@ -62,7 +62,7 @@
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/notebook.png" width="30" height="30" alt="nb"></div>
-            <a>Notes</a> 
+            <a href="http://127.0.0.1:8000/therapistnotes">Notes</a> 
         </section>
         <span class="navb"></span>
         <section style= "display: flex;">
@@ -85,7 +85,7 @@
     /* Add a border to all cells */
     table{
         width: 80%; /* Set the width of the table */
-        height: 400px;
+        height: 500px;
         border-collapse: collapse; /* Collapse the borders */
         margin: 20px; /* Add margin for spacing */
         margin: 0 auto;
@@ -99,7 +99,7 @@
     .buttonbox{
         border-radius:  10px;
         width: 80%;
-        height: 400px;
+        height: 500px;
         margin: 20px; /* Add margin for spacing */
         margin: 0 auto;
         margin-bottom: 80px;
@@ -110,76 +110,91 @@
 </style>
 
 <!-- Appointment table -->
-<div class="buttonbox"; style="width: 90%;">
+<div class="buttonbox"; style="width: 95%;">
     <table border="2">
     <thead>
         <tr>
-            <th>Header 1</th>
-            <th>Header 2</th>
-            <th>Header 3</th>
-            <th>Header 4</th>
-            <th>Header 5</th>
-            <th>Header 6</th>
-            <th>Header 7</th>
-            <th>Header 8</th>
+            <th>Patient ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Email</th>
+            <th>Location</th>
+            <th>Contact</th>
+            <th>Condition</th>
         </tr>
         
     </thead>
     <tbody>
         <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-            <td>Data 4</td>
-            <td>Data 5</td>
-            <td>Data 6</td>
-            <td>Data 7</td>
-            <td>Data 8</td>
+            <th>patientID1</th>
+            <td>29/11/23</td>
+            <td>9:30 - 11:00 AM</td>
+            <td>example@gmail.com</td>
+            <td>Shekhertek</td>
+            <td>01834523699</td>
+            <td>Good</td>
         </tr>
 
         <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-            <td>Data 4</td>
-            <td>Data 5</td>
-            <td>Data 6</td>
-            <td>Data 7</td>
-            <td>Data 8</td>
+            <th>patientID2</th>
+            <td>30/11/23</td>
+            <td>11:30 - 1:00 PM</td>
+            <td>example@gmail.com</td>
+            <td>Mohammadpur</td>
+            <td>01834523699</td>
+            <td>Bad</td>
         </tr>
 
         <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-            <td>Data 4</td>
-            <td>Data 5</td>
-            <td>Data 6</td>
-            <td>Data 7</td>
-            <td>Data 8</td>
+            <th>patientID3</th>
+            <td>1/12/23</td>
+            <td>1:30 - 3:00 PM</td>
+            <td>example@gmail.com</td>
+            <td>Mohakhali</td>
+            <td>018345463699</td>
+            <td>Average</td>
         </tr>
 
         <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-            <td>Data 4</td>
-            <td>Data 5</td>
-            <td>Data 6</td>
-            <td>Data 7</td>
-            <td>Data 8</td>
+            <th>patientID4</th>
+            <td>2/12/23</td>
+            <td>4:00 - 5:30 AM</td>
+            <td>example@gmail.com</td>
+            <td>Bashundhara</td>
+            <td>01934523699</td>
+            <td>Good</td>
         </tr>
 
         <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-            <td>Data 4</td>
-            <td>Data 5</td>
-            <td>Data 6</td>
-            <td>Data 7</td>
-            <td>Data 8</td>
+            <th>patientID5</th>
+            <td>3/12/23</td>
+            <td>6:30 - 8:00 PM</td>
+            <td>example@gmail.com</td>
+            <td>Uttara</td>
+            <td>01834523699</td>
+            <td>Bad</td>
         </tr>
+
+        <tr>
+            <th>patientID6</th>
+            <td>4/12/23</td>
+            <td>1:00 - 12:30 PM</td>
+            <td>example@gmail.com</td>
+            <td>Kakrail</td>
+            <td>01734523699</td>
+            <td>Average</td>
+        </tr>
+
+        <tr>
+            <th>patientID7</th>
+            <td>5/12/23</td>
+            <td>9:30 - 11:00 AM</td>
+            <td>example@gmail.com</td>
+            <td>Lalmatia</td>
+            <td>01934523699</td>
+            <td>Good</td>
+        </tr>
+
     </tbody>
     </table>
 </div>
