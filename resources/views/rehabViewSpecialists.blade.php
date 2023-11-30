@@ -49,8 +49,8 @@
         <thead style="background-color: #3498db; color: #fff; border-bottom: 2px solid lightblue;">
             <tr>
                 <th style="padding: 6px;">Specialist ID</th>
-                <th style="padding: 6px;">Date</th>
-                <th style="padding: 6px;">Time</th>
+                <th style="padding: 6px;">Qualifications</th>
+                <th style="padding: 6px; width: 200px">Email</th>
                 <th style="padding: 6px;">Contact</th>
                 <th style="padding: 6px;">Specialty</th>
                
@@ -59,8 +59,8 @@
         <tbody>
             <tr onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
                 <td>4321</td>
-                <td>30/11/23</td>
-                <td>8:40PM</td>
+                <td>Masters degree, PhD, medical license</td>
+                <td>doc1@mspaint.rehab.com</td>
                 <td>01569836930</td>
                 <td>Personality Disorders</td>
 
@@ -68,8 +68,8 @@
             </tr>
             <tr onclick="markAsDone(2)" style="margin: 10px; background-color: #fff;">
                 <td>6543</td>
-                <td>30/11/23</td>
-                <td>9:00PM</td>
+                <td>Masters degree, PhD, medical license</td>
+                <td>doc2@mspaint.rehab.com</td>
                 <td>01589345603</td>
                 <td>Addiction Psychiatry</td>
                
