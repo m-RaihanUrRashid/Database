@@ -102,7 +102,7 @@
   </script>
  </head>
  <body style="background-color:lightblue;">
- @include('/include/navbar')
+    @include('/include/navbar')
     <div style = "margin-top: 20px; margin-left: 50px;">
         <button onclick="goBack()" type="button" class="btn btn-primary" style=background-color:cadetblue;>
             &lt;&lt;Back

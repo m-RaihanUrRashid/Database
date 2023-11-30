@@ -14,20 +14,27 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 # Raihan
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/', [AuthController::class, 'login'])->name('login');
 
 Route::get('/signup', function () {
     return view('signUp');
 });
+Route::get('/calendar.calendar', function () {
+    return view('calendar.calendar');
+});
+Route::get('/makeAppointment', function () {
+    return view('makeAppointment');
+});
 
 Route::get('/patientHome', function () {
     return view('patientHome');
+});
+
+Route::get('/specialistList', function () {
+    return view('specialistList');
 });
 
 
@@ -96,7 +103,7 @@ Route::get('/rehabInfo', function () {
 });
 
 Route::get('/rehabUpdateMyInfo', function () {
-    return view('rehabrehabUpdateMyInfo');
+    return view('rehabUpdateMyInfo');
 });
 
 Route::get('/rehabAddSpecialist', function () {
@@ -106,6 +113,7 @@ Route::get('/rehabAddSpecialist', function () {
 Route::get('/rehabRemoveSpecialist', function () {
     return view('rehabRemoveSpecialist');
 });
+<<<<<<< Updated upstream
 Route::get('/calendar.calendar', function () {
     return view('calendar.calendar');
 });
@@ -113,3 +121,11 @@ Route::get('/calendar.calendar', function () {
 Route::get('/pop', function () {
     return view('pop');
 });
+
+Route::get('/rehabViewSpecialists', function () {
+    return view('rehabViewSpecialists');
+});
+
+#Marcel
+=======
+>>>>>>> Stashed changes
