@@ -14,20 +14,27 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 # Raihan
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/', [AuthController::class, 'login'])->name('login');
 
 Route::get('/signup', function () {
     return view('signUp');
 });
+Route::get('/calendar.calendar', function () {
+    return view('calendar.calendar');
+});
+Route::get('/makeAppointment', function () {
+    return view('makeAppointment');
+});
 
 Route::get('/patientHome', function () {
     return view('patientHome');
+});
+
+Route::get('/specialistList', function () {
+    return view('specialistList');
 });
 
 
@@ -55,6 +62,12 @@ Route::get('/therapistdb', function () {
 Route::get('/therapistnotes', function () {
     return view('therapistnotes');
 });
+Route::get('/therapistcalendar', function () {
+    return view('therapistcalendar');
+});
+Route::get('/therapistprofile', function () {
+    return view('therapistprofile');
+});
 
 
 
@@ -74,6 +87,7 @@ Route::get('/psychInfo', function () {
 Route::get('/psychPrescription', function () {
     return view('psychPrescription');
 });
+
 
 #Nazifa
 Route::get('/rehabSupervisorHome', function () {
@@ -99,6 +113,7 @@ Route::get('/rehabAddSpecialist', function () {
 Route::get('/rehabRemoveSpecialist', function () {
     return view('rehabRemoveSpecialist');
 });
+<<<<<<< Updated upstream
 Route::get('/calendar.calendar', function () {
     return view('calendar.calendar');
 });
@@ -112,3 +127,5 @@ Route::get('/rehabViewSpecialists', function () {
 });
 
 #Marcel
+=======
+>>>>>>> Stashed changes
