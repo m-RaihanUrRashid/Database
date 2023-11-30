@@ -113,19 +113,3 @@ Route::get('/rehabAddSpecialist', function () {
 Route::get('/rehabRemoveSpecialist', function () {
     return view('rehabRemoveSpecialist');
 });
-<<<<<<< Updated upstream
-Route::get('/calendar.calendar', function () {
-    return view('calendar.calendar');
-});
-
-Route::get('/pop', function () {
-    return view('pop');
-});
-
-Route::get('/rehabViewSpecialists', function () {
-    return view('rehabViewSpecialists');
-});
-
-#Marcel
-=======
->>>>>>> Stashed changes
