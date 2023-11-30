@@ -89,7 +89,7 @@ Route::get('/rehabInfo', function () {
 });
 
 Route::get('/rehabUpdateMyInfo', function () {
-    return view('rehabrehabUpdateMyInfo');
+    return view('rehabUpdateMyInfo');
 });
 
 Route::get('/rehabAddSpecialist', function () {
@@ -99,3 +99,9 @@ Route::get('/rehabAddSpecialist', function () {
 Route::get('/rehabRemoveSpecialist', function () {
     return view('rehabRemoveSpecialist');
 });
+
+Route::get('/rehabViewSpecialists', function () {
+    return view('rehabViewSpecialists');
+});
+
+#Marcel
