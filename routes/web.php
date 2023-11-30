@@ -62,6 +62,12 @@ Route::get('/therapistdb', function () {
 Route::get('/therapistnotes', function () {
     return view('therapistnotes');
 });
+Route::get('/therapistcalendar', function () {
+    return view('therapistcalendar');
+});
+Route::get('/therapistprofile', function () {
+    return view('therapistprofile');
+});
 
 
 
@@ -81,6 +87,7 @@ Route::get('/psychInfo', function () {
 Route::get('/psychPrescription', function () {
     return view('psychPrescription');
 });
+
 
 #Nazifa
 Route::get('/rehabSupervisorHome', function () {
@@ -105,4 +112,13 @@ Route::get('/rehabAddSpecialist', function () {
 
 Route::get('/rehabRemoveSpecialist', function () {
     return view('rehabRemoveSpecialist');
+});
+
+#Michael Jackson
+Route::get('/ngo', function () {
+    return view('ngo');
+});
+
+Route::get('/ngo1', function () {
+    return view('ngo1');
 });

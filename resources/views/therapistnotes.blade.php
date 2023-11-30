@@ -27,6 +27,7 @@
     }
     .navbar a:hover{
         color: blue!important; cursor: pointer!important; transition: 0.2s!important;
+        text-decoration: none;
     }
     .navb{
         width: 2px; /* Adjust border width */
@@ -57,7 +58,7 @@
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/profile logo inv.png" width="20" height="20" alt="pl"></div>
-            <a>Profile</a> 
+            <a href="http://127.0.0.1:8000/therapistprofile">Profile</a> 
         </section>
         <span class="navb"></span>
         <section style= "display: flex;">
@@ -84,19 +85,24 @@
     }
 </style>
 
+<!-- Form input stuff-->
 <form>
     <!-- Input box with a label -->
     <label for="Patient ID">Patient ID</label>
     <input type="text" id="id" name="id" placeholder="Enter ID">
 
+    <label for="Patient Name">Patient Name</label>
+    <input type="text" id="id" name="id" placeholder="Enter Name">
+
     <label for="notes">Notes</label>
     <input type="text" id="notes" name="notes" placeholder="Enter Notes">
 </form>
 
+<!-- Button styles-->
 <style>
     .cbtn{
         display: inline-block;
-        margin-left: 440px;
+        margin-left: 470px;
         margin-top: 10px;
         padding: 10px 20px;
         font-size: 16px;
@@ -137,14 +143,14 @@
     }
 
 </style>
-
+<!-- Button scripts-->
 <script>
 function toggleClickedState(button) {
     button.classList.toggle('clicked');
     }
 </script>
 
-<p style = "padding-left: 430px">Condition:</p>
+<p style = "padding-left: 440px">Condition:</p>
 <button class="cbtn" onclick="toggleClickedState(this)">Good</button>
 <button class="cbtn2" onclick="toggleClickedState(this)">Average</button>
 <button class="cbtn1" onclick="toggleClickedState(this)">Bad</button>

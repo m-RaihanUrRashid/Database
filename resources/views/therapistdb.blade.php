@@ -27,6 +27,7 @@
     }
     .navbar a:hover{
         color: blue!important; cursor: pointer!important; transition: 0.2s!important;
+        text-decoration: none;
     }
     .navb{
         width: 2px; /* Adjust border width */
@@ -53,11 +54,11 @@
 
 <!-- Navbar -->
 <div class="navbar" id="navbar">
-        <a style= "margin-left: 20px">MENTAL</a>
+        <a style= "margin-left: 20px">ASSYLUM</a>
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/profile logo inv.png" width="20" height="20" alt="pl"></div>
-            <a>Profile</a> 
+            <a href = "http://127.0.0.1:8000/therapistprofile">Profile</a> 
         </section>
         <span class="navb"></span>
         <section style= "display: flex;">
@@ -77,4 +78,6 @@
 
 <div style="text-align: center";>
     <img src="/img/Therapy.png" width="300px" height="300px" alt="Therapy">
-</div>
+</div> <br>
+
+<h2 style="text-align: center;">Please hover upward to navigate.</h2>
