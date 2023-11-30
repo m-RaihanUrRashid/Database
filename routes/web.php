@@ -113,3 +113,12 @@ Route::get('/rehabAddSpecialist', function () {
 Route::get('/rehabRemoveSpecialist', function () {
     return view('rehabRemoveSpecialist');
 });
+
+#Michael Jackson
+Route::get('/ngo', function () {
+    return view('ngo');
+});
+
+Route::get('/ngo1', function () {
+    return view('ngo1');
+});
