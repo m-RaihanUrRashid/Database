@@ -53,3 +53,27 @@ Route::get('/psychInfo', function () {
 Route::get('/psychPrescription', function () {
     return view('psychPrescription');
 });
+
+Route::get('/rehabSupervisorHome', function () {
+    return view('rehabSupervisorHome');
+});
+
+Route::get('/rehabManageSpecialist', function () {
+    return view('rehabManageSpecialist');
+});
+
+Route::get('/rehabInfo', function () {
+    return view('rehabInfo');
+});
+
+Route::get('/rehabUpdateMyInfo', function () {
+    return view('rehabrehabUpdateMyInfo');
+});
+
+Route::get('/rehabAddSpecialist', function () {
+    return view('rehabAddSpecialist');
+});
+
+Route::get('/rehabRemoveSpecialist', function () {
+    return view('rehabRemoveSpecialist');
+});
