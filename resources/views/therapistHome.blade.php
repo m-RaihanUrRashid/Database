@@ -27,6 +27,7 @@
     }
     .navbar a:hover{
         color: blue!important; cursor: pointer!important; transition: 0.2s!important;
+        text-decoration: none;
     }
     .navb{
         width: 2px; /* Adjust border width */
@@ -57,7 +58,7 @@
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/profile logo inv.png" width="20" height="20" alt="pl"></div>
-            <a>Profile</a> 
+            <a href = "http://127.0.0.1:8000/therapistprofile">Profile</a> 
         </section>
         <span class="navb"></span>
         <section style= "display: flex;">
@@ -77,7 +78,7 @@
 
 <section style="display: flex; margin-bottom: 5%">
     <p style="font-size: 1.5em; padding-left: 170px; margin-bottom: 0%">Appointment Chart</p>
-    <button class="eb">Edit</button>
+    <a href="http://127.0.0.1:8000/therapistcalendar"><button class="eb">Edit</button></a>
 </section>
 
 <!-- Appointment table properties -->
@@ -94,8 +95,11 @@
     th, td{
         border: 1.5px solid darkblue;
         border-collapse: collapse; /* Optional, for better styling */
-        margin: 0 auto;
+        margin: 0 auto;}
+    td{
+        padding-left: 20px;
     }
+    
     .buttonbox{
         border-radius:  10px;
         width: 80%;
@@ -117,7 +121,7 @@
             <th>Patient ID</th>
             <th>Date</th>
             <th>Time</th>
-            <th>Email</th>
+            <th>Name</th>
             <th>Location</th>
             <th>Contact</th>
             <th>Condition</th>
@@ -129,8 +133,8 @@
             <th>patientID1</th>
             <td>29/11/23</td>
             <td>9:30 - 11:00 AM</td>
-            <td>example@gmail.com</td>
-            <td>Shekhertek</td>
+            <td>Marcel</td>
+            <td>Farmgate</td>
             <td>01834523699</td>
             <td>Good</td>
         </tr>
@@ -139,8 +143,8 @@
             <th>patientID2</th>
             <td>30/11/23</td>
             <td>11:30 - 1:00 PM</td>
-            <td>example@gmail.com</td>
-            <td>Mohammadpur</td>
+            <td>Dhara</td>
+            <td>Mirpur</td>
             <td>01834523699</td>
             <td>Bad</td>
         </tr>
@@ -149,8 +153,8 @@
             <th>patientID3</th>
             <td>1/12/23</td>
             <td>1:30 - 3:00 PM</td>
-            <td>example@gmail.com</td>
-            <td>Mohakhali</td>
+            <td>Nazifa</td>
+            <td>Mirpur</td>
             <td>018345463699</td>
             <td>Average</td>
         </tr>
@@ -159,7 +163,7 @@
             <th>patientID4</th>
             <td>2/12/23</td>
             <td>4:00 - 5:30 AM</td>
-            <td>example@gmail.com</td>
+            <td>Azwad</td>
             <td>Bashundhara</td>
             <td>01934523699</td>
             <td>Good</td>
@@ -169,7 +173,7 @@
             <th>patientID5</th>
             <td>3/12/23</td>
             <td>6:30 - 8:00 PM</td>
-            <td>example@gmail.com</td>
+            <td>Ikram</td>
             <td>Uttara</td>
             <td>01834523699</td>
             <td>Bad</td>
@@ -179,8 +183,8 @@
             <th>patientID6</th>
             <td>4/12/23</td>
             <td>1:00 - 12:30 PM</td>
-            <td>example@gmail.com</td>
-            <td>Kakrail</td>
+            <td>Raihan</td>
+            <td>Bashundhara</td>
             <td>01734523699</td>
             <td>Average</td>
         </tr>
@@ -189,7 +193,7 @@
             <th>patientID7</th>
             <td>5/12/23</td>
             <td>9:30 - 11:00 AM</td>
-            <td>example@gmail.com</td>
+            <td>Gazi</td>
             <td>Lalmatia</td>
             <td>01934523699</td>
             <td>Good</td>
@@ -216,6 +220,9 @@
         background-color: #095151!important;
         color: black;
         transition: 0.2s!important;
+    }
+    .a{
+        text-decoration: none;
     }
 </style>
 
