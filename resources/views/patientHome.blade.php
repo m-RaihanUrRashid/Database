@@ -19,16 +19,20 @@
     
     <div  class="buttonBox d-flex align-items-center" style='width: 95%'>
         &nbsp;&nbsp;Choose a new specialist: &nbsp;&nbsp;
-        <button type="button" class="btn btn-primary signup" style=background-color:cadetblue;>Make Appointment</button>
+        <button type="button" class="btn btn-primary" style=background-color:cadetblue;>Make Appointment</button>
     </div>
     
     <div  class="buttonBox d-flex align-items-center" style='width: 95%'>
-        &nbsp;&nbsp;Check appointments: &nbsp;&nbsp;
-        <button type="button" class="btn btn-primary signup" style=background-color:cadetblue;><a href="/calender.calender'">Calender</a></button>
+      &nbsp;&nbsp;Check appointments: &nbsp;&nbsp;
+      <button onclick="goToCalendar()" type="button" class="btn btn-primary" style=background-color:cadetblue;>
+          Calender
+      </button>
     </div>
 </div>
 
 <script>
-
+  function goToCalendar() {
+            window.location.href = "/calendar.calendar";
+        }
 </script>
 @endsection

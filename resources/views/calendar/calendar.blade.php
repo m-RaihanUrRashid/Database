@@ -103,19 +103,25 @@
  </head>
  <body style="background-color:lightblue;">
  @include('/include/navbar')
-    <div style = "margin-left: 50px;">
+    <div style = "margin-top: 20px; margin-left: 50px;">
+        <button onclick="goBack()" type="button" class="btn btn-primary" style=background-color:cadetblue;>
+            &lt;&lt;Back
+        </button>
+        <br />
         <br />
         <h4>Current Appointments:</h4>
-        <br />
-        <a href = "/login">
-            <label for="back"><&lt;Back</label>
-        </a>
     </div>
     <div class="container buttonBox" style = "">
         <div id="calendar">
 
         </div>
     </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "/patientHome";
+        }
+    </script>
     
 
     <style>
@@ -125,7 +131,7 @@
         margin: 20px;
         display: table;
         background: white;
-        padding: 50px; 
+        padding: 20px; 
         margin-left: 50px;
     }
 </style>
