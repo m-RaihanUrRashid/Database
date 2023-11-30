@@ -81,9 +81,15 @@
     
         <div>
             <button type="submit" style="font-size: 20px; margin-top: 15px"> Submit </button>
+        
         <div>
+            
 </div>
 </form>
+
+
+<button onclick="goHome()" style="font-size: 20px; margin: 30px;">Back to Home</button>
+
 
 
 <script type="text/javascript">
@@ -94,6 +100,9 @@
             document.getElementById("tbox").disabled = false; 
         }
     }
+    function goHome() {
+            window.location.href = "/patientHome";
+        }
 
 
 </script>
