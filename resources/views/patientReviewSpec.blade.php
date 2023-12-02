@@ -111,7 +111,7 @@
             
             <form action="/action_page.php">
                 <p><h4>Review of Specialist:</h4></p>
-                <label>
+                <label>Rating: </label>
                 <select id="rating" class="styled-select" disabled>
                     <option value="no1">1</option>
                     <option value="#2">2</option>
