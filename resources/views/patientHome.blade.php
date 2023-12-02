@@ -17,7 +17,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 80vh;
+        height: 100vh;
     }
 
     button {
@@ -47,6 +47,11 @@
     <button onclick="makeAppointment()" >Make Appointment</button>
     <button onclick="goToCalendar()" >Check Appointments</button>
     <button onclick="admitRehab()" >Admit to Rehab</button>
+    <button onclick="reviewSpec()" >Review Specialist</button>
+    <button onclick="viewProfile()" >View Profile</button>
+    <button onclick="logOut()" >Log Out</button>
+
+
 </div>
 
 <script>
@@ -60,6 +65,18 @@
 
     function admitRehab() {
         window.location.href = "/patientRehab";
+    }
+
+    function reviewSpec() {
+        window.location.href = "/patientReviewSpec";
+    }
+
+    function viewProfile() {
+        window.location.href = "/patientProfile ";
+    }
+
+    function logOut() {
+        window.location.href = "/";
     }
 </script>
 @endsection

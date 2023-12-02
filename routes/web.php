@@ -45,6 +45,14 @@ Route::get('/patientChoseRehab', function () {
     return view('patientChoseRehab');
 });
 
+Route::get('/patientReviewSpec', function () {
+    return view('patientReviewSpec');
+});
+
+Route::get('/patientProfile', function () {
+    return view('patientProfile');
+});
+
 # Ikram
 Route::get('/pharmacyHome', function () {
     return view('pharmacyHome');
