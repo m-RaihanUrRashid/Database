@@ -48,7 +48,7 @@
     }
 
 </style>
-<form action="/specialistList">
+<form action="/patientChoseSpec">
 <div class="parent ">
     
         <div class="d-flex">
@@ -81,14 +81,14 @@
     
         <div>
             <button type="submit" style="font-size: 20px; margin-top: 15px"> Submit </button>
-        
+            <button type="button" onclick="goHome()" style="font-size: 20px; margin: 30px;">Back to Home</button>
         <div>
             
 </div>
 </form>
 
 
-<button onclick="goHome()" style="font-size: 20px; margin: 30px;">Back to Home</button>
+
 
 
 

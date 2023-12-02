@@ -46,6 +46,7 @@
 
     <button onclick="makeAppointment()" >Make Appointment</button>
     <button onclick="goToCalendar()" >Check Appointments</button>
+    <button onclick="admitRehab()" >Admit to Rehab</button>
 </div>
 
 <script>
@@ -54,7 +55,11 @@
     }
 
     function makeAppointment() {
-        window.location.href = "/makeAppointment";
+        window.location.href = "/patientAppointment";
+    }
+
+    function admitRehab() {
+        window.location.href = "/patientRehab";
     }
 </script>
 @endsection

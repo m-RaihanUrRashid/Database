@@ -25,18 +25,25 @@ Route::get('/signup', function () {
 Route::get('/calendar.calendar', function () {
     return view('calendar.calendar');
 });
-Route::get('/makeAppointment', function () {
-    return view('makeAppointment');
+Route::get('/patientAppointment', function () {
+    return view('patientAppointment');
 });
 
 Route::get('/patientHome', function () {
     return view('patientHome');
 });
 
-Route::get('/specialistList', function () {
-    return view('specialistList');
+Route::get('/patientChoseSpec', function () {
+    return view('patientChoseSpec');
 });
 
+Route::get('/patientRehab', function () {
+    return view('patientRehab');
+});
+
+Route::get('/patientChoseRehab', function () {
+    return view('patientChoseRehab');
+});
 
 # Ikram
 Route::get('/pharmacyHome', function () {
