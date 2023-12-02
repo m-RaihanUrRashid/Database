@@ -116,7 +116,7 @@
         }
 
         function submitForm() {
-            alert('Form submitted!');
+            alert('Changes saved!');
         }
 
         window.onload = function() {
