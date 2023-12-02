@@ -22,7 +22,7 @@
 <table>
   <thead>
     <tr>
-      <th>Ngo Id</th>
+      <th>NGO ID</th>
       <th>Street</th>
       <th>Road</th>
       <th>City</th>

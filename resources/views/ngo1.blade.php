@@ -22,7 +22,7 @@
 <table>
   <thead>
     <tr>
-      <th>NgoName</th>
+      <th>NGOName</th>
       <th>Contact</th>
       <th>Hotline</th>
     </tr>
