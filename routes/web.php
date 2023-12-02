@@ -129,6 +129,10 @@ Route::get('/rehabRemoveSpecialist', function () {
     return view('rehabRemoveSpecialist');
 });
 
+Route::get('/rehabViewSpecialists', function () {
+    return view('rehabViewSpecialists');
+});
+
 #Michael Jackson
 Route::get('/ngo', function () {
     return view('ngo');
