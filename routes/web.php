@@ -18,8 +18,16 @@ use App\Http\Controllers\AuthController;
 
 # Raihan
 Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::post('/', [AuthController::class, 'loginPost'])->name('login.post');
+Route::get('/signUp', [AuthController::class, 'signUp'])->name('signUp');
+Route::post('/signUp', [AuthController::class, 'signUpPost'])->name('signUp.post');
 
-Route::get('/signup', function () {
+Route::get('/patientHome', function () {
+    return view('patientHome');
+})->name('patientHome');
+
+
+Route::get('/signUp', function () {
     return view('signUp');
 });
 Route::get('/calendar.calendar', function () {
@@ -29,9 +37,7 @@ Route::get('/patientAppointment', function () {
     return view('patientAppointment');
 });
 
-Route::get('/patientHome', function () {
-    return view('patientHome');
-});
+
 
 Route::get('/patientChoseSpec', function () {
     return view('patientChoseSpec');
