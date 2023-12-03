@@ -42,7 +42,7 @@
 
 <div class="container1">
 
-    <h1>Patient Home</h1>
+    <h1>Welcome, Patient!</h1>
 
     <button onclick="makeAppointment()" >Make Appointment</button>
     <button onclick="goToCalendar()" >Check Appointments</button>

@@ -91,7 +91,7 @@
         <tbody>
             <tr class="clickable-row" onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
                 <td>1234</td>
-                <td>Md Gazi</td>
+                <td>Dhanmondi Major Rehab Center</td>
                 <td> Address</td>
                 <td>Alcoholism<br>Drug Addiction</td>
 
@@ -99,7 +99,7 @@
             </tr>
             <tr class="clickable-row" onclick="markAsDone(2)" style="margin: 10px; background-color: #fff;">
                 <td>3456</td>
-                <td>Showndorjo Dhara</td>
+                <td>Chittaong Apollo Rehab</td>
                 <td> Address</td>
                 <td>Substance Abuse and Addiction<br> Eating disorders</td>
                
