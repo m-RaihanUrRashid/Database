@@ -93,6 +93,7 @@
 
 <h1>Your Profile</h1> <br>
 
+<!-- Base Profile Logo Style -->
 <style>
     .c{
         border-radius: 50%; /* Set border-radius to 50% for a circular shape */
@@ -118,6 +119,7 @@
 <p>Email: 2221407@iub.edu.bd</p>
 </div>
 
+<!-- Edit Button Properties -->
 <style>
     .b{ font-size: 16px;
         margin-left: 44%;
