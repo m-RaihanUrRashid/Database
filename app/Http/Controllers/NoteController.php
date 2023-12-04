@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tnote;
+use App\Models\Note;
 
 class NoteController extends Controller
 {
@@ -27,7 +27,7 @@ class NoteController extends Controller
             
         ]);
 
-        $newnote = Tnote::create($data);
+        $newnote = Note::create($data);
 
         return redirect(route('notes.index'));
     }
