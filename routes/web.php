@@ -18,25 +18,46 @@ use App\Http\Controllers\AuthController;
 
 # Raihan
 Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::post('/', [AuthController::class, 'loginPost'])->name('login.post');
+Route::get('/signUp', [AuthController::class, 'signUp'])->name('signUp');
+Route::post('/signUp', [AuthController::class, 'signUpPost'])->name('signUp.post');
 
-Route::get('/signup', function () {
+Route::get('/patientHome', function () {
+    return view('patientHome');
+})->name('patientHome');
+
+
+Route::get('/signUp', function () {
     return view('signUp');
 });
 Route::get('/calendar.calendar', function () {
     return view('calendar.calendar');
 });
-Route::get('/makeAppointment', function () {
-    return view('makeAppointment');
+Route::get('/patientAppointment', function () {
+    return view('patientAppointment');
 });
 
-Route::get('/patientHome', function () {
-    return view('patientHome');
+
+
+Route::get('/patientChoseSpec', function () {
+    return view('patientChoseSpec');
 });
 
-Route::get('/specialistList', function () {
-    return view('specialistList');
+Route::get('/patientRehab', function () {
+    return view('patientRehab');
 });
 
+Route::get('/patientChoseRehab', function () {
+    return view('patientChoseRehab');
+});
+
+Route::get('/patientReviewSpec', function () {
+    return view('patientReviewSpec');
+});
+
+Route::get('/patientProfile', function () {
+    return view('patientProfile');
+});
 
 # Ikram
 Route::get('/pharmacyHome', function () {
@@ -112,4 +133,17 @@ Route::get('/rehabAddSpecialist', function () {
 
 Route::get('/rehabRemoveSpecialist', function () {
     return view('rehabRemoveSpecialist');
+});
+
+Route::get('/rehabViewSpecialists', function () {
+    return view('rehabViewSpecialists');
+});
+
+#Michael Jackson
+Route::get('/ngo', function () {
+    return view('ngo');
+});
+
+Route::get('/ngo1', function () {
+    return view('ngo1');
 });

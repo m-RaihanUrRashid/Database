@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title' , 'Home')
+@section('title' , 'Rehab Admission')
 @section('content')
 
 <style>
@@ -15,7 +15,7 @@
     /* Style the select container */
     .styled-select {
         display: block;
-        width: 300px;
+        width: 400px;
         padding: 8px;
         font-size: 20px;
         line-height: 1.5;
@@ -48,7 +48,7 @@
     }
 
 </style>
-<form action="/specialistList">
+<form action="/patientChoseRehab">
 <div class="parent ">
     
         <div class="d-flex">
@@ -57,17 +57,12 @@
             </div>
             <div>
                 <select id="selectBox" onchange="enableTextBox()" class="styled-select" name="issues" id="cars">
-                    <option value="no1" name="anx">Anxiety disorders</option>
-                    <option value="#2">Behavioural and emotional disorders in children</option>
-                    <option value="#3">Bipolar affective disorder</option>
-                    <option value="#4">Depression</option>
-                    <option value="#5">Dissociation and dissociative disorders</option>
+                    <option value="no1" name="anx">Substance Abuse and Addiction</option>
+                    <option value="#2">Alcoholism</option>
+                    <option value="#3">Drug Addiction</option>
+                    <option value="#4">Dual Diagnosis/Mental Health Issues</option>
+                    <option value="#5">Prescription Medication Dependency</option>
                     <option value="#6">Eating disorders</option>
-                    <option value="#7">Obsessive compulsive disorder</option>
-                    <option value="#8">Paranoia</option>
-                    <option value="#9">Post-traumatic stress disorder</option>
-                    <option value="#10">Psychosis</option>
-                    <option value="#11">Schizophrenia</option>
                     <option onclick="otherBox()" value="#12">Other..</option>
 
 
@@ -81,9 +76,13 @@
     
         <div>
             <button type="submit" style="font-size: 20px; margin-top: 15px"> Submit </button>
+            <button type="button" onclick="goHome()" style="font-size: 20px; margin: 30px;">Back to Home</button>
         <div>
+            
 </div>
 </form>
+
+
 
 
 <script type="text/javascript">
@@ -94,6 +93,9 @@
             document.getElementById("tbox").disabled = false; 
         }
     }
+    function goHome() {
+            window.location.href = "/patientHome";
+        }
 
 
 </script>
