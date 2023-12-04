@@ -9,8 +9,6 @@
                 font-size: 1.22em; 
                 text-align: center;
             }
-            .a{
-                text-decoration: none;}
             input{
                 margin-bottom: 30px;
             }
@@ -118,22 +116,3 @@
 <p>Location: Dhanmondi 4 Number Road</p>
 <p>Email: 2221407@iub.edu.bd</p>
 </div>
-
-<!-- Edit Button Properties -->
-<style>
-    .b{ font-size: 16px;
-        margin-left: 44%;
-        padding: 5px 10px;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 10px; /* Adjust the radius to control the roundness */
-        background-color: cadetblue; /* Change the background color */
-        color: white; /* Change the text color */
-        cursor: pointer;}
-    .b:hover{background-color: #095151!important;
-        color: black;
-        transition: 0.2s!important;
-    }
-</style>
-
-<button class="b">Edit Credentials</button>

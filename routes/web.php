@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,8 +90,9 @@ Route::get('/therapistcalendar', function () {
 Route::get('/therapistprofile', function () {
     return view('therapistprofile');
 });
-
-
+Route::get('/thnotes', [NoteController::class, 'index'])->name('notes.index');
+Route::get('/thnotes/create', [NoteController::class, 'create'])->name('notes.create');
+Route::post('/thnotes', [NoteController::class, 'store'])->name('notes.store');
 
 # Dhara
 Route::get('/psychiatristHome', function () {
