@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title' , 'My Prescriptions')
+@section('ti tle' , 'My Prescriptions')
 @section('content')
 
 <!DOCTYPE html>
