@@ -15,20 +15,21 @@ class NoteController extends Controller
 
     public function create(){
 
-        return view('notes.create');
-
+        return view('therapistnotes');
     }
 
     public function store(Request $request){
+        
         $data = $request->validate([
+
+            'pid' => 'required|numeric',
             'name' => 'required',
-            'note' => 'required',
-            'mood' => 'required|numeric',
-            
+            'note' => 'required'
         ]);
 
-        $newnote = Note::create($data);
+        $newNote = Note::create($data);
 
-        return redirect(route('notes.index'));
+        return redirect(route('note.index'));
+
     }
 }

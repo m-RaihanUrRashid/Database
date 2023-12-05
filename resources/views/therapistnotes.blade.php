@@ -3,7 +3,7 @@
 @section('content')
 
 <head>
-    <style>h1, h2, p{color: darkblue; font-family: "Georgia"; font-size: 1.22em;}</style>
+    <style>h1, h2, p, li{color: darkblue; font-family: "Georgia"; font-size: 1.22em;}</style>
 </head>
 
 
@@ -33,6 +33,71 @@
         width: 2px; /* Adjust border width */
         height: 100%; /* Adjust border height */
         background-color: black; /* Adjust border color */
+    }
+</style>
+
+<!--Navbar Overflow Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const navbar = document.getElementById('navbar');
+
+        navbar.addEventListener('mouseenter', function () {
+            navbar.style.overflow = 'visible';
+        });
+
+        navbar.addEventListener('mouseleave', function () {
+            navbar.style.overflow = 'hidden';
+        });
+    });
+</script>
+
+
+
+<!-- Dropdown aesthetics -->
+<style>
+    .dropdown {
+        display: inline-block;
+        position: relative;
+    }
+
+    .dropbtn {
+        font-family: 'Georgia';
+        text-decoration: none;
+        color: white;
+        padding: 5px;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: navy;
+        min-width: 100px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        right: 0;
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        z-index: 1;
+    }
+
+    .dropdown-content a:hover {
+        background-color: navy;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: navy; /* Change to the desired hover color */
+        color: white; /* Change to the desired text color */
     }
 </style>
 
@@ -68,7 +133,12 @@
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/lines.png" width="15" height="15" alt="li"></div>
-            <a>More</a> 
+            <div class="dropdown">
+            <a class="dropbtn">More</a> 
+            <div class="dropdown-content">
+                <a href="http://127.0.0.1:8000/">Log Out</a>
+            </div>
+            </div>
         </section>
 </div> 
 <br>
@@ -76,6 +146,19 @@
 <h1 style="text-align: center;">Notes</h1> <br> <br> <br>
 
 <div style="padding: 20px"></div>
+
+<!-- Form Error Checking -->
+<div style="text-align:center">
+    @if($errors->any())
+    <ul>
+        @foreach($errors->all() as $error)
+            <li>
+                {{$error}}
+            </li>
+        @endforeach
+    </ul>
+    @endif
+</div>
 
 <!-- Form style -->
 <style>
@@ -91,17 +174,17 @@
 </style>
 
 <!-- Form input stuff-->
-<form method="post" action="{{route('notes.store')}}">
+<form method="post" action="{{route('note.store')}}";>
     @csrf
     @method('post')
     <!-- Input box with a label -->
-    <label for="Patient ID">Patient Name</label>
+    <label for="Patient ID">Patient ID</label>
+    <input type="text" name="pid" placeholder="Enter ID"><br>
+
+    <label for="Patient Name">Patient Name</label>
     <input type="text" name="name" placeholder="Enter Name"><br>
 
-    <label for="Patient Name">Patient Mood</label>
-    <input type="text" name="mood" placeholder="Enter Mood"><br>
-
-    <label for="notes">Notes</label>
+    <label for="Notes">Notes</label>
     <textarea type="text" name="note" rows="15" cols="40" placeholder="Enter Notes"></textarea> <br>
 
     <div style = "align-items: center; text-align: center;">
@@ -229,7 +312,7 @@ function toggleClickedState(button) {
     }
 </style>
 
-<!-- Scale format -->>
+<!-- Scale format -->
 <div class="dex">
     <div id="scale-container">
         <div id="scale">

@@ -81,18 +81,17 @@ Route::get('/therapistHome', function () {
 Route::get('/therapistdb', function () {
     return view('therapistdb');
 });
-Route::get('/therapistnotes', function () {
-    return view('therapistnotes');
-});
+
 Route::get('/therapistcalendar', function () {
     return view('therapistcalendar');
 });
 Route::get('/therapistprofile', function () {
     return view('therapistprofile');
 });
-Route::get('/thnotes', [NoteController::class, 'index'])->name('notes.index');
-Route::get('/thnotes/create', [NoteController::class, 'create'])->name('notes.create');
-Route::post('/thnotes', [NoteController::class, 'store'])->name('notes.store');
+Route::get('/thnotes', [NoteController::class, 'index'])->name('note.index');
+Route::get('/thnotes/create', [NoteController::class, 'create'])->name('note.create');
+Route::post('/thnotes/create', [NoteController::class, 'store'])->name('note.store');
+
 
 # Dhara
 Route::get('/psychiatristHome', function () {
