@@ -4,6 +4,8 @@
 
 <head>
     <style>h1, h2, p{color: darkblue; font-family: "Georgia";}</style>
+    <link rel="icon" href="/img/diamond.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/diamond.ico" type="image/x-icon">
 </head>
 
 <body>
