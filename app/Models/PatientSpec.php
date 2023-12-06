@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class specReview extends Model
+class PatientSpec extends Model
 {
     use HasFactory;
 
+    protected $table = "patient_review_t";
+
     protected $fillable = [
-        'pUserID',
-        'sUserID',
-        'Rating',
-        'Comment',
+        'cpUserID',
+        'csUserID',
     ];
 }
