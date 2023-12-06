@@ -48,7 +48,7 @@ class AuthController extends Controller
         if(!$user){
             return redirect(route('signUp'))->with("error", "Retry");
         }
-        return redirect(route('login'))->with("success", "You can login now");
+        return redirect(route('login'))->with("success", "Success! You can login now.");
 
     }
 }

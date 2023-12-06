@@ -75,41 +75,41 @@
     ?>
 
 <div class="parent">
-    <div class="d-flex justify-content-center" style="margin: 50px">
-        <div style="margin-top: 50px;">
-            <p><h4>Chose a Specialist:</h4></p>
-            <table class="table table-hover" id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
-                <thead style="background-color: #3366CC; color: #fff; border-bottom: 2px solid lightblue;">
-                    <tr >
-                        <th style="padding: 6px;">Rehab ID</th>
-                        <th style="padding: 6px;">Name</th>
-                        <th style="padding: 6px;">Location</th>
-                        <th style="padding: 6px;">Speciality(ies)</th>
+    <form method="post" action="{{route('postRev')}}">
+        <div class="d-flex justify-content-center" style="margin: 50px">
+        
+            <div style="margin-top: 50px;">
+                <p><h4>Chose a Specialist:</h4></p>
+                <table class="table table-hover" id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
+                    <thead style="background-color: #3366CC; color: #fff; border-bottom: 2px solid lightblue;">
+                        <tr >
+                            <th style="padding: 6px;">Rehab ID</th>
+                            <th style="padding: 6px;">Name</th>
+                            <th style="padding: 6px;">Location</th>
+                            <th style="padding: 6px;">Speciality(ies)</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="clickable-row" onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
-                        <td>1234</td>
-                        <td>Md Gazi</td>
-                        <td> Address</td>
-                        <td>Alcoholism<br>Drug Addiction</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="clickable-row" onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
+                            <td>1234</td>
+                            <td>Md Gazi</td>
+                            <td> Address</td>
+                            <td>Alcoholism<br>Drug Addiction</td>
 
+                            
+                        </tr>
+                        <tr class="clickable-row" onclick="markAsDone(2)" style="margin: 10px; background-color: #fff;">
+                            <td>3456</td>
+                            <td>Showndorjo Dhara</td>
+                            <td> Address</td>
+                            <td>Substance Abuse and Addiction<br> Eating disorders</td>
                         
-                    </tr>
-                    <tr class="clickable-row" onclick="markAsDone(2)" style="margin: 10px; background-color: #fff;">
-                        <td>3456</td>
-                        <td>Showndorjo Dhara</td>
-                        <td> Address</td>
-                        <td>Substance Abuse and Addiction<br> Eating disorders</td>
-                    
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div>
-            
-            <form action="/action_page.php">
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="bg-color: white;">
                 <p><h4>Review of Specialist:</h4></p>
                 <label>Rating: </label>
                 <select id="rating" class="styled-select" disabled>
@@ -127,9 +127,11 @@
                 <textarea id="textBox" rows="10" cols="50" disabled></textarea>
                 <br><br>
                 <button id="submitbtn" type="button" style="font-size: 15px;" disabled>Submit</button>
-            </form>
+            
+            </div>
+        
         </div>
-    </div>
+    </form>
     <div>
         <button onclick="goHome()" style="font-size: 20px; margin: 30px;">Back to Home</button>
 

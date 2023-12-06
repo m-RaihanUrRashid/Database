@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SpecRevController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,10 @@ Route::post('/', [AuthController::class, 'loginPost'])->name('login.post');
 Route::get('/signUp', [AuthController::class, 'signUp'])->name('signUp');
 Route::post('/signUp', [AuthController::class, 'signUpPost'])->name('signUp.post');
 
+Route::get('/patientReviewSpec', [SpecRevController::class, 'patRevSpec'])->name('patRevSpec'); 
+Route::post('/patientReviewSpec', [SpecRevController::class, 'postRev'])->name('postRev'); 
+
+
 Route::get('/patientHome', function () {
     return view('patientHome');
 })->name('patientHome');
@@ -37,8 +43,6 @@ Route::get('/patientAppointment', function () {
     return view('patientAppointment');
 });
 
-
-
 Route::get('/patientChoseSpec', function () {
     return view('patientChoseSpec');
 });
@@ -49,10 +53,6 @@ Route::get('/patientRehab', function () {
 
 Route::get('/patientChoseRehab', function () {
     return view('patientChoseRehab');
-});
-
-Route::get('/patientReviewSpec', function () {
-    return view('patientReviewSpec');
 });
 
 Route::get('/patientProfile', function () {

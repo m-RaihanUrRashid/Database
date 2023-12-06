@@ -48,15 +48,14 @@
     }
 
 </style>
-<form action="/patientChoseSpec">
-<div class="parent ">
-    
+<form method="post" action="/patientChoseSpec">
+<div class="parent ">   
         <div class="d-flex">
             <div>
                 <label for="cars" style = "font-size: 20px; margin-top: 5px;">Why do you need help?&nbsp</label>
             </div>
             <div>
-                <select id="selectBox" onchange="enableTextBox()" class="styled-select" name="issues" id="cars">
+                <select id="selectBox" onchange="enableTextBox()" class="styled-select" name="issues">
                     <option value="no1" name="anx">Anxiety disorders</option>
                     <option value="#2">Behavioural and emotional disorders in children</option>
                     <option value="#3">Bipolar affective disorder</option>
@@ -68,7 +67,7 @@
                     <option value="#9">Post-traumatic stress disorder</option>
                     <option value="#10">Psychosis</option>
                     <option value="#11">Schizophrenia</option>
-                    <option onclick="otherBox()" value="#12">Other..</option>
+                    <option  value="#12">Other..</option>
 
 
                 </select>
@@ -93,11 +92,13 @@
 
 
 <script type="text/javascript">
+
     function enableTextBox() {
-        if( document.getElementById("selectBox").value == "Other.." ) {
-            document.getElementById("tbox").disabled = true; 
-        }else{
+        if( document.getElementById("selectBox").value == "#12" ) {
+            
             document.getElementById("tbox").disabled = false; 
+        }else{
+            document.getElementById("tbox").disabled = true; 
         }
     }
     function goHome() {
