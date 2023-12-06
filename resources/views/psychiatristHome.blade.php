@@ -50,6 +50,8 @@
     <button onclick="psychAppt()">My Appointments</button>
     <button onclick="prescriptions()">Prescriptions</button>
     <button onclick="myInfo()">My Information</button>
+    <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Log Out</button>
+
 
     <script>
       function psychAppt() {
@@ -63,6 +65,10 @@
       function myInfo() {
         window.location.href = "/psychInfo";
       }
+
+      function goHome() {
+            window.location.href = "/login";
+        }
     </script>
 </body>
 </html>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SpecRevController;
 
+use App\Http\Controllers\NoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,16 +81,16 @@ Route::get('/therapistHome', function () {
 Route::get('/therapistdb', function () {
     return view('therapistdb');
 });
-Route::get('/therapistnotes', function () {
-    return view('therapistnotes');
-});
+
 Route::get('/therapistcalendar', function () {
     return view('therapistcalendar');
 });
 Route::get('/therapistprofile', function () {
     return view('therapistprofile');
 });
-
+Route::get('/thnotes', [NoteController::class, 'index'])->name('note.index');
+Route::get('/thnotes/create', [NoteController::class, 'create'])->name('note.create');
+Route::post('/thnotes/create', [NoteController::class, 'store'])->name('note.store');
 
 
 # Dhara
