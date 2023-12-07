@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\Patient;
+
 
 class AppController extends Controller
 {
@@ -14,26 +16,29 @@ class AppController extends Controller
         
 
         $user = $request->session()->get('user');
-
+        
         $appointments = Appointment::where('csUserID', $user->cUserID)->get();
-
+        // dd($appointments);
         return view('psychAppt', ['appointments' => $appointments]);
     }
 
-    public function togle(Request $request)
-{        
+    public function togle (Request $request, $compositeKey)
+{
+    // Extract components from the composite key
+    list($cpUserID, $csUserID, $dappDate, $dappTime) = explode('-', $compositeKey);
 
-        $appointment = $request;
-
-        $appointment = Appointment::where('cpUserID', $request->cpUserID)
-        ->where('csUserID', $request->csUserID)
-        ->where('dappDate', $request->dappDate)
-        ->where('dappTime', $request->dappTime)
+    // Logic for handling the form submission
+    $appointment = Appointment::where('cpUserID', $cpUserID)
+        ->where('csUserID', $csUserID)
+        ->where('dappDate', $dappDate)
+        ->where('dappTime', $dappTime)
         ->first();
-        
-        $appointment->cappStatus = 'yes';
-        $appointment->save();
 
-        return redirect()->route('psychAppt.view'); // Assuming 'psychAppt.view' is the route to your view method
+    // Perform actions with the $appointment instance
+    // For example, update the status
+    $appointment->cappStatus = 'yes';
+    $appointment->save();
+
+    return redirect()->back()->with('success', 'Appointment status updated.');
 }
 }

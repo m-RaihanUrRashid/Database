@@ -44,8 +44,7 @@
 <body>
 
     <h1>Appointments</h1>
-    {{$appointments}}
-    {{session('user')}}
+
 
     <table id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
         <thead style="background-color: #3498db; color: #fff; border-bottom: 2px solid lightblue;">
@@ -61,18 +60,20 @@
         <tbody>
             @foreach($appointments as $appointment)
             <tr  style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
-                <td>{{ $appointment->cpUserID }}</td>
-                <td>{{ $appointment->csUserID }}</td>
-                <td>{{ $appointment->dappDate }}</td>
-                <td>{{ $appointment->dappTime }}</td>
-                <td>{{ $appointment->cappStatus}}</td>
-                <td>
-                    <form method="post" action="{{ route('psychAppt.togle') }}">
-                        @csrf
-                        @method('post')
-                        <button type="submit" name="markasdone" value="{{ $appointment }}">Mark As Done</button>
-                    </form>
-                </td>
+            <td>{{ $appointment->cpUserID }}</td>
+            <td>{{ $appointment->csUserID }}</td>
+            <td>{{ $appointment->dappDate }}</td>
+            <td>{{ $appointment->dappTime }}</td>
+            <td>{{ $appointment->cappStatus }}</td>
+            <td>
+            <form method="post" action="{{ route('psychAppt.togle', [
+                    'compositeKey' => {$appointment->cpUserID}-{$appointment->csUserID}-{$appointment->dappDate}-{$appointment->dappTime},
+                    ]) }}">
+                    @csrf
+                    @method('post')
+                    <button type="submit" name="markasdone">Mark As Done</button>
+                </form>
+            </td>
 
          
                 <!-- Add more columns as needed -->

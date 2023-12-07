@@ -120,9 +120,10 @@ Route::post('/psychPrescription', [PrescriptionController::class, 'store'])->nam
 Route::get('/prescriptions', [PrescriptionController::class, 'showPrescriptions'])->name('prescriptionView.index');
 Route::get('/prescriptions/{id}', [PrescriptionController::class, 'showPrescriptionDetails'])->name('prescriptionView.show');
 
-Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.view');
+// Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.view');
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');
-Route::post('/psychAppt', [AppController::class, 'togle'])->name('psychAppt.togle');
+// Route::post('/psychAppt', [AppController::class, 'togle'])->name('psychAppt.togle');
+Route::post('/psychAppt/togle/{compositeKey}', [AppController::class, 'togle']  )->name('psychAppt.togle');
 
 
 Route::get('/psychInfo', [App\Http\Controllers\PsychiatristController::class, 'index'])->name('psychInfo.index');
