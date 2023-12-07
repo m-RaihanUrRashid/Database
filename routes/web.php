@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SpecRevController;
 
 use App\Http\Controllers\NoteController;
-
+use App\Http\Controllers\rehabUpdateMyInfoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -140,6 +140,8 @@ Route::get('/rehabViewSpecialists', function () {
     return view('rehabViewSpecialists');
 });
 
+Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class, 'updateInformation'])->name('update.information'); 
+
 #Michael Jackson
 Route::get('/ngo', function () {
     return view('ngo');
@@ -148,3 +150,5 @@ Route::get('/ngo', function () {
 Route::get('/ngo1', function () {
     return view('ngo1');
 });
+
+//Route::post('/update-information', 'rehabUpdateMyInfoController@updateInformation')->name('update.information');
