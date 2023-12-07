@@ -11,6 +11,8 @@ class specReview extends Model
     use HasFactory;
 
     protected $table = "patient_review_records_t";
+    public $timestamps = false;
+
 
     protected $fillable = [
         'cpUserID',

@@ -11,6 +11,9 @@ class Rehab extends Model
 
     protected $table = "rehab_centre_t";
 
+    public $timestamps = false;
+
+
     protected $fillable = [
         'cRehabID',
         'Rehabname',
