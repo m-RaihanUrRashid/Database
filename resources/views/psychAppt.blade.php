@@ -44,26 +44,30 @@
 <body>
 
     <h1>Appointments</h1>
+    {{$appointments}}
+    {{session('user')}}
 
     <table id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
         <thead style="background-color: #3498db; color: #fff; border-bottom: 2px solid lightblue;">
             <tr>
                 <th style="padding: 6px;">Patient ID</th>
+                <th style="padding: 6px;">psych ID</th>
                 <th style="padding: 6px;">Date</th>
                 <th style="padding: 6px;">Time</th>
-                <th style="padding: 6px;">Contact</th>
-                <th style="padding: 6px;">Medical History</th>
+                <th style="padding: 6px;">Status</th>
                 <!-- Add more columns as needed -->
             </tr>
         </thead>
         <tbody>
             @foreach($appointments as $appointment)
-            <tr data-appointment-id="{{ $appointment->id }}" onclick="markAsDone(this)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
+            <tr  style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
                 <td>{{ $appointment->cpUserID }}</td>
-                <td>{{ $appointment->date }}</td>
-                <td>{{ $appointment->time }}</td>
-                <td>{{ $appointment->contact }}</td>
-                <td>{{ $appointment->medical_history }}</td>
+                <td>{{ $appointment->csUserID }}</td>
+                <td>{{ $appointment->dappDate }}</td>
+                <td>{{ $appointment->dappTime }}</td>
+                <td>{{ $appointment->cappStatus}}</td>
+
+         
                 <!-- Add more columns as needed -->
             </tr>
             @endforeach

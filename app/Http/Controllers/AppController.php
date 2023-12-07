@@ -12,19 +12,17 @@ class AppController extends Controller
     {
        
 
-        // Pass prescriptions to the view
+        
         return view('psychAppt');
     }
 
     public function view(Request $request)
     {
-        // Get the logged-in user
+        
         $user = $request->session()->get('user');
+        
+        $appointments = Appointment::where('csUserID', $user->cUserID)->get();
     
-        // Fetch appointments for the logged-in user
-        $appointments = Appointment::where('cpUserID', $user->cpUserID)->get();
-    
-        // Pass appointments to the view
         return view('psychAppt', ['appointments' => $appointments]);
     }
 }
