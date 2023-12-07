@@ -9,6 +9,7 @@ use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\rehabUpdateMyInfoController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\PsychiatristController;
+use App\Http\Controllers\rehabViewSpecialistController;
 
 use App\Http\Controllers\rehabAddSpecialistController;
 /*
@@ -161,6 +162,8 @@ Route::get('/rehabViewSpecialists', function () {
 });
 
 Route::post('/rehabAddSpecialist', [rehabAddSpecialistController::class ,'addSpecialist'])->name('add.specialist');
+
+Route::get('/rehabViewSpecialists', [rehabViewSpecialistController::class, 'viewSpecialist'])->name('view.specialist');
 
 
 #Michael Jackson

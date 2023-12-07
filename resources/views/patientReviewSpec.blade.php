@@ -76,6 +76,7 @@
 
 <div class="parent">
     <form method="post" action="{{route('postRev')}}">
+        @csrf
         <div class="d-flex justify-content-center" style="margin: 50px">
         
             <div style="margin-top: 50px;">
@@ -101,7 +102,7 @@
                                 <td>{{$sSpec['seenSpec']->cOff_Address}}</td>
                                 <td>{{$sSpec['seenSpec']->cType}}</td>
                                 <td>
-                                    <button type="button" name="selectedRowId" value="{{ $sSpec['seenSpec']->csUserID }}">Select</button>
+                                    <button type="button" id="selectBtn" name="selectedRowId" value="{{ $sSpec['seenSpec']->csUserID }}">Select</button>
                                 </td>
                         @endforeach
 
@@ -128,21 +129,21 @@
                 <p><h4>Review of Specialist:</h4></p>
                 <label>Rating: </label>
                 <select id="rating" class="styled-select" disabled name="rating">
-                    <option value="no1">1</option>
-                    <option value="#2">2</option>
-                    <option value="#3">3</option>
-                    <option value="#4">4</option>
-                    <option value="#5">5</option>
-                    <option value="#6">6</option>
-                    <option value="#3">7</option>
-                    <option value="#4">8</option>
-                    <option value="#5">9</option>
-                    <option value="#6">10</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
                 </select><br><br>
                 <textarea id="textBox" rows="10" cols="50" disabled name="comment"></textarea>
                 <br><br>
-                <button id="submitbtn" type="button" style="font-size: 15px;" disabled>Submit</button>
-            
+                <button onclick="sendDataToController('selectBtn', 'rating', 'comment')" id="submitbtn" type="submit " style="font-size: 15px;" disabled>Submit</button>
+                
             </div>
         
         </div>
@@ -154,6 +155,24 @@
 </div>
 
 <script>
+
+    function updateFormData() {
+        var selectedRating = document.getElementById('rating').value;
+        var comment = document.getElementById('textBox').value;
+
+        // Enable the submit button if both rating and comment are provided
+        var submitButton = document.getElementById('submitbtn');
+        submitButton.disabled = !(selectedRating && comment);
+
+        // Store the values in hidden fields if needed
+        document.getElementById('ratingHidden').value = selectedRating;
+        document.getElementById('commentHidden').value = comment;
+    }
+
+    // Add event listeners to the form elements to trigger the update function
+    document.getElementById('rating').addEventListener('change', updateFormData);
+    document.getElementById('textBox').addEventListener('input', updateFormData);
+
     document.addEventListener('DOMContentLoaded', function() {
                 var rows = document.querySelectorAll('.clickable-row');
                 var selected = false;
@@ -183,6 +202,26 @@
 
     function goHome() {
             window.location.href = "/patientHome";
+        }
+
+        function sendDataToController(csUserID, rating, comment) {
+            
+            fetch('{{route('postRev')}}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}', // Include CSRF token if using Laravel
+                },
+                body: JSON.stringify({ csUserID: csUserID }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response data as needed
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
 </script>
 

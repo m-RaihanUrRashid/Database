@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title' , 'View Rehab Specialists')
+@section('title', 'View Rehab Specialists')
 @section('content')
 
 <!DOCTYPE html>
@@ -52,25 +52,17 @@
                 <th style="padding: 6px;">Experience</th>
                 <th style="padding: 6px; width: 200px">Office Address</th>
                 <th style="padding: 6px;">Type</th>
-                
-               
             </tr>
         </thead>
         <tbody>
-            <tr onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
-                <td>4321</td>
-                <td>30 years</td>
-                <td>Mirpur</td>
-                <td>Domestic Abuse Help</td>
- 
-            </tr>
-            <tr onclick="markAsDone(2)" style="margin: 10px; background-color: #fff;">
-                <td>6543</td>
-                <td>15 years</td>
-                <td>Gulshan</td>
-                <td>Addiction Psychiatry</td>
-               
-            </tr>
+            @foreach ($specialists as $specialist)
+                <tr style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
+                    <td>{{ $specialist->csUserID }}</td>
+                    <td>{{ $specialist->cExperience }}</td>
+                    <td>{{ $specialist->cOff_Address }}</td>
+                    <td>{{ $specialist->cType }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 
@@ -78,7 +70,7 @@
 
     <script>
         function markAsDone(x) {
-            //update DBMS here
+            // Update DBMS here
             alert('You clicked me!');
         }
 
