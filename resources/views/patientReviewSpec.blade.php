@@ -82,23 +82,27 @@
                 <p><h4>Chose a Specialist:</h4></p>
 
                 
-                <table class="table table-hover" id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
+                <table class="table table-hover" id="specialistid" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
                     <thead style="background-color: #3366CC; color: #fff; border-bottom: 2px solid lightblue;">
                         <tr >
                             <th style="padding: 6px;">Specialist ID</th>
                             <th style="padding: 6px;">Name</th>
                             <th style="padding: 6px;">Location</th>
                             <th style="padding: 6px;">Type</th>
+                            <th style="padding: 6px;">Choose</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($seenSpec as $sSpec)
-                            <tr>
+                            <tr class="clickable-row" onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
                                 <td>{{$sSpec['seenSpec']->csUserID}}</td>
                                 <td>{{$sSpec['specName']->cFname.' '.$sSpec['specName']->cLname}}</td>
                                 <td>{{$sSpec['seenSpec']->cOff_Address}}</td>
                                 <td>{{$sSpec['seenSpec']->cType}}</td>
+                                <td>
+                                    <button type="button" name="selectedRowId" value="{{ $sSpec['seenSpec']->csUserID }}">Select</button>
+                                </td>
                         @endforeach
 
                         <?php /*
@@ -123,7 +127,7 @@
             <div style="bg-color: white;">
                 <p><h4>Review of Specialist:</h4></p>
                 <label>Rating: </label>
-                <select id="rating" class="styled-select" disabled>
+                <select id="rating" class="styled-select" disabled name="rating">
                     <option value="no1">1</option>
                     <option value="#2">2</option>
                     <option value="#3">3</option>
@@ -135,7 +139,7 @@
                     <option value="#5">9</option>
                     <option value="#6">10</option>
                 </select><br><br>
-                <textarea id="textBox" rows="10" cols="50" disabled></textarea>
+                <textarea id="textBox" rows="10" cols="50" disabled name="comment"></textarea>
                 <br><br>
                 <button id="submitbtn" type="button" style="font-size: 15px;" disabled>Submit</button>
             
@@ -151,23 +155,23 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var rows = document.querySelectorAll('.clickable-row');
+                var rows = document.querySelectorAll('.clickable-row');
+                var selected = false;
 
-        var selected = false;
-
-        rows.forEach(function(row) {
-            row.addEventListener('click', function() {
-                rows.forEach(function(innerRow) {
-                    innerRow.classList.remove('selected');
-                });
-                this.classList.toggle('selected');
-                document.getElementById("rating").disabled = false; 
-                document.getElementById("textBox").disabled = false; 
-                document.getElementById("submitbtn").disabled = false; 
-
-            }); 
-        }); 
-    });
+                rows.forEach(function(row) {
+                    row.addEventListener('click', function() {
+                        rows.forEach(function(innerRow) {
+                            innerRow.classList.remove('selected');
+                        });
+                        this.classList.toggle('selected');
+                        document.getElementById("rating").disabled = false; 
+                        document.getElementById("textBox").disabled = false; 
+                        document.getElementById("submitbtn").disabled = false; 
+                    }); 
+                }); 
+            //}
+        });
+    //});
 
     function enableTextBox() {
         if( document.getElementById("selectBox").value == "Other.." ) {

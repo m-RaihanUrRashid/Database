@@ -46,14 +46,35 @@ class SpecRevController extends Controller
     }
 
     public function postRev(Request $request) {
-        $request->validate([
+
+        $user = $request->session()->get('user');
+
+
+
+        /*$request->validate([
             'cpUserID' => 'required',
-            'csUserID' => 'required',
-            'cRating' => 'required|numeric',
+            'csUserID' => 'required',   
+            'cRating' => 'required| numeric',
             'cComment' => 'nullable'
         ]);
 
-        $newReview = Review::create($data);
+        $data = [
+            'cpUserID' => $request->cpUserID,
+            'csUserID' => $request->csUserID,
+            'cRating' => $request->cRating,
+            'cComment' => $request->cComment,
+        ];
+
+        $newReview = Review::create($data);*/
+
+        $newReview = new Review();
+        
+        $newReview->cpUserID = $user->cUserID;
+        $newReview->csUserID =  $request->input('selectedRowId');
+        $newReview->cRating =  $request->input('rating');
+        $newReview->cComment =  $request->input('comment');
+
+        $newReview->save();
 
         return redirect(route('patientHome'));
     }

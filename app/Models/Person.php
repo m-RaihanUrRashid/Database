@@ -10,6 +10,8 @@ class Person extends Model
     use HasFactory;
 
     protected $table = "person_t";
+    public $timestamps = false;
+
 
     protected $fillable = [
         'cUserID',
