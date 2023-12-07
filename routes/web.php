@@ -80,9 +80,10 @@ Route::get('/pharmacyProfile', function () {
 Route::get('/therapistHome', function () {
     return view('therapistHome');
 });
+
 Route::get('/therapistdb', function () {
-    return view('therapistdb')->name('therapistdb');
-});
+    return view('therapistdb');
+})->name('therapistdb');
 
 Route::get('/therapistcalendar', function () {
     return view('therapistcalendar');
@@ -98,7 +99,7 @@ Route::get('/thnotes/edit', [NoteController::class, 'edit'])->name('note.edit');
 # Dhara
 Route::get('/psychiatristHome', function () {
     return view('psychiatristHome');
-});
+})->name('psychiatristHome');
 
 /*Route::get('/psychAppt', function () {
     return view('psychAppt');
