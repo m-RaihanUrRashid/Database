@@ -13,7 +13,7 @@ class Appointment extends Model
         public $timestamps = False;
     
         protected $fillable = [
-            'cpUserID',
+                'cpUserID',
             	'csUserID'	,
                 'dappDate'	,
                 'dappTime'	,

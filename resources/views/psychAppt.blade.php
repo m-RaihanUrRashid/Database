@@ -66,6 +66,13 @@
                 <td>{{ $appointment->dappDate }}</td>
                 <td>{{ $appointment->dappTime }}</td>
                 <td>{{ $appointment->cappStatus}}</td>
+                <td>
+                    <form method="post" action="{{ route('psychAppt.togle') }}">
+                        @csrf
+                        @method('post')
+                        <button type="submit" name="markasdone" value="{{ $appointment }}">Mark As Done</button>
+                    </form>
+                </td>
 
          
                 <!-- Add more columns as needed -->
@@ -79,7 +86,7 @@
     <script>
         function markAsDone(element) {
     var appointmentId = element.getAttribute('data-appointment-id');
-    // Now, use `appointmentId` as needed
+    // Now, use appointmentId as needed
     alert('Mark as done for Appointment ID: ' + appointmentId);
 }
         function goHome() {
