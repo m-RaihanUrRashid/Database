@@ -82,9 +82,10 @@ Route::get('/pharmacyProfile', function () {
 Route::get('/therapistHome', function () {
     return view('therapistHome');
 });
+
 Route::get('/therapistdb', function () {
     return view('therapistdb');
-});
+})->name('therapistdb');
 
 Route::get('/therapistcalendar', function () {
     return view('therapistcalendar');
