@@ -91,7 +91,7 @@ Route::get('/therapistprofile', function () {
 Route::get('/thnotes', [NoteController::class, 'index'])->name('note.index');
 Route::get('/thnotes/create', [NoteController::class, 'create'])->name('note.create');
 Route::post('/thnotes/create', [NoteController::class, 'store'])->name('note.store');
-
+Route::get('/thnotes/edit', [NoteController::class, 'edit'])->name('note.edit');
 
 # Dhara
 Route::get('/psychiatristHome', function () {

@@ -32,4 +32,7 @@ class NoteController extends Controller
         return redirect(route('note.index'));
 
     }
+    public function edit(Note $note){
+        return view('thnotesedit', ['note' => $note]);
+    }
 }
