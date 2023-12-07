@@ -46,12 +46,22 @@ class SpecRevController extends Controller
     }
 
     public function postRev(Request $request) {
-        $request->validate([
+
+        $user = $request->session()->get('user');
+
+        /*$request->validate([
             'cpUserID' => 'required',
             'csUserID' => 'required',
-            'cRating' => 'required|numeric',
+            'cRating' => 'required| numeric',
             'cComment' => 'nullable'
-        ]);
+        ]);*/
+
+        $data = [
+            'cpUserID' => $request->cpUserID,
+            'csUserID' => $request->csUserID,
+            'cRating' => $request->cRating,
+            'cComment' => $request->cComment,
+        ];
 
         $newReview = Review::create($data);
 
