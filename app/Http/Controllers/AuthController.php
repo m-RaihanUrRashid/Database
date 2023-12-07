@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Person;
+
 
 class AuthController extends Controller
 {
@@ -27,8 +29,12 @@ class AuthController extends Controller
                 'password' => 'required'
         ]);
 
+        $user = Person::where('cEmail', $request->email)->first();
+
         $credentials = $request->only('email', 'password');
+
         if(Auth ::attempt($credentials)){
+            session(['user' => $user]);
             return redirect()->intended(route('patientHome'));
         }
         return redirect(route('login'))->with("error", "Wrong Email or Password");

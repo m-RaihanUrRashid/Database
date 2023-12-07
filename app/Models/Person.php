@@ -20,4 +20,9 @@ class Person extends Model
         'cEmail',
         'cType',
     ];
+
+    public function specs()
+    {
+        return $this->hasMany(Specialist::class);
+    }
 }

@@ -15,4 +15,14 @@ class PatientSpec extends Model
         'cpUserID',
         'csUserID',
     ];
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
+
+    public function specs()
+    {
+        return $this->belongsTo(Specialist::class);
+    }
 }
