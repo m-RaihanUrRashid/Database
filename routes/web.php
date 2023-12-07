@@ -10,6 +10,7 @@ use App\Http\Controllers\rehabUpdateMyInfoController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\PsychiatristController;
 
+use App\Http\Controllers\rehabAddSpecialistController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -131,7 +132,7 @@ Route::get('/psychInfo', [App\Http\Controllers\PsychiatristController::class, 'i
 #Nazifa
 Route::get('/rehabSupervisorHome', function () {
     return view('rehabSupervisorHome');
-});
+})->name('rehabSupervisorHome');
 
 Route::get('/rehabManageSpecialist', function () {
     return view('rehabManageSpecialist');
@@ -156,6 +157,9 @@ Route::get('/rehabRemoveSpecialist', function () {
 Route::get('/rehabViewSpecialists', function () {
     return view('rehabViewSpecialists');
 });
+
+Route::post('/rehabAddSpecialist', [rehabAddSpecialistController::class ,'addSpecialist'])->name('add.specialist');
+
 
 #Michael Jackson
 Route::get('/ngo', function () {
