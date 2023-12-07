@@ -20,4 +20,11 @@ class Patient extends Model
     {
         return $this->hasMany(PatientSpec::class);
     }
+
+    public function prescription()
+    {
+        return $this->hasMany(Prescription::class);
+    }
+
+
 }

@@ -15,16 +15,13 @@ return new class extends Migration
             $table->string('ctsUserID', 7);
             $table->string('cpUserID', 7);
             $table->text('cNotes');
-            $table->foreign('ctsUserID')
-                ->references('ctsUserID')
-                ->on('therapist_t')
-                ->onDelete('cascade');
-            $table->foreign('cpUserID')
-                ->references('cpUserID')
-                ->on('patient_t')
-                ->onDelete('cascade');
+            
         });
     }
+    
+    
+
+
 
     /**
      * Reverse the migrations.

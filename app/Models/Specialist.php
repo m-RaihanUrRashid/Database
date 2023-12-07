@@ -26,5 +26,9 @@ class Specialist extends Model
     public function person()
     {
         return $this->belongsTo(Person::class);
-    } 
+    }
+    public function therapist()
+        {
+            return $this->hasMany(Therapist::class);
+        }
 }

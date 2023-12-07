@@ -32,4 +32,12 @@ class NoteController extends Controller
         return redirect(route('note.index'));
 
     }
+    public function edit(Note $note){
+
+        $notes = Note::all();
+
+        return view('thnotesedit', ['notes' => $notes]);
+    }
+
+
 }

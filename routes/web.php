@@ -5,7 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SpecRevController;
 
 use App\Http\Controllers\NoteController;
-
+use App\Http\Controllers\PrescriptionController;
+use App\Http\Controllers\rehabUpdateMyInfoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -105,11 +106,11 @@ Route::get('/psychAppt', function () {
 Route::get('/psychInfo', function () {
     return view('psychInfo');
 });
-
 Route::get('/psychPrescription', function () {
     return view('psychPrescription');
 });
-
+//Route::get('/psychPrescription', [PrescriptionController::class, 'index'])->name('psychPrescription.index');
+Route::post('/psychPrescription', [PrescriptionController::class, 'store'])->name('psychPrescription.store');
 
 #Nazifa
 Route::get('/rehabSupervisorHome', function () {
@@ -140,6 +141,8 @@ Route::get('/rehabViewSpecialists', function () {
     return view('rehabViewSpecialists');
 });
 
+Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class, 'updateInformation'])->name('update.information'); 
+
 #Michael Jackson
 Route::get('/ngo', function () {
     return view('ngo');
@@ -148,3 +151,5 @@ Route::get('/ngo', function () {
 Route::get('/ngo1', function () {
     return view('ngo1');
 });
+
+//Route::post('/update-information', 'rehabUpdateMyInfoController@updateInformation')->name('update.information');
