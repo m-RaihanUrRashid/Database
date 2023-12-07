@@ -1,23 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+
+use App\Models\Specialist;
+use App\Models\Person;
+
+
 use Illuminate\Http\Request;
 
 class rehabUpdateMyInfoController extends Controller
 {
     public function updateInformation(Request $request)
     {
-        $user = User::find(auth()->id());
+        $Specialist = Specialist::find(auth()->id());
+        $Person = Person::where('cUserID', $Specialist->csUserID)->first();
 
-        $user->supervisorName = $request->input('supervisorName');
-        $user->Title = $request->input('Title');
-        $user->officeAddress = $request->input('officeAddress');
-        $user->ID = $request->input('ID');
-        $user->contactNo = $request->input('contactNo');
-        $user->rehab = $request->input('rehab');
+        
+        
+        $Specialist->cOff_Address = $request->input('officeAddress');
+        $Specialist->cOff_Address = $request->input('officeAddress');
+        $Specialist->contactNo = $request->input('contactNo');
+        $Specialist->rehab = $request->input('rehab');
 
-        $user->save();
+        $Specialist->save();
 
         return redirect()->route('home')->with('success', 'Information updated successfully');
     }
