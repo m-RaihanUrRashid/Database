@@ -128,7 +128,7 @@
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/notebook.png" width="30" height="30" alt="nb"></div>
-            <a href="http://127.0.0.1:8000/thnotes/create">Notes</a> 
+            <a href="http://127.0.0.1:8000/thnotes">Notes</a> 
         </section>
         <span class="navb"></span>
         <section style= "display: flex;">

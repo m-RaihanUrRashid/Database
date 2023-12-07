@@ -1,11 +1,34 @@
 @extends('layout')
-@section('title' , 'Make Notes')
+@section('title' , 'Edit Notes')
 @section('content')
 
 <head>
     <style>h1, h2, p, li{color: darkblue; font-family: "Georgia"; font-size: 1.22em;}</style>
     <link rel="icon" href="/img/diamond.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/img/diamond.ico" type="image/x-icon">
+    <style>
+        table {
+            margin: 0 auto;
+            width: 70%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1.5px solid darkblue!important;
+            padding: 8px;
+            text-align: left;
+        }
+        .buttonbox{
+        border-radius:  10px;
+        width: 80%;
+        height: auto;
+        margin: 20px; /* Add margin for spacing */
+        margin: 0 auto;
+        margin-bottom: 80px;
+        background-color: azure;}
+
+    </style>
 </head>
 
 
@@ -145,67 +168,24 @@
 </div> 
 <br>
 
-<h1 style="text-align: center;">Notes</h1> <br> <br> <br>
+<h1 style="text-align: center;">Edit Notes</h1> <br> <br> <br>
 
 <div style="padding: 20px"></div>
 
-<!-- Form Error Checking -->
-<div style="text-align:center">
-    @if($errors->any())
-    <ul>
-        @foreach($errors->all() as $error)
-            <li>
-                {{$error}}
-            </li>
-        @endforeach
-    </ul>
-    @endif
+
+<div class = "buttonbox">
+    <table>
+        <th>Therapist ID</th>
+        <th>Patient ID</th>
+        <th>Notes</th>
+    @foreach($notes as $note)
+        <tr>
+            <td>{{$note->ctsUserID}}</td>
+            <td>{{$note->cpUserID}}</td>
+            <td>{{$note->cNotes}}</td>
+        </tr>
+    @endforeach
+    </table>
 </div>
-
-<!-- Form style -->
-<style>
-    form{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        font-family: Georgia;
-        color: darkblue;
-    }
-
-</style>
-<!-- Submit Button -->
-<style>
-    .sbm{
-        font-size: 16px;
-        padding: 5px 10px;
-        cursor: pointer;
-        border-radius: 10px;
-        background-color: cadetblue; /* Change the background color */
-        color: white;
-        cursor: pointer;
-        margin-bottom: 100px;}
-</style>
-
-
-<!-- Form input stuff-->
-<form method="post" action="{{route('note.store')}}";>
-    @csrf
-    @method('post')
-    <!-- Input box with a label -->
-    <label for="Therapist ID">Therapist ID</label>
-    <input type="text" name="ctsUserID" placeholder="Enter Therapist ID" pattern="[0-9]+" title="Please enter only numbers" required><br>
-
-    <label for="Patient ID">Patient ID</label>
-    <input type="text" name="cpUserID" placeholder="Enter Patient ID" pattern="[0-9]+" title="Please enter only numbers" required><br>
-
-    <label for="Notes">Notes</label>
-    <textarea type="text" name="cNotes" rows="15" cols="40" placeholder="Enter Notes"></textarea> <br>
-
-    <div style = "align-items: center; text-align: center;">
-    <input type="submit" value="Create" class="sbm" />
-    </div>
-</form>
-
 
 
