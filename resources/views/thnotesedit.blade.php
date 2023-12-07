@@ -173,19 +173,6 @@
 <div style="padding: 20px"></div>
 
 
-<div class = "buttonbox">
-    <table>
-        <th>Therapist ID</th>
-        <th>Patient ID</th>
-        <th>Notes</th>
-    @foreach($notes as $note)
-        <tr>
-            <td>{{$note->ctsUserID}}</td>
-            <td>{{$note->cpUserID}}</td>
-            <td>{{$note->cNotes}}</td>
-        </tr>
-    @endforeach
-    </table>
-</div>
+
 
 

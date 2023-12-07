@@ -33,6 +33,11 @@ class NoteController extends Controller
 
     }
     public function edit(Note $note){
-        return view('thnotesedit', ['note' => $note]);
+
+        $notes = Note::all();
+
+        return view('thnotesedit', ['notes' => $notes]);
     }
+
+
 }

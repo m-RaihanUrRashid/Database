@@ -241,6 +241,6 @@
 
 <section style="display:flex; gap: 20px; justify-content: center">
 <a style = "text-decoration: none" href="http://127.0.0.1:8000/thnotes/create"><button class="eb">Create Another</button></a>
-<a href="{{ route('note.edit') }}"><button class="eb">Edit</button></a>
+<a><button class="eb">Edit</button></a>
 </section>
 
