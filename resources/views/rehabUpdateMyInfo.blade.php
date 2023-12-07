@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- Include CSRF token -->
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -65,34 +66,36 @@
 
     <h1 id="heading">Update Information</h1>
 
-    <form id="InformationForm">
+    <form id="InformationForm" method="post" action="{{ route('update.information') }}">
+    @csrf <!-- Include CSRF token field in the form -->
         <div class="d-flex">
             <div style="margin: 42px">
                 <label for="supervisorName">Name:</label>
-                <input type="text" id="supervisorName" name="supervisorName" readonly>
+                <input type="text" id="supervisorName" name="supervisorName" >
 
                 <label for="Title">Title:</label>
-                <input type="text" id="Title" name="Title" readonly>
+                <input type="text" id="Title" name="Title" >
 
                 <label for="officeAddress">Office Address:</label>
-                <input type="text" id="officeAddress" name="officeAddress" readonly>
+                <input type="text" id="officeAddress" name="officeAddress" >
 
 
             </div>
             <div style="margin: 42px">
                 <label for="ID">ID No:</label>
-                <input type="text" id="ID" name="ID" readonly>
+                <input type="text" id="ID" name="ID" >
 
                 <label for="contactNo">Contact No:</label>
-                <input type="text" id="contactNo" name="contactNo" readonly>
+                <input type="text" id="contactNo" name="contactNo" >
 
                 <label for="rehab">Rehab:</label>
-                <input type="text" id="rehab" name="rehab" readonly>
+                <input type="text" id="rehab" name="rehab" >
             </div>
         </div>
         <div class="container" style="justify-items: center;">
             <div style="margin: 10px">
-                <button type="button" onclick="saveChanges()">Save Changes</button>
+                <!--<button type="button" onclick="saveChanges()">Save Changes</button> -->
+                <button type="submit">Save Changes</button> <!-- Change to type="submit" -->
             </div>
 
         </div>

@@ -24,6 +24,7 @@ class SpecRevController extends Controller
         //$spec = $patSpecs->specs;
         if ($patSpecs->isNotEmpty()) {
             $specs = [];
+            
             foreach ($patSpecs as $patSpec) {
                 // Access the related specialist
                 $spec = Specialist::where('csUserID', $patSpec->csUserID)->first();

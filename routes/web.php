@@ -6,7 +6,7 @@ use App\Http\Controllers\SpecRevController;
 
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PrescriptionController;
-
+use App\Http\Controllers\rehabUpdateMyInfoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,7 +64,7 @@ Route::get('/patientProfile', function () {
 # Ikram
 Route::get('/pharmacyHome', function () {
     return view('pharmacyHome');
-});
+})->name('pharmacyHome');
 
 Route::get('/pharmacyPrescriptions', function () {
     return view('pharmacyPrescriptions');
@@ -81,7 +81,7 @@ Route::get('/therapistHome', function () {
 });
 Route::get('/therapistdb', function () {
     return view('therapistdb');
-});
+})->name('therapistdb');
 
 Route::get('/therapistcalendar', function () {
     return view('therapistcalendar');
@@ -92,12 +92,12 @@ Route::get('/therapistprofile', function () {
 Route::get('/thnotes', [NoteController::class, 'index'])->name('note.index');
 Route::get('/thnotes/create', [NoteController::class, 'create'])->name('note.create');
 Route::post('/thnotes/create', [NoteController::class, 'store'])->name('note.store');
-Route::get('/thnotes/edit', [NoteController::class, 'edit'])->name('note.edit');
+
 
 # Dhara
 Route::get('/psychiatristHome', function () {
     return view('psychiatristHome');
-});
+})->name('psychiatristHome');
 
 Route::get('/psychAppt', function () {
     return view('psychAppt');
@@ -145,6 +145,8 @@ Route::get('/rehabViewSpecialists', function () {
     return view('rehabViewSpecialists');
 });
 
+Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class, 'updateInformation'])->name('update.information'); 
+
 #Michael Jackson
 Route::get('/ngo', function () {
     return view('ngo');
@@ -153,3 +155,5 @@ Route::get('/ngo', function () {
 Route::get('/ngo1', function () {
     return view('ngo1');
 });
+
+//Route::post('/update-information', 'rehabUpdateMyInfoController@updateInformation')->name('update.information');

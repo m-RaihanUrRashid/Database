@@ -49,28 +49,25 @@
         <thead style="background-color: #3498db; color: #fff; border-bottom: 2px solid lightblue;">
             <tr>
                 <th style="padding: 6px;">Specialist ID</th>
-                <th style="padding: 6px;">Qualifications</th>
-                <th style="padding: 6px; width: 200px">Email</th>
-                <th style="padding: 6px;">Contact</th>
-                <th style="padding: 6px;">Specialty</th>
+                <th style="padding: 6px;">Experience</th>
+                <th style="padding: 6px; width: 200px">Office Address</th>
+                <th style="padding: 6px;">Type</th>
+                
                
             </tr>
         </thead>
         <tbody>
             <tr onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
                 <td>4321</td>
-                <td>Masters degree, PhD, medical license</td>
-                <td>doc1@mspaint.rehab.com</td>
-                <td>01569836930</td>
-                <td>Personality Disorders</td>
-
-                
+                <td>30 years</td>
+                <td>Mirpur</td>
+                <td>Domestic Abuse Help</td>
+ 
             </tr>
             <tr onclick="markAsDone(2)" style="margin: 10px; background-color: #fff;">
                 <td>6543</td>
-                <td>Masters degree, PhD, medical license</td>
-                <td>doc2@mspaint.rehab.com</td>
-                <td>01589345603</td>
+                <td>15 years</td>
+                <td>Gulshan</td>
                 <td>Addiction Psychiatry</td>
                
             </tr>
