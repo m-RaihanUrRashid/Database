@@ -16,4 +16,11 @@ class Psychiatrist extends Model
     {
         return $this->hasMany(Prescription::class);
     }
+
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
+
 }

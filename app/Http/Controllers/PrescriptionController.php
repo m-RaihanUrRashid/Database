@@ -19,6 +19,9 @@ class PrescriptionController extends Controller
 
     public function store(Request $request)
     {
+
+        $user = $request->session()->get('user');
+        
         // Validate the request data
         $request->validate([
             'cpUserID' => 'required|string', // Assuming 'cpUserID' is the field name in your form
@@ -33,8 +36,8 @@ class PrescriptionController extends Controller
         $prescription->cPrescID = substr(uniqid(), 0, 7);
         $prescription->dIssueDate = now();
         $prescription->cpUserID = $request->input('cpUserID');
-        $prescription->cpsUserID = '2234567';
-        //$prescription->cpsUserID = auth()->id(); // assuming you want to associate with the authenticated user
+        //$prescription->cpsUserID = '2234567';
+        $prescription->cpsUserID =$user-> cUserID; ; // assuming you want to associate with the authenticated user
         $prescription->save();
         
 
