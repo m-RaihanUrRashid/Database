@@ -18,4 +18,10 @@ class specReview extends Model
         'cRating',
         'cComment',
     ];
+
+    public function PatientSpec()
+    {
+        return $this->belongsTo(PatientSpec::class);
+    }   
+
 }
