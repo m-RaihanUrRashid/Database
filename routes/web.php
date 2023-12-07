@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SpecRevController;
 
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\PrescriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,11 +106,11 @@ Route::get('/psychAppt', function () {
 Route::get('/psychInfo', function () {
     return view('psychInfo');
 });
-
 Route::get('/psychPrescription', function () {
     return view('psychPrescription');
 });
-
+//Route::get('/psychPrescription', [PrescriptionController::class, 'index'])->name('psychPrescription.index');
+Route::post('/psychPrescription', [PrescriptionController::class, 'store'])->name('psychPrescription.store');
 
 #Nazifa
 Route::get('/rehabSupervisorHome', function () {
