@@ -1,11 +1,8 @@
-@extends('layout')
-@section('ti tle' , 'My Prescriptions')
-@section('content')
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -57,8 +54,19 @@
             justify-content: center;
             align-items: center;
         }
-    </style>
 
+        /* Style for the medicine input container */
+        .medicine-container {
+            margin: 20px;
+            /* Adjusted margin */
+        }
+
+        /* Style for the dynamic medicine input fields */
+        .medicine-input-container {
+            margin-bottom: 20px;
+            /* Adjusted margin */
+        }
+    </style>
 </head>
 
 <body>
@@ -66,48 +74,82 @@
     <h1 id="heading">Prescriptions</h1>
 
     <form id="prescriptionForm">
-        <div class="d-flex">
-            <div style="margin: 42px">
-                <label for="patientID">Patient ID:</label>
-                <input type="text" id="patientID" name="patientID" readonly>
+        <div class="medicine-container">
+            <label for="patientID">Patient ID:</label>
+            <input type="text" id="cpUserID" name="cpUserID">
 
-                <label for="medicine1">Medicine1:</label>
-                <input type="text" id="medicine1" name="medicine1" readonly>
-
-                <label for="medicine2">Medicine2:</label>
-                <input type="text" id="medicine2" name="medicine2" readonly>
+            <!-- Dynamic medicine input fields -->
+            <div id="medicinesContainer" class="medicine-input-container">
+                <label for="medicine1">Medicine:</label>
+                <input type="text" class="medicineInput" name="medicines[]">
             </div>
-            <div style="margin: 42px">
-            <label for="medicine3">Medicine3:</label>
-                <input type="text" id="medicine3" name="medicine3" readonly>
 
-            </div>
+            <button type="button" onclick="addMedicine()">Add Medicine</button>
         </div>
+
         <div class="container" style="justify-items: center;">
             <div style="margin: 10px">
                 <button type="button" onclick="createPrescription()">Create Prescription</button>
             </div>
-            
         </div>
     </form>
 
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
+
+
     <script>
-        function createPrescription() {
-            alert('Prescription Created');
-        }
-
-        
-
         function goHome() {
             window.location.href = "/psychiatristHome";
         }
-
     </script>
+
+    <script>
+        function createPrescription() {
+            var cpUserID = document.getElementById('cpUserID').value;
+
+            // Get values from all medicine input fields
+            var medicines = document.querySelectorAll('.medicineInput');
+            var medicinesArray = Array.from(medicines).map(input => input.value);
+
+            // Validate input
+            if (cpUserID.trim() === '' || medicinesArray.some(medicine => medicine.trim() === '')) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Make an AJAX request to your Laravel backend
+            axios.post('/psychPrescription/store', {
+                    cpUserID: cpUserID,
+                    medicines: medicinesArray
+                    // Add other fields as needed
+                })
+                .then(function(response) {
+                    // Handle success, e.g., show a success message
+                    alert('Prescription created successfully');
+                    // You can redirect to another page if needed
+                    window.location.href = '/success';
+                })
+                .catch(function(error) {
+                    // Handle error, e.g., show an error message
+                    alert('Error creating prescription');
+                });
+        }
+
+        function addMedicine() {
+            // Create a new medicine input field
+            var medicinesContainer = document.getElementById('medicinesContainer');
+            var newMedicineInput = document.createElement('div');
+            newMedicineInput.classList.add('medicine-input-container');
+            newMedicineInput.innerHTML = `
+            <label for="medicine">Medicine:</label>
+            <input type="text" class="medicineInput" name="medicines[]">
+        `;
+            medicinesContainer.appendChild(newMedicineInput);
+        }
+    </script>
+
 
 </body>
 
 </html>
-
-@endsection
