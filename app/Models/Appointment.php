@@ -9,9 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     use HasFactory;
-    protected $table = "appointment_t";
+        protected $table = "appointment_t";
         public $timestamps = False;
-    
         protected $fillable = [
                 'cpUserID',
             	'csUserID'	,
@@ -19,6 +18,15 @@ class Appointment extends Model
                 'dappTime'	,
                 'cappStatus'
         ];
+        //protected $primaryKey = ['cpUserID', 'csUserID', 'dappDate', 'dappTime'];
+    
+        public function yourMethod($cpUserID, $csUserID, $dappDate, $dappTime)
+    {
+        // Use dd() to check the values
+        dd($cpUserID, $csUserID, $dappDate, $dappTime);
+
+        // Rest of your logic
+    }
     
 
         public function patient()
