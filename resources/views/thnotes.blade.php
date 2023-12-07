@@ -8,30 +8,57 @@
     <link rel="shortcut icon" href="/img/diamond.ico" type="image/x-icon">
     <style>
         table {
-            width: 500px;
+            margin: 0 auto;
+            width: 70%;
             border-collapse: collapse;
             margin-top: 20px;
-            margin: 0 auto;
-            border: 2px!important;
         }
 
         th, td {
-            margin: 0 auto;
-            border: 2px solid black!important;
+            border: 1.5px solid darkblue!important;
             padding: 8px;
             text-align: left;
-            display: table-cell;
         }
-        tr {
-            margin: 0 auto;
-            border: 1px solid black;
-            display: table-row;
-        }
+        .buttonbox{
+        border-radius:  10px;
+        width: 80%;
+        height: auto;
+        margin: 20px; /* Add margin for spacing */
+        margin: 0 auto;
+        margin-bottom: 80px;
+        background-color: azure;}
 
     </style>
 </head>
 
 <body>
+<!-- Buttonbox height increase -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        adjustButtonBoxHeight(); // Call the function initially
+
+        // Add an event listener for window resize
+        window.addEventListener('resize', function () {
+            adjustButtonBoxHeight();
+        });
+    });
+
+    function adjustButtonBoxHeight() {
+        const buttonBox = document.querySelector('.buttonbox');
+        const table = document.getElementById('myTable');
+
+        if (buttonBox && table) {
+            // Calculate the height based on the number of rows in the table
+            const numberOfRows = table.rows.length;
+            const rowHeight = 40; // Adjust this value based on your design
+            const newHeight = numberOfRows * rowHeight;
+
+            // Set the new height to the buttonbox
+            buttonBox.style.height = newHeight + 'px';
+        }
+    }
+</script>
+
 <!-- Navbar aesthetic properties -->
 <style>
     .navbar {
@@ -173,12 +200,11 @@
 
 
 
-<div>
+<div class = "buttonbox">
     <table>
         <th>Therapist ID</th>
         <th>Patient ID</th>
         <th>Notes</th>
-    </table>
     @foreach($notes as $note)
         <tr>
             <td>{{$note->ctsUserID}}</td>
@@ -186,4 +212,35 @@
             <td>{{$note->cNotes}}</td>
         </tr>
     @endforeach
+    </table>
 </div>
+
+<!-- Button properties -->
+<style>
+    .eb{
+        display: block;
+        margin: 0 auto;
+        padding: 5px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 10px; /* Adjust the radius to control the roundness */
+        background-color: cadetblue; /* Change the background color */
+        color: white; /* Change the text color */
+        cursor: pointer;
+    }
+    .eb:hover{
+        background-color: #095151!important;
+        color: black;
+        transition: 0.2s!important;
+    }
+    .a{
+        text-decoration: none;
+    }
+</style>
+
+<section style="display:flex; gap: 20px; justify-content: center">
+<a style = "text-decoration: none" href="http://127.0.0.1:8000/thnotes/create"><button class="eb">Create Another</button></a>
+<a><button class="eb">Edit</button></a>
+</section>
+

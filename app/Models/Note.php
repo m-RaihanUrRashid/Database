@@ -10,7 +10,7 @@ class Note extends Model
     use HasFactory;
     public $timestamps = false;
 
-    protected $table = "therapist_notes";
+    protected $table = "therapist_notes_t";
 
     protected $fillable = [
 
@@ -20,4 +20,10 @@ class Note extends Model
 
     ];
 
+    public function therapist()
+        {
+            return $this->belongsTo(Therapist::class);
+        }
+
 }
+
