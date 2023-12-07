@@ -53,45 +53,37 @@
                 <th style="padding: 6px;">Time</th>
                 <th style="padding: 6px;">Contact</th>
                 <th style="padding: 6px;">Medical History</th>
-               
+                <!-- Add more columns as needed -->
             </tr>
         </thead>
         <tbody>
-            <tr onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
-                <td>1234</td>
-                <td>12/11/23</td>
-                <td>12:23PM</td>
-                <td>01754689</td>
-                <td>attachment</td>
-
-                
+            @foreach($appointments as $appointment)
+            <tr data-appointment-id="{{ $appointment->id }}" onclick="markAsDone(this)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
+                <td>{{ $appointment->cpUserID }}</td>
+                <td>{{ $appointment->date }}</td>
+                <td>{{ $appointment->time }}</td>
+                <td>{{ $appointment->contact }}</td>
+                <td>{{ $appointment->medical_history }}</td>
+                <!-- Add more columns as needed -->
             </tr>
-            <tr onclick="markAsDone(2)" style="margin: 10px; background-color: #fff;">
-                <td>3456</td>
-                <td>12/11/23</td>
-                <td>3:00PM</td>
-                <td>01754689</td>
-                <td>attachment</td>
-               
-            </tr>
+            @endforeach
         </tbody>
     </table>
 
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
     <script>
-        function markAsDone(x) {
-            //update DBMS here
-            alert('Appointment cleared');
-        }
-
+        function markAsDone(element) {
+    var appointmentId = element.getAttribute('data-appointment-id');
+    // Now, use `appointmentId` as needed
+    alert('Mark as done for Appointment ID: ' + appointmentId);
+}
         function goHome() {
             window.location.href = "/psychiatristHome";
         }
     </script>
 
 </body>
-
 </html>
 
 @endsection
