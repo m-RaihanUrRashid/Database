@@ -122,6 +122,7 @@ Route::get('/prescriptions/{id}', [PrescriptionController::class, 'showPrescript
 
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.view');
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');
+Route::post('/psychAppt', [AppController::class, 'togle'])->name('psychAppt.togle');
 
 
 Route::get('/psychInfo', [App\Http\Controllers\PsychiatristController::class, 'index'])->name('psychInfo.index');

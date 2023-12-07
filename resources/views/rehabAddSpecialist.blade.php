@@ -76,6 +76,12 @@
                 <label for="cExperience">Experience:</label>
                 <input type="text" id="cExperience" name="Experience" >
 
+                <label for="Fname">Fname:</label>
+                <input type="text" id="Fname" name="Fname" >
+
+                <label for="Lname">Lname:</label>
+                <input type="text" id="Lname" name="Lname" >
+
             </div>
             <div style="margin: 42px">
                 <label for="cOff_Address">Address:</label>
@@ -83,6 +89,15 @@
 
                 <label for="cType">Type:</label>
                 <input type="text" id="cType" name="Type" >
+
+                <label for="DOB">DOB:</label>
+                <input type="text" id="DOB" name="DOB" >
+
+                <label for="Email">Email:</label>
+                <input type="text" id="Email" name="Email" >
+
+                <label for="cAddress">Home address:</label>
+                <input type="text" id="cAddress" name="homeAddress" >
 
             </div>
         </div>
