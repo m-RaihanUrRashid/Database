@@ -10,6 +10,7 @@ class Specialist extends Model
     use HasFactory;
 
     protected $table = "specialist_t"   ;
+    public $timestamps = False;
 
     protected $fillable = [
         'csUserID',
