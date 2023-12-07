@@ -29,6 +29,7 @@ class rehabAddSpecialistController extends Controller
         $person->cEmail = $request->input('Email');
         $person->cUserID = $request->input('specialistID');
         $person->cAddress = $request->input('homeAddress');
+        $person->cType = $request->input('Type');
 
         $person->save();
 
