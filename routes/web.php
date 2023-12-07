@@ -81,7 +81,7 @@ Route::get('/therapistHome', function () {
     return view('therapistHome');
 });
 Route::get('/therapistdb', function () {
-    return view('therapistdb');
+    return view('therapistdb')->name('therapistdb');
 });
 
 Route::get('/therapistcalendar', function () {
