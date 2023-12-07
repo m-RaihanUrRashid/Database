@@ -8,8 +8,8 @@ use App\Models\Note;
 class NoteController extends Controller
 {
     public function index(){
-
-        return view('thnotes');
+        $notes = Note::all();
+        return view('thnotes', ['notes' => $notes]);
 
     }
 
@@ -22,9 +22,9 @@ class NoteController extends Controller
         
         $data = $request->validate([
 
-            'pid' => 'required|numeric',
-            'name' => 'required',
-            'note' => 'required'
+            'ctsUserID' => 'required|numeric',
+            'cpUserID' => 'required|numeric',
+            'cNotes' => 'required'
         ]);
 
         $newNote = Note::create($data);

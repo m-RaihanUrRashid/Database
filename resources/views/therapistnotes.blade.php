@@ -4,6 +4,8 @@
 
 <head>
     <style>h1, h2, p, li{color: darkblue; font-family: "Georgia"; font-size: 1.22em;}</style>
+    <link rel="icon" href="/img/diamond.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/diamond.ico" type="image/x-icon">
 </head>
 
 
@@ -172,196 +174,6 @@
     }
 
 </style>
-
-<!-- Form input stuff-->
-<form method="post" action="{{route('note.store')}}";>
-    @csrf
-    @method('post')
-    <!-- Input box with a label -->
-    <label for="Patient ID">Patient ID</label>
-    <input type="text" name="pid" placeholder="Enter ID"><br>
-
-    <label for="Patient Name">Patient Name</label>
-    <input type="text" name="name" placeholder="Enter Name"><br>
-
-    <label for="Notes">Notes</label>
-    <textarea type="text" name="note" rows="15" cols="40" placeholder="Enter Notes"></textarea> <br>
-
-    <div style = "align-items: center; text-align: center;">
-    <input type="submit" value="Create" class="sbm" />
-    </div>
-</form>
-
-<!-- Button styles-->
-<style>
-    .cbtn{
-        display: inline-block;
-        margin-top: 10px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-    .cbtn.clicked{
-        background-color: lightgreen; /* Change to the desired color */
-        color: darkgreen; /* Change to the desired text color */
-
-    }
-    .cbtn1{
-        display: inline-block;
-        margin-left: 10px;
-        margin-top: 10px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-    .cbtn1.clicked{
-        background-color: lightcoral; /* Change to the desired color */
-        color: maroon; /* Change to the desired text color */
-    }
-
-    .cbtn2{
-        display: inline-block;
-        margin-left: 10px;
-        margin-top: 10px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-    .cbtn2.clicked{
-        background-color: lightgoldenrodyellow; /* Change to the desired color */
-        color: darkgoldenrod /* Change to the desired text color */
-    }
-
-</style>
-<!-- Button scripts-->
-<script>
-function toggleClickedState(button) {
-    const buttons = document.querySelectorAll('.cbtn, .cbtn1, .cbtn2');
-    buttons.forEach((btn) => {
-        if (btn !== button) {
-            btn.classList.remove('clicked');
-        }
-    });
-
-    button.classList.toggle('clicked');
-}
-</script>
-
-<div style="align-items: center; text-align:center">
-    <p>Condition:</p>
-    <button class="cbtn" onclick="toggleClickedState(this)">Good</button>
-    <button class="cbtn2" onclick="toggleClickedState(this)">Average</button>
-    <button class="cbtn1" onclick="toggleClickedState(this)">Bad</button>
-</div>
-
-
-<p style = "text-align: center; margin-top: 40px">Set Patient State(0-10):</p>
-<!-- Scale style -->
-<style> 
-    .dex{
-        font-family: 'Georgia';
-        height: 20vh;
-        margin-top: 10px;
-    }
-    #scale-container {
-      margin: 0 auto;
-      position: relative;
-      width: 350px;
-      height: 50px;
-      background-color: azure;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    #scale {
-      display: flex;
-      height: 100%;
-      transition: transform 0.5s ease;
-    }
-
-    .number {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: bold;
-      color: #333;
-      border-right: 1px solid #000;
-    }
-    .number:last-child {
-      border: none; /* Remove the border from the last number */
-    }
-    #pointer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 30px;
-      height: 50px;
-      background-color: navy;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      cursor: grab;
-      user-select: none;
-    }
-</style>
-
-<!-- Scale format -->
-<div class="dex">
-    <div id="scale-container">
-        <div id="scale">
-            <div class="number">0</div>
-            <div class="number">1</div>
-            <div class="number">2</div>
-            <div class="number">3</div>
-            <div class="number">4</div>
-            <div class="number">5</div>
-            <div class="number">6</div>
-            <div class="number">7</div>
-            <div class="number">8</div>
-            <div class="number">9</div>
-            <div class="number">10</div>
-        </div>
-        <div id="pointer">0</div>
-    </div>
-</div>
-
-<!-- Scale functioning -->
-<script>
-  const scale = document.getElementById('scale');
-  const pointer = document.getElementById('pointer');
-
-  let isDragging = false;
-
-  pointer.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    pointer.style.cursor = 'grabbing';
-  });
-
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-    pointer.style.cursor = 'grab';
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-
-    const rect = scale.getBoundingClientRect();
-    let position = (e.clientX - rect.left) / rect.width;
-    position = Math.max(0, Math.min(1, position));
-
-    const value = Math.round(position * 10);
-    pointer.textContent = value;
-    pointer.style.left = `${position * 92}%`;
-  });
-</script>
-
 <!-- Submit Button -->
 <style>
     .sbm{
@@ -374,4 +186,26 @@ function toggleClickedState(button) {
         cursor: pointer;
         margin-bottom: 100px;}
 </style>
+
+
+<!-- Form input stuff-->
+<form method="post" action="{{route('note.store')}}";>
+    @csrf
+    @method('post')
+    <!-- Input box with a label -->
+    <label for="Therapist ID">Therapist ID</label>
+    <input type="text" name="ctsUserID" placeholder="Enter Therapist ID" pattern="[0-9]+" title="Please enter only numbers" required><br>
+
+    <label for="Patient ID">Patient ID</label>
+    <input type="text" name="cpUserID" placeholder="Enter Patient ID" pattern="[0-9]+" title="Please enter only numbers" required><br>
+
+    <label for="Notes">Notes</label>
+    <textarea type="text" name="cNotes" rows="15" cols="40" placeholder="Enter Notes"></textarea> <br>
+
+    <div style = "align-items: center; text-align: center;">
+    <input type="submit" value="Create" class="sbm" />
+    </div>
+</form>
+
+
 

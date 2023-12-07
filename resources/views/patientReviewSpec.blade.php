@@ -80,17 +80,28 @@
         
             <div style="margin-top: 50px;">
                 <p><h4>Chose a Specialist:</h4></p>
+
+                
                 <table class="table table-hover" id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
                     <thead style="background-color: #3366CC; color: #fff; border-bottom: 2px solid lightblue;">
                         <tr >
-                            <th style="padding: 6px;">Rehab ID</th>
+                            <th style="padding: 6px;">Specialist ID</th>
                             <th style="padding: 6px;">Name</th>
                             <th style="padding: 6px;">Location</th>
-                            <th style="padding: 6px;">Speciality(ies)</th>
+                            <th style="padding: 6px;">Type</th>
 
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($seenSpec as $sSpec)
+                            <tr>
+                                <td>{{$sSpec['seenSpec']->csUserID}}</td>
+                                <td>{{$sSpec['specName']->cFname.' '.$sSpec['specName']->cLname}}</td>
+                                <td>{{$sSpec['seenSpec']->cOff_Address}}</td>
+                                <td>{{$sSpec['seenSpec']->cType}}</td>
+                        @endforeach
+
+                        <?php /*
                         <tr class="clickable-row" onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
                             <td>1234</td>
                             <td>Md Gazi</td>
@@ -105,7 +116,7 @@
                             <td> Address</td>
                             <td>Substance Abuse and Addiction<br> Eating disorders</td>
                         
-                        </tr>
+                        </tr>*/?>
                     </tbody>
                 </table>
             </div>

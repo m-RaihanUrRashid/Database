@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Note extends Model
+class Patient extends Model
 {
     use HasFactory;
-    public $timestamps = false;
 
-    protected $table = "therapist_notes";
+    protected $table = "patient_t";
 
     protected $fillable = [
-
-        'ctsUserID',
         'cpUserID',
-        'cNotes'
-
+        'cMedical_History',
     ];
 
+    public function patientSpecs()
+    {
+        return $this->hasMany(PatientSpec::class);
+    }
 }
