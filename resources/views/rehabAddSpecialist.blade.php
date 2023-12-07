@@ -66,30 +66,30 @@
 
     <h1 id="heading">Add Specialist</h1>
 
-    <form id="AddSpecialistForm" method="post" action="{{ route('update.information') }}">
+    <form id="AddSpecialistForm" method="post" action="{{ route('add.specialist') }}">
     @csrf <!-- Include CSRF token field in the form -->
         <div class="d-flex">
             <div style="margin: 42px">
-                <label for="specialistID">Name:</label>
-                <input type="text" id="specialistID" name="specialistID" >
+                <label for="csUserID">ID:</label>
+                <input type="text" id="csUserID" name="specialistID" >
 
-                <label for="Experience">Title:</label>
-                <input type="text" id="Experience" name="Experience" >
+                <label for="cExperience">Experience:</label>
+                <input type="text" id="cExperience" name="Experience" >
 
             </div>
             <div style="margin: 42px">
-                <label for="officeAddress">ID No:</label>
-                <input type="text" id="officeAddress" name="officeAddress" >
+                <label for="cOff_Address">Address:</label>
+                <input type="text" id="cOff_Address" name="officeAddress" >
 
-                <label for="Type">Contact No:</label>
-                <input type="text" id="Type" name="Type" >
+                <label for="cType">Type:</label>
+                <input type="text" id="cType" name="Type" >
 
             </div>
         </div>
         <div class="container" style="justify-items: center;">
             <div style="margin: 10px">
-                <button type="button" onclick="saveChanges()">Save Changes</button>
-                <!-- <button type="submit">Save Changes</button> Change to type="submit" -->
+                
+                <button type="submit">Save Changes</button> 
             </div>
 
         </div>
