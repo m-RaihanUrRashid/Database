@@ -96,6 +96,9 @@
                 <label for="Email">Email:</label>
                 <input type="text" id="Email" name="Email" >
 
+                <label for="cAddress">Home address:</label>
+                <input type="text" id="cAddress" name="homeAddress" >
+
             </div>
         </div>
         <div class="container" style="justify-items: center;">
