@@ -10,8 +10,12 @@ class PrescriptionController extends Controller
 {
     public function index()
     {
-        return view('psychPrescription');
+        $prescriptions = Prescription::all();
+
+        // Pass prescriptions to the view
+        return view('psychPrescription', ['prescriptions' => $prescriptions]);
     }
+    
 
     public function store(Request $request)
     {

@@ -106,11 +106,15 @@ Route::get('/psychAppt', function () {
 Route::get('/psychInfo', function () {
     return view('psychInfo');
 });
-Route::get('/psychPrescription', function () {
+/*Route::get('/psychPrescription', function () {
     return view('psychPrescription');
-});
-//Route::get('/psychPrescription', [PrescriptionController::class, 'index'])->name('psychPrescription.index');
+});*/
+Route::get('/psychPrescription', [PrescriptionController::class, 'index'])->name('psychPrescription.index');
 Route::post('/psychPrescription', [PrescriptionController::class, 'store'])->name('psychPrescription.store');
+Route::get('/prescriptionView', [PrescriptionController::class, 'showPrescriptions'])->name('prescriptions.index');
+Route::get('/prescriptionView/{id}', [PrescriptionController::class, 'showPrescriptionDetails'])->name('prescriptions.show');
+
+
 
 #Nazifa
 Route::get('/rehabSupervisorHome', function () {

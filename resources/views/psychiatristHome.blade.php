@@ -67,7 +67,7 @@
       }
 
       function goHome() {
-            window.location.href = "/login";
+            window.location.href = "/";
         }
     </script>
 </body>

@@ -1,0 +1,10 @@
+<!-- Display a list of prescriptions -->
+<ul>
+    @foreach ($prescriptions as $prescription)
+        <li>
+            <a href="{{ route('prescriptions.show', $prescription->id) }}">
+                {{ $prescription->patient->name }} - {{ $prescription->dIssueDate }}
+            </a>
+        </li>
+    @endforeach
+</ul>
