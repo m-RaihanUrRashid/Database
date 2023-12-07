@@ -70,10 +70,11 @@ class SpecRevController extends Controller
         $newReview = new Review();
         
         $newReview->cpUserID = $user->cUserID;
-        $newReview->csUserID =  $request->input('selectedRowId');
+        $newReview->csUserID =  $request->input('selectBtn');
         $newReview->cRating =  $request->input('rating');
         $newReview->cComment =  $request->input('comment');
 
+        
         $newReview->save();
 
         return redirect(route('patientHome'));
