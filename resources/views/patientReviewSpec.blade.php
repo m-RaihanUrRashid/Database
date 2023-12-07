@@ -82,7 +82,7 @@
                 <p><h4>Chose a Specialist:</h4></p>
 
                 
-                <table class="table table-hover" id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
+                <table class="table table-hover" id="specialistid" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
                     <thead style="background-color: #3366CC; color: #fff; border-bottom: 2px solid lightblue;">
                         <tr >
                             <th style="padding: 6px;">Specialist ID</th>
@@ -94,7 +94,7 @@
                     </thead>
                     <tbody>
                         @foreach($seenSpec as $sSpec)
-                            <tr>
+                            <tr class="clickable-row" onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
                                 <td>{{$sSpec['seenSpec']->csUserID}}</td>
                                 <td>{{$sSpec['specName']->cFname.' '.$sSpec['specName']->cLname}}</td>
                                 <td>{{$sSpec['seenSpec']->cOff_Address}}</td>
@@ -151,23 +151,23 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var rows = document.querySelectorAll('.clickable-row');
+                var rows = document.querySelectorAll('.clickable-row');
+                var selected = false;
 
-        var selected = false;
-
-        rows.forEach(function(row) {
-            row.addEventListener('click', function() {
-                rows.forEach(function(innerRow) {
-                    innerRow.classList.remove('selected');
-                });
-                this.classList.toggle('selected');
-                document.getElementById("rating").disabled = false; 
-                document.getElementById("textBox").disabled = false; 
-                document.getElementById("submitbtn").disabled = false; 
-
-            }); 
-        }); 
-    });
+                rows.forEach(function(row) {
+                    row.addEventListener('click', function() {
+                        rows.forEach(function(innerRow) {
+                            innerRow.classList.remove('selected');
+                        });
+                        this.classList.toggle('selected');
+                        document.getElementById("rating").disabled = false; 
+                        document.getElementById("textBox").disabled = false; 
+                        document.getElementById("submitbtn").disabled = false; 
+                    }); 
+                }); 
+            //}
+        });
+    //});
 
     function enableTextBox() {
         if( document.getElementById("selectBox").value == "Other.." ) {
