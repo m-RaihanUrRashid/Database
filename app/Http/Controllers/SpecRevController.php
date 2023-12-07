@@ -49,12 +49,14 @@ class SpecRevController extends Controller
 
         $user = $request->session()->get('user');
 
+
+
         /*$request->validate([
             'cpUserID' => 'required',
-            'csUserID' => 'required',
+            'csUserID' => 'required',   
             'cRating' => 'required| numeric',
             'cComment' => 'nullable'
-        ]);*/
+        ]);
 
         $data = [
             'cpUserID' => $request->cpUserID,
@@ -63,7 +65,16 @@ class SpecRevController extends Controller
             'cComment' => $request->cComment,
         ];
 
-        $newReview = Review::create($data);
+        $newReview = Review::create($data);*/
+
+        $newReview = new Review();
+        
+        $newReview->cpUserID = $user->cUserID;
+        $newReview->csUserID =  $request->input('selectedRowId');
+        $newReview->cRating =  $request->input('rating');
+        $newReview->cComment =  $request->input('comment');
+
+        $newReview->save();
 
         return redirect(route('patientHome'));
     }

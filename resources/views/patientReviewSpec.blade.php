@@ -89,6 +89,7 @@
                             <th style="padding: 6px;">Name</th>
                             <th style="padding: 6px;">Location</th>
                             <th style="padding: 6px;">Type</th>
+                            <th style="padding: 6px;">Choose</th>
 
                         </tr>
                     </thead>
@@ -99,6 +100,9 @@
                                 <td>{{$sSpec['specName']->cFname.' '.$sSpec['specName']->cLname}}</td>
                                 <td>{{$sSpec['seenSpec']->cOff_Address}}</td>
                                 <td>{{$sSpec['seenSpec']->cType}}</td>
+                                <td>
+                                    <button type="button" name="selectedRowId" value="{{ $sSpec['seenSpec']->csUserID }}">Select</button>
+                                </td>
                         @endforeach
 
                         <?php /*
@@ -123,7 +127,7 @@
             <div style="bg-color: white;">
                 <p><h4>Review of Specialist:</h4></p>
                 <label>Rating: </label>
-                <select id="rating" class="styled-select" disabled>
+                <select id="rating" class="styled-select" disabled name="rating">
                     <option value="no1">1</option>
                     <option value="#2">2</option>
                     <option value="#3">3</option>
@@ -135,7 +139,7 @@
                     <option value="#5">9</option>
                     <option value="#6">10</option>
                 </select><br><br>
-                <textarea id="textBox" rows="10" cols="50" disabled></textarea>
+                <textarea id="textBox" rows="10" cols="50" disabled name="comment"></textarea>
                 <br><br>
                 <button id="submitbtn" type="button" style="font-size: 15px;" disabled>Submit</button>
             

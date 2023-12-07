@@ -10,6 +10,8 @@ class Psychiatrist extends Model
     use HasFactory;
 
     protected $table = "psychiatrist_t";
+    public $timestamps = false;
+
 
     public function index(Request $request)
     {

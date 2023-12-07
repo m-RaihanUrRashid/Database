@@ -10,6 +10,8 @@ class Patient extends Model
     use HasFactory;
 
     protected $table = "patient_t";
+    public $timestamps = false;
+
 
     protected $fillable = [
         'cpUserID',
