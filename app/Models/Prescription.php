@@ -9,6 +9,8 @@ class Prescription extends Model
 {
     
         use HasFactory;
+        protected $table = "prescription_t";
+        public $timestamps = False;
     
         protected $fillable = [
             'cPrescID',
@@ -42,4 +44,5 @@ class Prescription extends Model
             });
         }
     
+
 }

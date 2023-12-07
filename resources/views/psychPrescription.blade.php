@@ -73,7 +73,8 @@
 
     <h1 id="heading">Prescriptions</h1>
 
-    <form id="prescriptionForm">
+    <form id="prescriptionForm" action="{{ route('psychPrescription.store') }}" method="post">
+    @csrf 
         <div class="medicine-container">
             <label for="patientID">Patient ID:</label>
             <input type="text" id="cpUserID" name="cpUserID">
@@ -89,7 +90,7 @@
 
         <div class="container" style="justify-items: center;">
             <div style="margin: 10px">
-                <button type="button" onclick="createPrescription()">Create Prescription</button>
+                <button type="submit">Create Prescription</button>
             </div>
         </div>
     </form>
@@ -105,7 +106,7 @@
     </script>
 
     <script>
-        function createPrescription() {
+      /*  function createPrescription() {
             var cpUserID = document.getElementById('cpUserID').value;
 
             // Get values from all medicine input fields
@@ -119,12 +120,12 @@
             }
 
             // Make an AJAX request to your Laravel backend
-            axios.post('/psychPrescription/store', {
+            /*axios.post('/psychPrescription/store', {
                     cpUserID: cpUserID,
                     medicines: medicinesArray
                     // Add other fields as needed
                 })
-                .then(function(response) {
+                /*.then(function(response) {
                     // Handle success, e.g., show a success message
                     alert('Prescription created successfully');
                     // You can redirect to another page if needed
@@ -134,7 +135,7 @@
                     // Handle error, e.g., show an error message
                     alert('Error creating prescription');
                 });
-        }
+        }*/
 
         function addMedicine() {
             // Create a new medicine input field

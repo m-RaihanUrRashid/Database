@@ -26,15 +26,12 @@ class PrescriptionController extends Controller
 
         // Create Prescription instance
         $prescription = new Prescription();
-        $prescription->cPrescID = uniqid();
+        $prescription->cPrescID = substr(uniqid(), 0, 7);
         $prescription->dIssueDate = now();
         $prescription->cpUserID = $request->input('cpUserID');
-        $prescription->cpsUserID = '234';
+        $prescription->cpsUserID = '2234567';
         //$prescription->cpsUserID = auth()->id(); // assuming you want to associate with the authenticated user
-
         $prescription->save();
-
-        
         
 
         // Create PrescriptionMed entries for each medicine

@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PrescriptionMedicine extends Model
 {
     use HasFactory;
-
+    protected $table = "prescription_med_t";
+    public $timestamps = False;
     protected $fillable = [
         'cPrescID',
         'cMedicine'
