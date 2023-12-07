@@ -31,4 +31,9 @@ class Specialist extends Model
         {
             return $this->hasMany(Therapist::class);
         }
+
+        public function specialist()
+        {
+            return $this->hasMany(Specialist::class);
+        }
 }

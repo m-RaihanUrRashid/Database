@@ -8,6 +8,8 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\rehabUpdateMyInfoController;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\PsychiatristController;
+
 use App\Http\Controllers\rehabAddSpecialistController;
 /*
 |--------------------------------------------------------------------------
@@ -81,9 +83,10 @@ Route::get('/pharmacyProfile', function () {
 Route::get('/therapistHome', function () {
     return view('therapistHome');
 });
+
 Route::get('/therapistdb', function () {
     return view('therapistdb');
-});
+})->name('therapistdb');
 
 Route::get('/therapistcalendar', function () {
     return view('therapistcalendar');
@@ -97,18 +100,19 @@ Route::post('/thnotes/create', [NoteController::class, 'store'])->name('note.sto
 Route::get('/thnotes/edit', [NoteController::class, 'edit'])->name('note.edit');
 
 # Dhara
+
 Route::get('/psychiatristHome', function () {
     return view('psychiatristHome');
-});
+})->name('psychiatristHome');
 
 /*Route::get('/psychAppt', function () {
     return view('psychAppt');
-});*/
+});
 
 Route::get('/psychInfo', function () {
     return view('psychInfo');
 });
-/*Route::get('/psychPrescription', function () {
+Route::get('/psychPrescription', function () {
     return view('psychPrescription');
 });*/
 Route::get('/psychPrescription', [PrescriptionController::class, 'index'])->name('psychPrescription.index');
@@ -118,6 +122,10 @@ Route::get('/prescriptions/{id}', [PrescriptionController::class, 'showPrescript
 
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.view');
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');
+
+
+Route::get('/psychInfo', [App\Http\Controllers\PsychiatristController::class, 'index'])->name('psychInfo.index');
+
 
 
 

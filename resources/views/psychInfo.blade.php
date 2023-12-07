@@ -42,13 +42,16 @@
 
 
 <body>
-    <h1>My Information</h1>
-    <p> Dr Gazi Mobasher</p>
-    <p>Schizophrenia Specialist</p>
-    <p>Office Address: Dhanmondi 4 number road</p>
-    <p>ID No: 123455</p>
-    <p>Contact No: 017345738</p>
-    <p>Rehab: MS paint rehab ltd</p>
+
+<h1>My Information</h1>
+
+<!-- Display user information dynamically -->
+<p>CPS User ID: {{ $psychiatristData->cpsUserID }}</p>
+<p>Last Name: {{ $psychiatristData->cLname }}</p>
+<p>First Name: {{ $psychiatristData->cFname }}</p>
+<p>Email: {{ $psychiatristData->cEmail }}</p>
+<p>Type: {{ $psychiatristData->cType }}</p>
+<p>Experience: {{ $psychiatristData->cExperience }}</p>
 
 
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
