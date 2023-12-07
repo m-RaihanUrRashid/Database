@@ -164,6 +164,9 @@ Route::post('/rehabAddSpecialist', [rehabAddSpecialistController::class ,'addSpe
 
 Route::get('/rehabViewSpecialists', [rehabViewSpecialistController::class, 'viewSpecialist'])->name('view.specialist');
 
+Route::get('/rehabRemoveSpecialists', [rehabRemoveSpecialistController::class, 'viewSpecialist'])->name('remove.specialist');
+Route::delete('/rehabRemoveSpecialists', [rehabRemoveSpecialistController::class, 'removeSpecialist'])->name('remove1.specialist');
+
 
 #Michael Jackson
 Route::get('/ngo', function () {
