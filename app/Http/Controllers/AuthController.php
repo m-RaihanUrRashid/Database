@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Person;
+use App\Models\Psychiatrist;
+use App\Models\Therapist;
 
 
 class AuthController extends Controller
@@ -29,14 +31,33 @@ class AuthController extends Controller
                 'password' => 'required'
         ]);
 
+        $user = null;
+
         $user = Person::where('cEmail', $request->email)->first();
 
         $credentials = $request->only('email', 'password');
 
         if(Auth ::attempt($credentials)){
+
             session(['user' => $user]);
-            return redirect()->intended(route('patientHome'));
+
+
+            if($user->cType == 'Patient'){
+                return redirect()->intended(route('patientHome'));
+            }elseif($user->cType == 'Psychiatrist'){
+                return redirect()->intended(route('psychiatristHome'));
+            }elseif($user->cType == 'Therapist'){
+                return redirect()->intended(route('therapistdb'));
+            }/*elseif($user->type == 'Pharmacy'){
+                return redirect()->intended(route('pharmacyHome'));
+            }elseif($user->type == 'NGO'){
+                return redirect()->intended(route('ngo'));
+            }*/elseif($user->cType == 'Rehab'){
+                return redirect()->intended(route('rehabSupervisorHome'));
+            }
         }
+
+
         return redirect(route('login'))->with("error", "Wrong Email or Password");
     }
 

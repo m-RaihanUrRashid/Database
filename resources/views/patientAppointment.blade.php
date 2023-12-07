@@ -48,7 +48,7 @@
     }
 
 </style>
-<form method="post" action="/patientChoseSpec">
+<form action="/patientChoseSpec">
 <div class="parent ">   
         <div class="d-flex">
             <div>

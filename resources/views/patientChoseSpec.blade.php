@@ -77,6 +77,8 @@
 <div class="parent">
     <div>
         <h4>Chose a Specialist with your preferred appointment time:</h4><br>
+    {{session('user')}}
+
     </div>
     <table class="table table-hover" id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
         <thead style="background-color: #3366CC; color: #fff; border-bottom: 2px solid lightblue;">

@@ -63,7 +63,7 @@ Route::get('/patientProfile', function () {
 # Ikram
 Route::get('/pharmacyHome', function () {
     return view('pharmacyHome');
-});
+})->name('pharmacyHome');
 
 Route::get('/pharmacyPrescriptions', function () {
     return view('pharmacyPrescriptions');
@@ -80,7 +80,7 @@ Route::get('/therapistHome', function () {
 });
 Route::get('/therapistdb', function () {
     return view('therapistdb');
-});
+})->name('therapistdb');
 
 Route::get('/therapistcalendar', function () {
     return view('therapistcalendar');
@@ -96,7 +96,7 @@ Route::post('/thnotes/create', [NoteController::class, 'store'])->name('note.sto
 # Dhara
 Route::get('/psychiatristHome', function () {
     return view('psychiatristHome');
-});
+})->name('psychiatristHome');
 
 Route::get('/psychAppt', function () {
     return view('psychAppt');

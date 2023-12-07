@@ -43,7 +43,13 @@
 <div class="container1">
 
     <h1>Welcome, Patient!</h1>
+    
+    
+    
     {{session('user')}}
+
+
+
     @if(session()->has('error'))
         <div class="alert alert-danger" role="alert"> 
             {{session('error')}}
