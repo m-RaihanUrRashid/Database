@@ -6,6 +6,7 @@ use App\Http\Controllers\SpecRevController;
 
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PrescriptionController;
+use App\Http\Controllers\PharmaPrescriptionController;
 use App\Http\Controllers\rehabUpdateMyInfoController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\PsychiatristController;
@@ -85,6 +86,12 @@ Route::get('/pharmacyProfile', function () {
 });
 
 
+Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');
+Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
+
+Route::get('/pharmacyPrescriptions', [PharmaPrescriptionController::class, 'index'])->name('pharmacyPrescriptions.index');
+
+
 # Gazi
 Route::get('/therapistHome', function () {
     return view('therapistHome');
@@ -127,9 +134,12 @@ Route::get('/prescriptions', [PrescriptionController::class, 'showPrescriptions'
 Route::get('/prescriptions/{id}', [PrescriptionController::class, 'showPrescriptionDetails'])->name('prescriptionView.show');
 
 // Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.view');
+// Route::post('/psychAppt', [AppController::class, 'toggle'])->name('psychAppt.toggle');
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');
-// Route::post('/psychAppt', [AppController::class, 'togle'])->name('psychAppt.togle');
-Route::post('/psychAppt/togle/{compositeKey}', [AppController::class, 'togle']  )->name('psychAppt.togle');
+Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
+
+
+// Route::post('/psychAppt/togle/{compositeKey}', [AppController::class, 'toggle']  )->name('psychAppt.toggle');
 
 
 Route::get('/psychInfo', [App\Http\Controllers\PsychiatristController::class, 'index'])->name('psychInfo.index');
