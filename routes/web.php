@@ -9,6 +9,7 @@ use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\rehabUpdateMyInfoController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\PsychiatristController;
+use App\Http\Controllers\rehabViewSpecialistController;
 
 use App\Http\Controllers\rehabAddSpecialistController;
 /*
@@ -125,9 +126,10 @@ Route::post('/psychPrescription', [PrescriptionController::class, 'store'])->nam
 Route::get('/prescriptions', [PrescriptionController::class, 'showPrescriptions'])->name('prescriptionView.index');
 Route::get('/prescriptions/{id}', [PrescriptionController::class, 'showPrescriptionDetails'])->name('prescriptionView.show');
 
-Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.view');
+// Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.view');
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');
-Route::post('/psychAppt', [AppController::class, 'togle'])->name('psychAppt.togle');
+// Route::post('/psychAppt', [AppController::class, 'togle'])->name('psychAppt.togle');
+Route::post('/psychAppt/togle/{compositeKey}', [AppController::class, 'togle']  )->name('psychAppt.togle');
 
 
 Route::get('/psychInfo', [App\Http\Controllers\PsychiatristController::class, 'index'])->name('psychInfo.index');
@@ -165,6 +167,11 @@ Route::get('/rehabViewSpecialists', function () {
 });
 
 Route::post('/rehabAddSpecialist', [rehabAddSpecialistController::class ,'addSpecialist'])->name('add.specialist');
+
+Route::get('/rehabViewSpecialists', [rehabViewSpecialistController::class, 'viewSpecialist'])->name('view.specialist');
+
+Route::get('/rehabRemoveSpecialists', [rehabRemoveSpecialistController::class, 'viewSpecialist'])->name('remove.specialist');
+Route::delete('/rehabRemoveSpecialists', [rehabRemoveSpecialistController::class, 'removeSpecialist'])->name('remove1.specialist');
 
 
 #Michael Jackson

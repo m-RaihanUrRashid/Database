@@ -33,8 +33,6 @@ class rehabAddSpecialistController extends Controller
 
         $person->save();
 
-        return redirect()->route('rehabSupervisorHome')->with('success', 'Person added successfully');
-
         $specialist = new Specialist();
 
         $specialist->csUserID = $request->input('specialistID');
@@ -47,23 +45,4 @@ class rehabAddSpecialistController extends Controller
         return redirect()->route('rehabSupervisorHome')->with('success', 'Specialist added successfully');
     }
 
-    public function addPerson(Request $request)
-    {
-        $request->validate([
-            'Fname' => 'required|string',
-            'Lname' => 'required|string',
-            'DOB' => 'required|date',
-            'Email' => 'required|email',
-        ]);
-
-        $person = new Person();
-        $person->cFname = $request->input('Fname');
-        $person->cLname = $request->input('Lname');
-        $person->dDOB = $request->input('DOB');
-        $person->cEmail = $request->input('Email');
-
-        $person->save();
-
-        return redirect()->route('rehabSupervisorHome')->with('success', 'Person added successfully');
-    }
 }
