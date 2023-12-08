@@ -33,7 +33,12 @@ Route::get('/signUp', [AuthController::class, 'signUp'])->name('signUp');
 Route::post('/signUp', [AuthController::class, 'signUpPost'])->name('signUp.post');
 
 Route::get('/patientReviewSpec', [SpecRevController::class, 'patRevSpec'])->name('patRevSpec'); 
-Route::post('/patientReviewSpec', [SpecRevController::class, 'postRev'])->name('postRev'); 
+Route::post('/patientReviewSpec2', [SpecRevController::class, 'postRev'])->name('postRev'); 
+//Route::post('/patientReviewSpec2', [SpecRevController::class, 'postRev'])->name('postRev'); 
+
+Route::post('/patientReviewSpec', [SpecRevController::class, 'postRev2'])->name('postRev2'); 
+
+
 
 
 Route::get('/patientHome', function () {
@@ -174,6 +179,9 @@ Route::get('/rehabViewSpecialists', function () {
 Route::post('/rehabAddSpecialist', [rehabAddSpecialistController::class ,'addSpecialist'])->name('add.specialist');
 
 Route::get('/rehabViewSpecialists', [rehabViewSpecialistController::class, 'viewSpecialist'])->name('view.specialist');
+
+Route::get('/rehabRemoveSpecialists', [rehabRemoveSpecialistController::class, 'viewSpecialist'])->name('remove.specialist');
+Route::delete('/rehabRemoveSpecialists', [rehabRemoveSpecialistController::class, 'removeSpecialist'])->name('remove1.specialist');
 
 
 #Michael Jackson
