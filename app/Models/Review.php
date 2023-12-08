@@ -17,7 +17,7 @@ class Review extends Model
     protected $fillable = [
         'cpUserID',
         'csUserID',
-        'cRating',
+        'nRating',
         'cComment',
     ];
 

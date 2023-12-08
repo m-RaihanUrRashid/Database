@@ -45,6 +45,15 @@ class SpecRevController extends Controller
         }
     }
 
+    public function postRev2(Request $request) {
+        $data = $request->input('selectedRowId');
+        
+        //$specialist = Person::where('cUserID', $data)->first();
+        //$name = $specialist->Fname . ' ' . $specialist->Lname;
+
+        return view('patientReviewSpec2', compact('data'));
+    }
+
     public function postRev(Request $request) {
 
         $user = $request->session()->get('user');
@@ -70,8 +79,8 @@ class SpecRevController extends Controller
         $newReview = new Review();
         
         $newReview->cpUserID = $user->cUserID;
-        $newReview->csUserID =  $request->input('selectBtn');
-        $newReview->cRating =  $request->input('rating');
+        $newReview->csUserID =  $request->input('csUserID');
+        $newReview->nRating =  $request->input('rating');
         $newReview->cComment =  $request->input('comment');
 
         
