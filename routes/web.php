@@ -31,7 +31,12 @@ Route::get('/signUp', [AuthController::class, 'signUp'])->name('signUp');
 Route::post('/signUp', [AuthController::class, 'signUpPost'])->name('signUp.post');
 
 Route::get('/patientReviewSpec', [SpecRevController::class, 'patRevSpec'])->name('patRevSpec'); 
-Route::post('/patientReviewSpec', [SpecRevController::class, 'postRev'])->name('postRev'); 
+Route::post('/patientReviewSpec2', [SpecRevController::class, 'postRev'])->name('postRev'); 
+//Route::post('/patientReviewSpec2', [SpecRevController::class, 'postRev'])->name('postRev'); 
+
+Route::post('/patientReviewSpec', [SpecRevController::class, 'postRev2'])->name('postRev2'); 
+
+
 
 
 Route::get('/patientHome', function () {

@@ -75,8 +75,9 @@
     ?>
 
 <div class="parent">
-    <form method="post" action="{{route('postRev2')}}">
+    <form method="post" action="{{route('postRev')}}">
         @csrf
+        <?php /*
         <div class="d-flex justify-content-center" style="margin: 50px">
                 
                 <table class="table table-hover" id="specialistid" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
@@ -118,15 +119,15 @@
                             <td> Address</td>
                             <td>Substance Abuse and Addiction<br> Eating disorders</td>
                         
-                        </tr>*/?>
+                        </tr>
                     </tbody>
                 </table>
                 <button onclick="goHome()" style="font-size: 20px; margin: 30px;">Back to Home</button>
-            </div>
-            <?php /*<div style="bg-color: white;">
+            </div>*/ ?>
+            <div style="bg-color: white;">
                 <p><h4>Review of Specialist:</h4></p>
                 <label>Rating: </label>
-                <select id="rating" class="styled-select" disabled name="rating">
+                <select id="rating" class="styled-select" name="rating">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -138,13 +139,14 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                 </select><br><br>
-                <textarea id="textBox" rows="10" cols="50" disabled name="comment"></textarea>
+                <textarea id="textBox" rows="10" cols="50" name="comment"></textarea>
                 <br><br>
-                <button onclick="sendDataToController('selectBtn', 'rating', 'comment')" id="submitbtn" type="submit " style="font-size: 15px;" disabled>Submit</button>
+                <input type="hidden" name="csUserID" value="{{ $data }}">
+                <button  id="submitbtn" type="submit " style="font-size: 15px;" >Submit</button>
                 
             </div>
         
-        </div>*/?>  
+        </div> 
     </form> 
 
 <script>
