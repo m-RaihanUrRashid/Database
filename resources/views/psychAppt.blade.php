@@ -28,16 +28,26 @@
         }
 
         td {
-            border-right: 1px solid lightgrey; 
+            border-right: 1px solid lightgrey;
             padding: 8px;
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
+        .btn {
+            padding: 10px;
+            font-size: 14px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
             cursor: pointer;
+            border-radius: 4px;
         }
 
+        @media screen and (max-width: 768px) {
+        .btn {
+            padding: 8px;
+            font-size: 12px;
+        }
+    }
     </style>
 </head>
 
@@ -48,35 +58,34 @@
 
     <table id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
         <thead style="background-color: #3498db; color: #fff; border-bottom: 2px solid lightblue;">
-            <tr>
+            <tr >
                 <th style="padding: 6px;">Patient ID</th>
                 <th style="padding: 6px;">psych ID</th>
                 <th style="padding: 6px;">Date</th>
                 <th style="padding: 6px;">Time</th>
-                <th style="padding: 6px;">Status</th>
-                <!-- Add more columns as needed -->
+                <th style="padding: 6px;" colspan="2">Status</th>
             </tr>
         </thead>
         <tbody>
             @foreach($appointments as $appointment)
-            <tr  style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
-            <td>{{ $appointment->cpUserID }}</td>
-            <td>{{ $appointment->csUserID }}</td>
-            <td>{{ $appointment->dappDate }}</td>
-            <td>{{ $appointment->dappTime }}</td>
-            <td>{{ $appointment->cappStatus }}</td>
-            <td>
-            <form method="post" action="{{ route('psychAppt.togle', [
-                    'compositeKey' => {$appointment->cpUserID}-{$appointment->csUserID}-{$appointment->dappDate}-{$appointment->dappTime},
+            <tr style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
+                <td>{{ $appointment->cpUserID }}</td>
+                <td>{{ $appointment->csUserID }}</td>
+                <td>{{ $appointment->dappDate }}</td>
+                <td>{{ $appointment->dappTime }}</td>
+                <td>{{ $appointment->cappStatus }}</td>
+                <td style="text-align: center;">
+                    <form method="post" action="{{ route('psychAppt.toggle', [
+                        'cpUserID' => $appointment->cpUserID,
+                        'csUserID' => $appointment->csUserID,
+                        'dappDate' => $appointment->dappDate,
+                        'dappTime' => $appointment->dappTime,
                     ]) }}">
-                    @csrf
-                    @method('post')
-                    <button type="submit" name="markasdone">Mark As Done</button>
-                </form>
-            </td>
-
-         
-                <!-- Add more columns as needed -->
+                        @csrf
+                        @method('post')
+                        <button class="btn" type="submit" name="markasdone">Mark As Done</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -86,16 +95,17 @@
 
     <script>
         function markAsDone(element) {
-    var appointmentId = element.getAttribute('data-appointment-id');
-    // Now, use appointmentId as needed
-    alert('Mark as done for Appointment ID: ' + appointmentId);
-}
+            var appointmentId = element.getAttribute('data-appointment-id');
+            alert('Mark as done for Appointment ID: ' + appointmentId);
+        }
+
         function goHome() {
             window.location.href = "/psychiatristHome";
         }
     </script>
 
 </body>
+
 </html>
 
 @endsection

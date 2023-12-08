@@ -44,10 +44,6 @@
 
     <h1>Welcome, Patient!</h1>
     
-    
-    
-    {{session('user')}}
-
 
 
     @if(session()->has('error'))
