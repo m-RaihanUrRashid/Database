@@ -132,6 +132,9 @@ Route::get('/psychPrescription', [PrescriptionController::class, 'index'])->name
 Route::post('/psychPrescription', [PrescriptionController::class, 'store'])->name('psychPrescription.store');
 Route::get('/prescriptions', [PrescriptionController::class, 'showPrescriptions'])->name('prescriptionView.index');
 Route::get('/prescriptions/{id}', [PrescriptionController::class, 'showPrescriptionDetails'])->name('prescriptionView.show');
+Route::get('/psychPrescriptionShow', [PrescriptionController::class, 'showPrescriptions'])->name('psychPrescriptionView.showPrescriptions');
+
+
 
 // Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.view');
 // Route::post('/psychAppt', [AppController::class, 'toggle'])->name('psychAppt.toggle');

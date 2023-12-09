@@ -52,4 +52,32 @@ class PrescriptionController extends Controller
         // You can return a response to the frontend if needed
         return response()->json(['message' => 'Prescription created successfully'], 200);
     }
+
+    public function showPrescriptions()
+{
+    // Assuming you have a user in the session
+    $user = session('user');
+
+    // Retrieve prescriptions for the logged-in user with medicines
+    $prescriptions = Prescription::with('prescriptionMedicines')
+        ->where('cpUserID', $user->cUserID)
+        ->get();
+
+    return view('psychPrescriptionView', ['prescriptions' => $prescriptions]);
+}
+
+public function deletePrescription($id)
+{
+    // Find the prescription by ID
+    $prescription = Prescription::findOrFail($id);
+
+    // Delete associated medicines
+    $prescription->prescriptionMedicines()->delete();
+
+    // Delete the prescription
+    $prescription->delete();
+
+    // Redirect to a relevant page (e.g., prescription list)
+    return redirect()->route('psychPrescriptionView.showPrescriptions')->with('success', 'Prescription deleted successfully');
+}
 }
