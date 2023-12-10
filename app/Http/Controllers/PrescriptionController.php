@@ -33,7 +33,8 @@ class PrescriptionController extends Controller
  //dd($medicines);
         // Create Prescription instance
         $prescription = new Prescription();
-        $prescription->cPrescID = substr(hexdec(uniqid()),9,16); //change
+        $id = (int) rand(1,9).rand(100000, 999999);
+        $prescription->cPrescID =$id ; //change
         //dd(hexdec(substr(hexdec(uniqid()),0,7)));
         $prescription->dIssueDate = now();
         $prescription->cpUserID = $request->input('cpUserID');
@@ -45,7 +46,7 @@ class PrescriptionController extends Controller
         // Create PrescriptionMed entries for each medicine
         foreach ($medicines as $medicine) {
             $prescriptionMedicine = new PrescriptionMedicine();
-            $prescriptionMedicine->cPrescID = $prescription->cPrescID;
+            $prescriptionMedicine->cPrescID = $id;
             $prescriptionMedicine->cMedicine = $medicine;
             $prescriptionMedicine->save();
         }

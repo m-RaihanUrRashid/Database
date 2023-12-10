@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,9 @@
         body {
             font-family: 'Georgia', serif;
             background-color: lightblue;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            margin: 20;
+
+
             height: 100vh;
         }
 
@@ -26,8 +25,18 @@
             margin: 20px;
             padding: 20px;
             background-color: white;
+            width: 15%;
+            /* Adjust the width as needed */
+            height: 25%;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .prescriptions-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            /* Optional: Adjust the alignment of items */
         }
 
         td {
@@ -58,37 +67,39 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Prescriptions</h1>
-
-    @foreach($prescriptions as $prescription)
+    <div style="margin-top: 20px" class="prescriptions-container">
+        @foreach($prescriptions as $prescription)
         <div class="prescription">
-        <p>Prescription ID: {{ $prescription->cPrescID }}</p>
+            <p>Prescription ID: {{ $prescription->cPrescID }}</p>
             <p>Issue Date: {{ $prescription->dIssueDate }}</p>
             <p>Patient ID: {{ $prescription->cpUserID }}</p>
 
-            <!-- Button to expand medicines -->
+
             <button class="btn" onclick="toggleMedicines('{{ $prescription->cPrescID }}')">Expand Medicines</button>
 
-            <!-- Button to delete prescription -->
+
 
             <form action="{{ route('prescription.delete', $prescription->cPrescID) }}" method="post">
-    @csrf
-    @method('delete')
-    <button type="submit" class="btn-delete">Delete Prescription</button>
-</form>
-            <!-- Medicines section -->
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn-delete">Delete Prescription</button>
+            </form>
+
             <div id="medicines-{{ $prescription->cPrescID }}" class="medicines-section">
                 <h2>Medicines</h2>
                 <ul>
                     @foreach($prescription->prescriptionMedicines as $medicine)
-                        <li>{{ $medicine->cMedicine }}</li>
+                    <li>{{ $medicine->cMedicine }}</li>
                     @endforeach
                 </ul>
             </div>
         </div>
-    @endforeach
 
+        @endforeach
+    </div>
     <script>
         function toggleMedicines(prescriptionId) {
             var medicinesSection = document.getElementById('medicines-' + prescriptionId);
@@ -96,16 +107,17 @@
         }
     </script>
 
-<button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
+    <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
 
 
-<script>
-    function goHome() {
-        window.location.href = "/psychiatristHome";
-    }
-</script>
+    <script>
+        function goHome() {
+            window.location.href = "/psychiatristHome";
+        }
+    </script>
 
 
 </body>
+
 </html>

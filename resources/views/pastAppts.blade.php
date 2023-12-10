@@ -63,7 +63,7 @@
                 <th style="padding: 6px;">psych ID</th>
                 <th style="padding: 6px;">Date</th>
                 <th style="padding: 6px;">Time</th>
-                <th style="padding: 6px;" colspan="2">Status</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -73,10 +73,10 @@
                 <td>{{ $appointment->csUserID }}</td>
                 <td>{{ $appointment->dappDate }}</td>
                 <td>{{ $appointment->dappTime }}</td>
-                <td>{{ $appointment->cappStatus }}</td>
-                <td style="text-align: center;">
+                
+                
                     
-                </td>
+               
             </tr>
             @endforeach
         </tbody>
