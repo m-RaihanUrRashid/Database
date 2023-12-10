@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SpecRevController;
-
+use App\Http\Controllers\MakeAppController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\rehabUpdateMyInfoController;
@@ -37,6 +37,7 @@ Route::post('/patientReviewSpec2', [SpecRevController::class, 'postRev'])->name(
 
 Route::post('/patientReviewSpec', [SpecRevController::class, 'postRev2'])->name('postRev2'); 
 
+Route::get('/patientMakeApp', [MakeAppController::class, 'loadSpecs'])->name('loadSpecs'); 
 
 
 
@@ -51,6 +52,7 @@ Route::get('/signUp', function () {
 Route::get('/calendar.calendar', function () {
     return view('calendar.calendar');
 });
+
 Route::get('/patientAppointment', function () {
     return view('patientAppointment');
 });

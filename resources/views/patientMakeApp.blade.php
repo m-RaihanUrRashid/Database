@@ -1,0 +1,208 @@
+@extends('layout')
+@section('title' , 'Appointment')
+@section('content')
+
+<style>
+
+    .parent{
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+        /* Style the scrollable div */
+    .scrollable-div {
+        width: 600px;
+        height: 400px;
+        overflow: auto; /* Make the div scrollable */
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: white;
+    }
+
+    /* Style the big button */
+    .big-button {
+        display: inline-block;
+        padding: 20px 40px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Change background color on hover */
+    .big-button:hover {
+        background-color: #45a049;
+    }
+
+
+    button{
+
+    }
+
+    .clickable-row:hover {
+        background-color: red; 
+        cursor: pointer;
+    }
+
+    .clickable-row.selected {
+        background-color: #c0c0c0;
+    }
+
+    .table-hover tbody tr:hover td {
+        background: #E6F7FF;
+    }
+
+    .table-hover tbody tr.selected td {
+        background: #3498db;
+        
+    }
+
+    ul {
+   list-style-type: none;
+   padding: 0;
+    }
+
+    li {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s;
+    }
+
+    li:hover {
+    background-color:   #cac9ff;
+    }
+
+    label{
+        font-size: 8px;
+
+    }
+
+    .selected {
+            background-color: #aaf;
+        }
+
+</style>
+
+<div class="parent">
+    <div>
+        <div class="scrollable-div" style="border-radius: 10px;">
+            <ul id='myList'>
+                @foreach($specs as $spec)
+                    @foreach($spec as $person)
+
+                        <li onclick="selectListItem(this)" id="spec" value="{{ $person->cUserID }}"> 
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" style="height: 50px; width: 50px"> 
+            
+                            &nbsp;&nbsp;&nbsp;<label style="font-family: 'Georgia', serif; font-size: 16px;">{{$person->cFname.' '.$person->cLname}}</label> 
+                        </li>
+                    @endforeach
+                @endforeach
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>    
+        </div>
+    </div>
+    <div style="margin: 30px;">
+    Appointment Date:
+        <input onchange="enableTime()" value="" type="date" id="datepicker" name="datepicker" disabled>
+        &nbsp;&nbsp;Select Appointment time:
+        <select id="time" class="styled-select" name="time" disabled>   
+        </select>
+    </div>
+</div>
+
+
+<script>
+
+    var spec;
+
+    //for listening for selected item value
+    document.getElementById('myList').addEventListener('click', function(event) {
+        //alert('You clicked on ' + event.target.innerText);
+        //var spec = myList.
+        console.log(document.getElementById("spec").value);
+        spec = document.getElementById("spec").value;
+    });
+
+    function enableTime(){
+        //document.getElementById("time").disabled = false; 
+        if (datepicker.value !== ""){
+            document.getElementById("time").disabled = false;
+        }
+
+        var times = [];
+        times.push("asd");
+        console.log(times);
+
+        console.log(datepicker.value);  
+
+        @foreach($apps as $app)
+            @foreach($app as $appt)
+
+                if(spec == {{ $appt->csUserID }} ){
+                    if( datepicker.value == {{ $appt->dappDate }} ){
+                        times.push("{{ $appt->dappTime }}");
+                    }else{
+                        console.log("no match");
+                        console.log({{ $appt->dappDate }});
+
+                    }
+                }
+            console.log({{$appt->daapDate}});
+            @endforeach
+        @endforeach
+
+        var arr = ["9am", "10am", "11am", "12pm", "1pm", "3pm","4pm"];
+        var add = [];
+        var b = false;
+
+        for(var i=0; i<7; i++){
+            b = false;
+            for(var j=0; j<times.length; j++){
+                if( times[j] == arr[i] ){
+                    b = true;
+                }
+            }
+            if(b == false){
+               add.push(arr[i]); 
+            }
+        }
+
+        var timeDD = document.getElementById("time");
+
+        for(var k=0; k<add.length; k++){
+            var option = document.createElement("option");
+            option.text = add[k];
+            option.value = add[k];
+            timeDD.add(option);
+        }
+
+    }
+
+    //to show selected item
+    function selectListItem(item) {
+        // Remove the 'selected' class from all list items
+        var listItems = document.querySelectorAll('#myList li');
+        listItems.forEach(function(li) {
+            li.classList.remove('selected');
+        });
+
+        // Add the 'selected' class to the clicked list item
+        item.classList.add('selected');
+
+        document.getElementById("datepicker").disabled = false; 
+        
+    }
+</script>
+
+@endsection

@@ -38,4 +38,9 @@ class Appointment extends Model
         {
             return $this->belongsTo(Psychiatrist::class);
         }
+
+        public function specialist()
+        {
+            return $this->belongsTo(Specialist::class);
+        }
 }
