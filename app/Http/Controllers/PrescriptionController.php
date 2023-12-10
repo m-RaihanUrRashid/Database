@@ -33,7 +33,7 @@ class PrescriptionController extends Controller
  //dd($medicines);
         // Create Prescription instance
         $prescription = new Prescription();
-        $id = (int) rand(1,9).rand(100000, 999999);
+        $id = substr(hexdec(uniqid()),9,16);
         $prescription->cPrescID =$id ; //change
         //dd(hexdec(substr(hexdec(uniqid()),0,7)));
         $prescription->dIssueDate = now();
