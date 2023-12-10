@@ -30,16 +30,17 @@ class PrescriptionController extends Controller
 
         // Assuming you have an array of medicines in your form like 'medicines' => ['medicine1', 'medicine2', 'medicine3']
         $medicines = $request->input('medicines');
-
+ //dd($medicines);
         // Create Prescription instance
         $prescription = new Prescription();
-        $prescription->cPrescID = substr(uniqid(), 0, 7);
+        $prescription->cPrescID = substr(hexdec(uniqid()),9,16); //change
+        //dd(hexdec(substr(hexdec(uniqid()),0,7)));
         $prescription->dIssueDate = now();
         $prescription->cpUserID = $request->input('cpUserID');
         //$prescription->cpsUserID = '2234567';
         $prescription->cpsUserID =$user-> cUserID; ; // assuming you want to associate with the authenticated user
         $prescription->save();
-        
+        //dd($prescription);
 
         // Create PrescriptionMed entries for each medicine
         foreach ($medicines as $medicine) {
@@ -66,17 +67,17 @@ class PrescriptionController extends Controller
 }
 
 
-public function destroy($id)
+public function destroy(Request $request, $cPrescID)
 {
     // Find the prescription by ID
-    $prescription = Prescription::find($id);
+    $prescription = Prescription::find($cPrescID);
 
     if (!$prescription) {
         return response()->json(['error' => 'Prescription not found'], 404);
     }
 
     // Delete the associated prescription medicines first
-    PrescriptionMedicine::where('cPrescID', $id)->delete();
+    PrescriptionMedicine::where('cPrescID', $cPrescID)->delete();
 
     // Then, delete the prescription
     $prescription->delete();
@@ -84,15 +85,6 @@ public function destroy($id)
     return redirect()->route('psychPrescriptionView.showPrescriptions')->with('success', 'Prescription deleted successfully');
 }
 
-public function delete(Request $request, $cPrescID, $dIssueDate, $cpUserID, $cpsUserID)
-{
-    $prescription = Prescription::where('cPrescID', $cPrescID)
-        ->where('dIssueDate', $dIssueDate)
-        ->where('cpUserID', $cpUserID)
-        ->where('cpsUserID', $cpsUserID)
-        ->delete();
 
-    return redirect()->back()->with('success', 'prescription deleted successfully.');
-}
 
-}
+} 
