@@ -63,6 +63,7 @@
 
     @foreach($prescriptions as $prescription)
         <div class="prescription">
+        <p>Prescription ID: {{ $prescription->cPrescID }}</p>
             <p>Issue Date: {{ $prescription->dIssueDate }}</p>
             <p>Patient ID: {{ $prescription->cpUserID }}</p>
 
@@ -70,12 +71,12 @@
             <button class="btn" onclick="toggleMedicines('{{ $prescription->cPrescID }}')">Expand Medicines</button>
 
             <!-- Button to delete prescription -->
-            <form action="{{ route('psychPrescriptionView.delete', ['id' => $prescription->cPrescID]) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this prescription?');">
-                @csrf
-                @method('delete')
-                <button type="submit" class="btn btn-danger">Delete Prescription</button>
-            </form>
 
+            <form action="{{ route('prescription.delete', $prescription->cPrescID) }}" method="post">
+    @csrf
+    @method('delete')
+    <button type="submit" class="btn-delete">Delete Prescription</button>
+</form>
             <!-- Medicines section -->
             <div id="medicines-{{ $prescription->cPrescID }}" class="medicines-section">
                 <h2>Medicines</h2>
@@ -94,5 +95,17 @@
             medicinesSection.style.display = (medicinesSection.style.display === 'none' || medicinesSection.style.display === '') ? 'block' : 'none';
         }
     </script>
+
+<button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
+
+
+
+<script>
+    function goHome() {
+        window.location.href = "/psychiatristHome";
+    }
+</script>
+
+
 </body>
 </html>

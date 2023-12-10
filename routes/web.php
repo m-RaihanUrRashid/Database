@@ -134,14 +134,15 @@ Route::get('/prescriptions', [PrescriptionController::class, 'showPrescriptions'
 Route::get('/prescriptions/{id}', [PrescriptionController::class, 'showPrescriptionDetails'])->name('prescriptionView.show');
 Route::get('/psychPrescriptionShow', [PrescriptionController::class, 'showPrescriptions'])->name('psychPrescriptionView.showPrescriptions');
 
+Route::delete('/prescription/{id}', [PrescriptionController::class, 'destroy'])->name('prescription.delete');
 
 
 // Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.view');
 // Route::post('/psychAppt', [AppController::class, 'toggle'])->name('psychAppt.toggle');
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');
 Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
-
-
+Route::get('/pastAppt', [AppController::class, 'past'])->name('psychAppt.past');
+Route::delete('/psychAppt/delete/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'delete'])->name('psychAppt.delete');
 // Route::post('/psychAppt/togle/{compositeKey}', [AppController::class, 'toggle']  )->name('psychAppt.toggle');
 
 

@@ -53,31 +53,46 @@ class PrescriptionController extends Controller
         return response()->json(['message' => 'Prescription created successfully'], 200);
     }
 
-    public function showPrescriptions()
+    public function showPrescriptions(Request $request)
 {
     // Assuming you have a user in the session
-    $user = session('user');
-
+    $user = $request->session()->get('user');
     // Retrieve prescriptions for the logged-in user with medicines
     $prescriptions = Prescription::with('prescriptionMedicines')
-        ->where('cpUserID', $user->cUserID)
+        ->where('cpsUserID', $user->cUserID)
         ->get();
 
     return view('psychPrescriptionView', ['prescriptions' => $prescriptions]);
 }
 
-public function deletePrescription($id)
+
+public function destroy($id)
 {
     // Find the prescription by ID
-    $prescription = Prescription::findOrFail($id);
+    $prescription = Prescription::find($id);
 
-    // Delete associated medicines
-    $prescription->prescriptionMedicines()->delete();
+    if (!$prescription) {
+        return response()->json(['error' => 'Prescription not found'], 404);
+    }
 
-    // Delete the prescription
+    // Delete the associated prescription medicines first
+    PrescriptionMedicine::where('cPrescID', $id)->delete();
+
+    // Then, delete the prescription
     $prescription->delete();
 
-    // Redirect to a relevant page (e.g., prescription list)
     return redirect()->route('psychPrescriptionView.showPrescriptions')->with('success', 'Prescription deleted successfully');
 }
+
+public function delete(Request $request, $cPrescID, $dIssueDate, $cpUserID, $cpsUserID)
+{
+    $prescription = Prescription::where('cPrescID', $cPrescID)
+        ->where('dIssueDate', $dIssueDate)
+        ->where('cpUserID', $cpUserID)
+        ->where('cpsUserID', $cpsUserID)
+        ->delete();
+
+    return redirect()->back()->with('success', 'prescription deleted successfully.');
+}
+
 }

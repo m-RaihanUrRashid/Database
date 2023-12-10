@@ -12,8 +12,9 @@ class AppController extends Controller
     {
         $user = $request->session()->get('user');
 
-        $appointments = Appointment::where('csUserID', $user->cUserID)->get();
-        // dd($appointments);
+        $appointments = Appointment::where('csUserID', $user->cUserID)
+        ->where('cappStatus', 'no')
+        ->get();
         return view('psychAppt', ['appointments' => $appointments]);
     }
 
@@ -33,4 +34,27 @@ class AppController extends Controller
         
         return redirect()->back()->with('success', 'Appointment status updated.');
     }
+
+
+    public function past(Request $request)
+{
+    $user = $request->session()->get('user');
+
+    $appointments = Appointment::where('csUserID', $user->cUserID)
+        ->where('cappStatus', 'yes')
+        ->get();
+
+    return view('pastAppts', ['appointments' => $appointments]);
+}
+
+public function delete(Request $request, $cpUserID, $csUserID, $dappDate, $dappTime)
+{
+    $appointment = Appointment::where('cpUserID', $cpUserID)
+        ->where('csUserID', $csUserID)
+        ->where('dappDate', $dappDate)
+        ->where('dappTime', $dappTime)
+        ->delete();
+
+    return redirect()->back()->with('success', 'Appointment deleted successfully.');
+}
 }

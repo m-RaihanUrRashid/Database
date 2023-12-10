@@ -12,8 +12,8 @@ class Prescription extends Model
         
         protected $table = "prescription_t";
         public $timestamps = False;
-       // protected $primaryKey = 'cPrescID';
-
+       protected $primaryKey = 'cPrescID';
+       //protected $primaryKey = 'cPrescID';
         protected $fillable = [
             'cPrescID',
             'dIssueDate',

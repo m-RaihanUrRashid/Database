@@ -48,6 +48,7 @@
     <h1>Welcome, Psychiatrist!</h1>
 
     <button onclick="psychAppt()">My Appointments</button>
+    <button onclick="pastAppt()">Past Appointments</button>
     <button onclick="prescriptions()">Make Prescriptions</button>
     <button onclick="prescriptionsView()">View Prescriptions</button>
     <button onclick="myInfo()">My Information</button>
@@ -57,6 +58,10 @@
     <script>
       function psychAppt() {
         window.location.href = "/psychAppt";
+      }
+
+      function pastAppt() {
+        window.location.href = "/pastAppt";
       }
 
       function prescriptions() {

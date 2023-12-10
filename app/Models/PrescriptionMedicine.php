@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PrescriptionMedicine extends Model
 {
+    protected $primaryKey = ['cPrescID','cMedicine'];
+    public $incrementing = false;
     use HasFactory;
     protected $table = "prescription_med_t";
     public $timestamps = False;
