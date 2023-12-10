@@ -25,6 +25,7 @@
             font-size: 48px;
             margin-bottom: 20px;
             text-align: center;
+            animation: fadeInAndScale 1.5s ease-in-out;
         }
 
         td {
@@ -36,16 +37,40 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            transition: transform 0.5s ease-in-out, background-color 0.3s ease;
         }
 
+        button:hover {
+            transform: scale(1.2);
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .load{
+            opacity: 0;
+            animation: fadeInAndScale 1.5s ease-in-out 0.5s forwards;
+        }
+
+        @keyframes fadeInAndScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0px);
+            }
+        }
     </style>
 </head>
 
 <body>
-
+    {{dd(@prescriptions);}}
     <h1>Prescriptions</h1>
+    <button class="load" onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
-    <table id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
+    <table class="load" id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
         <thead style="background-color: #3498db; color: #fff; border-bottom: 2px solid lightblue;">
             <tr>
                 <th style="padding: 6px;">Prescription ID</th>
@@ -75,8 +100,6 @@
             </tr>
         </tbody>
     </table>
-
-    <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
     <script>
         function markAsDone(x) {

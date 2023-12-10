@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title' , 'My Appointments')
+@section('title' , 'Past Appointments')
 @section('content')
 
 <!DOCTYPE html>
@@ -43,27 +43,27 @@
         }
 
         @media screen and (max-width: 768px) {
-            .btn {
-                padding: 8px;
-                font-size: 12px;
-            }
+        .btn {
+            padding: 8px;
+            font-size: 12px;
         }
+    }
     </style>
 </head>
 
 <body>
 
-    <h1>Appointments</h1>
+    <h1>Past Appointments</h1>
 
 
     <table id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
         <thead style="background-color: #3498db; color: #fff; border-bottom: 2px solid lightblue;">
-            <tr>
+            <tr >
                 <th style="padding: 6px;">Patient ID</th>
                 <th style="padding: 6px;">psych ID</th>
                 <th style="padding: 6px;">Date</th>
                 <th style="padding: 6px;">Time</th>
-                <th style="padding: 6px;">Status</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -73,30 +73,10 @@
                 <td>{{ $appointment->csUserID }}</td>
                 <td>{{ $appointment->dappDate }}</td>
                 <td>{{ $appointment->dappTime }}</td>
-
-                <td style="text-align: center;">
-                    <form method="post" action="{{ route('psychAppt.toggle', [
-                        'cpUserID' => $appointment->cpUserID,
-                        'csUserID' => $appointment->csUserID,
-                        'dappDate' => $appointment->dappDate,
-                        'dappTime' => $appointment->dappTime,
-                    ]) }}">
-                        @csrf
-                        @method('post')
-                        <button class="btn" type="submit" name="markasdone">Mark As Done</button>
-                    </form>
-
-                        <form method="post" action="{{ route('psychAppt.delete', [
-                            'cpUserID' => $appointment->cpUserID,
-                            'csUserID' => $appointment->csUserID,
-                            'dappDate' => $appointment->dappDate,
-                            'dappTime' => $appointment->dappTime,
-                        ]) }}" style="margin-top: 5px;">
-                            @csrf
-                            @method('delete')
-                            <button class="btn" type="submit" name="delete">Delete</button>
-                        </form>
-                    </td>
+                
+                
+                    
+               
             </tr>
             @endforeach
         </tbody>
@@ -105,10 +85,7 @@
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
     <script>
-        function markAsDone(element) {
-            var appointmentId = element.getAttribute('data-appointment-id');
-            alert('Mark as done for Appointment ID: ' + appointmentId);
-        }
+    
 
         function goHome() {
             window.location.href = "/psychiatristHome";

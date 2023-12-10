@@ -8,36 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
+    protected $primaryKey = ['cpUserID', 'csUserID', 'dappDate', 'dappTime'];
     use HasFactory;
-        protected $table = "appointment_t";
-        public $timestamps = False;
-        protected $fillable = [
-                'cpUserID',
-            	'csUserID'	,
-                'dappDate'	,
-                'dappTime'	,
-                'cappStatus'
-        ];
-        //protected $primaryKey = ['cpUserID', 'csUserID', 'dappDate', 'dappTime'];
-    
-        public function yourMethod($cpUserID, $csUserID, $dappDate, $dappTime)
+    protected $table = "appointment_t";
+    public $timestamps = False;
+    public $incrementing = false;
+    protected $fillable = [
+        'cpUserID',
+        'csUserID',
+        'dappDate',
+        'dappTime',
+        'cappStatus'
+    ];
+
+    public function patient()
     {
-        // Use dd() to check the values
-        dd($cpUserID, $csUserID, $dappDate, $dappTime);
-
-        // Rest of your logic
+        return $this->belongsTo(Patient::class);
     }
-    
 
-        public function patient()
-        {
-            return $this->belongsTo(Patient::class);
-        }
-
-        public function psychitrist()
-        {
-            return $this->belongsTo(Psychiatrist::class);
-        }
+    public function psychitrist()
+    {
+        return $this->belongsTo(Psychiatrist::class);
+    }
 
         public function specialist()
         {

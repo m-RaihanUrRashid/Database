@@ -12,7 +12,7 @@ class PrescriptionController extends Controller
     {
         $prescriptions = Prescription::all();
 
-        // Pass prescriptions to the view
+      
         return view('psychPrescription', ['prescriptions' => $prescriptions]);
     }
     
@@ -22,34 +22,60 @@ class PrescriptionController extends Controller
 
         $user = $request->session()->get('user');
         
-        // Validate the request data
+       
         $request->validate([
-            'cpUserID' => 'required|string', // Assuming 'cpUserID' is the field name in your form
-            'medicines' => 'required|array', // Assuming 'medicines' is the field name in your form
+            'cpUserID' => 'required|string',
+            'medicines' => 'required|array',
         ]);
 
-        // Assuming you have an array of medicines in your form like 'medicines' => ['medicine1', 'medicine2', 'medicine3']
         $medicines = $request->input('medicines');
 
-        // Create Prescription instance
         $prescription = new Prescription();
-        $prescription->cPrescID = substr(uniqid(), 0, 7);
+        $id = substr(hexdec(uniqid()),9,16);
+        $prescription->cPrescID =$id ; 
+      
         $prescription->dIssueDate = now();
         $prescription->cpUserID = $request->input('cpUserID');
-        //$prescription->cpsUserID = '2234567';
-        $prescription->cpsUserID =$user-> cUserID; ; // assuming you want to associate with the authenticated user
+      
+        $prescription->cpsUserID =$user-> cUserID; ;
         $prescription->save();
-        
-
-        // Create PrescriptionMed entries for each medicine
+ 
         foreach ($medicines as $medicine) {
             $prescriptionMedicine = new PrescriptionMedicine();
-            $prescriptionMedicine->cPrescID = $prescription->cPrescID;
+            $prescriptionMedicine->cPrescID = $id;
             $prescriptionMedicine->cMedicine = $medicine;
             $prescriptionMedicine->save();
         }
 
-        // You can return a response to the frontend if needed
+       
         return response()->json(['message' => 'Prescription created successfully'], 200);
     }
+
+    public function showPrescriptions(Request $request)
+{
+    $user = $request->session()->get('user');
+   
+    $prescriptions = Prescription::with('prescriptionMedicines')
+        ->where('cpsUserID', $user->cUserID)
+        ->get();
+
+    return view('psychPrescriptionView', ['prescriptions' => $prescriptions]);
 }
+
+
+public function destroy(Request $request, $cPrescID)
+{
+    $prescription = Prescription::find($cPrescID);
+
+    if (!$prescription) {
+        return response()->json(['error' => 'Prescription not found'], 404);
+    }    
+    PrescriptionMedicine::where('cPrescID', $cPrescID)->delete();   
+    $prescription->delete();
+
+    return redirect()->route('psychPrescriptionView.showPrescriptions')->with('success', 'Prescription deleted successfully');
+}
+
+
+
+} 

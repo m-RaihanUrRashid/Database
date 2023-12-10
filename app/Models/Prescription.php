@@ -9,9 +9,11 @@ class Prescription extends Model
 {
     
         use HasFactory;
+        
         protected $table = "prescription_t";
         public $timestamps = False;
-    
+       protected $primaryKey = 'cPrescID';
+       //protected $primaryKey = 'cPrescID';
         protected $fillable = [
             'cPrescID',
             'dIssueDate',
@@ -31,9 +33,9 @@ class Prescription extends Model
         }
     
         public function prescriptionMedicines()
-        {
-            return $this->hasMany(PrescriptionMedicine::class);
-        }
+    {
+        return $this->hasMany(PrescriptionMedicine::class, 'cPrescID', 'cPrescID');
+    }
 
         protected static function boot()
         {
