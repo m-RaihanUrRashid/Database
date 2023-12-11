@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Specialist;
 use App\Models\Person;
 use App\Models\Appointment;
+use Carbon\Carbon;
 
 
 class MakeAppController extends Controller
@@ -29,4 +30,24 @@ class MakeAppController extends Controller
 
         return view('patientMakeApp', ['specs' => $specPersons, 'apps' => $apps]);
     }
+
+    public function saveApp(Request $request){
+
+        $user = $request->session()->get('user');
+
+        
+        $appointment = new Appointment();
+        $appointment->cpUserID = $user->cpUserID;
+        $appointment->csUserID = $request->input('spec');
+        //$appointment->dappDate = Carbon::parse($request->input('date'));
+        $appointment->dappTime = $request->input('time');
+        $appointment->cappStatus= "no";
+        $appointment->save();
+        
+        return response()->json(['status' => 'success']);
+
+        //return redirect(route('patientHome'));
+       
+    }
+
 }

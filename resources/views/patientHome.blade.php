@@ -68,7 +68,7 @@
     }
 
     function makeAppointment() {
-        window.location.href = "/patientChoseSpec";
+        window.location.href = "/patientMakeApp";
     }
 
     function admitRehab() {

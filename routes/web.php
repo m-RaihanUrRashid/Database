@@ -39,8 +39,7 @@ Route::post('/patientReviewSpec2', [SpecRevController::class, 'postRev'])->name(
 Route::post('/patientReviewSpec', [SpecRevController::class, 'postRev2'])->name('postRev2'); 
 
 Route::get('/patientMakeApp', [MakeAppController::class, 'loadSpecs'])->name('loadSpecs'); 
-
-
+Route::post('/patientMakeApp', [MakeAppController::class, 'saveApp'])->name('saveApp'); 
 
 Route::get('/patientHome', function () {
     return view('patientHome');
