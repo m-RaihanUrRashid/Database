@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckAppntController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SpecRevController;
@@ -11,8 +12,9 @@ use App\Http\Controllers\rehabUpdateMyInfoController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\PsychiatristController;
 use App\Http\Controllers\rehabViewSpecialistController;
-
 use App\Http\Controllers\rehabAddSpecialistController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +42,9 @@ Route::post('/patientReviewSpec', [SpecRevController::class, 'postRev2'])->name(
 
 Route::get('/patientMakeApp', [MakeAppController::class, 'loadSpecs'])->name('loadSpecs'); 
 Route::post('/patientMakeApp', [MakeAppController::class, 'saveApp'])->name('saveApp'); 
+
+Route::get('/patientCheckApp', [CheckAppntController::class, 'loadApps'])->name('loadApps'); 
+Route::delete('/patientCheckApp', [CheckAppntController::class, 'destroy'])->name('destroy.app');
 
 Route::get('/patientHome', function () {
     return view('patientHome');

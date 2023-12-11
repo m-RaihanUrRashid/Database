@@ -28,15 +28,16 @@ class Specialist extends Model
 
     public function person()
     {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(Person::class, 'csUserID', 'cUserID');
     }
     public function therapist()
-        {
-            return $this->hasMany(Therapist::class);
-        }
+    {
+        return $this->hasMany(Therapist::class);
+    }
 
-        public function specialist()
-        {
-            return $this->hasMany(Specialist::class);
-        }
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
 }

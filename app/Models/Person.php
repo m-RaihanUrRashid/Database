@@ -23,7 +23,7 @@ class Person extends Model
         'cType',
     ];
 
-    public function specs()
+    public function specialist()
     {
         return $this->hasMany(Specialist::class);
     }

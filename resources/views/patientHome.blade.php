@@ -64,7 +64,7 @@
 
 <script>
   function goToCalendar() {
-         window.location.href = "/calendar.calendar";
+         window.location.href = "/patientCheckApp";
     }
 
     function makeAppointment() {

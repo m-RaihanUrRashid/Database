@@ -33,6 +33,6 @@ class Appointment extends Model
 
         public function specialist()
         {
-            return $this->belongsTo(Specialist::class);
+            return $this->belongsTo(Specialist::class, 'csUserID', 'csUserID');
         }
 }
