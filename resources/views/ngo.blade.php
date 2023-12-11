@@ -4,6 +4,8 @@
 @include('/include/navbar')
 <html>
 <head>
+  <a href="ngo1">FurtherInfo</a>
+  <a href="http://127.0.0.1:8000">Back</a>
   <style>
     table {
       width: 1300px;

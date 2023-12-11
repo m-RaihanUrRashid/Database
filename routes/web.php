@@ -197,3 +197,4 @@ Route::get('/ngo', function () {
 Route::get('/ngo1', function () {
     return view('ngo1');
 });
+Route::get('/rehabs', [ngoController::class, 'index'])->name('rehabs.index');

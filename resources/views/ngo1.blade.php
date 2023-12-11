@@ -4,6 +4,8 @@
 @include('/include/navbar')
 <html>
 <head>
+  <a href="ngo1">FurtherInfo</a>
+  <a href="ngo">Back</a>
   <style>
     table {
       width: 1300px;
