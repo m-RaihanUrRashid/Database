@@ -74,11 +74,11 @@ class AuthController extends Controller
             'mHistory'=> 'nullable',
         ]);
 
-        $patient = new Patient();
+        //$patient = new Patient();
 
         $person = new Person();
         $person->cUserID = strval(mt_rand(1000000, 9999999));
-        $patient->cpUserID = $person->cUserID;
+        //$patient->cpUserID = $person->cUserID;
         $person->cFname = $request->fname;
         $person->cLname = $request->lname;
         $person->dDOB = $request->DOB;
@@ -88,9 +88,9 @@ class AuthController extends Controller
         $person->cType = "Patient";
         $person->save();
 
-        $patient->cMedicalHistory = $request->mHistory;
-        $patient->cArea = $request->g_area;
-        $patient->save();
+        // $patient->cMedicalHistory = $request->mHistory;
+        // $patient->cArea = $request->g_area;
+        // $patient->save();
 
         $data['name'] = $request->fname;
         $data['email'] = $request->email;
