@@ -100,13 +100,8 @@
                 <label for="cType">Type:</label>
                 <input type="text" id="cType" name="Type">
 
-                <label for="DOB">DOB:</label>
-                <div style="margin: 30px;">
-                    Select Appointment Date:
-                    <input value="" type="date" id="datepicker" name="datepicker" disabled>
-                    
-                    </select>
-                </div>
+                <label for="datepicker">DOB:</label>
+                <input type="date" id="DOB" name="datepicker">
 
                 <label for="Email">Email:</label>
                 <input type="text" id="Email" name="Email">
@@ -141,68 +136,5 @@
 
 </body>
 
-<script>
-    // function enableTime() {
-    //     if (datepicker.value !== "") {
-    //         document.getElementById("time").disabled = false;
-    //     }
-
-    //     var times = [];
-    //     times.push("asd");
-    //     console.log(times);
-    //     console.log(datepicker.value);
-
-    //     @foreach($apps as $app)
-    //         @foreach($app as $appt)
-    //             if (spec == {{ $appt->csUserID }} ) {
-    //                 if (datepicker.value == "{{ $appt->dappDate }}") {
-    //                     times.push("{{ $appt->dappTime }}");
-    //                 }
-    //             }
-    //         @endforeach
-    //     @endforeach
-
-    //     var arr = ["9am", "10am", "11am", "12pm", "1pm", "3pm", "4pm"];
-    //     var add = [];
-    //     var b = false;
-
-    //     for (var i = 0; i < 7; i++) {
-    //         b = false;
-    //         for (var j = 0; j < times.length; j++) {
-    //             if (times[j] == arr[i]) {
-    //                 b = true;
-    //             }
-    //         }
-    //         if (b == false) {
-    //             add.push(arr[i]);
-    //         }
-    //     }
-
-    //     var timeDD = document.getElementById("time");
-
-    //     for (var k = 0; k < add.length; k++) {
-    //         var option = document.createElement("option");
-    //         option.text = add[k];
-    //         option.value = add[k];
-    //         timeDD.add(option);
-    //     }
-    // }
-
-    // This is just the date picker function
-    function selectListItem(item) {
-        var listItems = document.querySelectorAll('#myList li');
-        listItems.forEach(function (li) {
-            li.classList.remove('selected');
-        });
-
-        item.classList.add('selected');
-        document.getElementById("datepicker").disabled = false;
-    }
-</script>
-
-
 </html>
-
-
-
 @endsection
