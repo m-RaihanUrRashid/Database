@@ -40,6 +40,7 @@
 </style>
 
 
+
 <div class="container1">
 
     <h1>Welcome, Patient!</h1>
@@ -72,7 +73,7 @@
     }
 
     function admitRehab() {
-        window.location.href = "/patientRehab";
+        window.location.href = "/patientChoseRehab";
     }
 
     function reviewSpec() {

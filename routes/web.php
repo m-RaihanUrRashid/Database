@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdmitRehabController;
 use App\Http\Controllers\CheckAppntController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -46,6 +47,8 @@ Route::post('/patientMakeApp', [MakeAppController::class, 'saveApp'])->name('sav
 Route::get('/patientCheckApp', [CheckAppntController::class, 'loadApps'])->name('loadApps'); 
 Route::delete('/patientCheckApp', [CheckAppntController::class, 'destroy'])->name('destroy.app');
 
+Route::get('/patientChoseRehab', [AdmitRehabController::class, 'loadRehabs'])->name('loadRehabs'); 
+
 Route::get('/patientHome', function () {
     return view('patientHome');
 })->name('patientHome');
@@ -56,22 +59,6 @@ Route::get('/signUp', function () {
 });
 Route::get('/calendar.calendar', function () {
     return view('calendar.calendar');
-});
-
-Route::get('/patientAppointment', function () {
-    return view('patientAppointment');
-});
-
-Route::get('/patientChoseSpec', function () {
-    return view('patientChoseSpec');
-});
-
-Route::get('/patientRehab', function () {
-    return view('patientRehab');
-});
-
-Route::get('/patientChoseRehab', function () {
-    return view('patientChoseRehab');
 });
 
 Route::get('/patientProfile', function () {
