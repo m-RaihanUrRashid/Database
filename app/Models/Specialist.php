@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Node\Expr\Cast\String_;
 
 class Specialist extends Model
 {
     use HasFactory;
+    protected $primaryKey = "csUserID";
 
     protected $table = "specialist_t";
     

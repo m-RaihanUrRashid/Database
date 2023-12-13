@@ -12,16 +12,16 @@ class rehabRemoveSpecialistController extends Controller
     {
         $specialists = Specialist::all();
 
-        return view('rehabRemoveSpecialists', compact('specialists'));
+        return view('rehabRemoveSpecialist', ['specialists' => $specialists]);
     }
 
-    public function removeSpecialist(Request $request)
+    public function removeSpecialist(Request $request, $csUserID)
     {
-        $csUserID = $request->input('selectedRowId');    // Find the specialist to delete
+           // Find the specialist to delete
         $specialist = Specialist::findOrFail($csUserID);
 
         // Perform the delete operation
         $specialist->delete();
-        return redirect()->route('rehabSupervisorHome');
+        return redirect()->route('remove.specialist');
     }
 }

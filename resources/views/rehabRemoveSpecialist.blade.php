@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -28,7 +28,7 @@
         }
 
         td {
-            border-right: 1px solid lightgrey; 
+            border-right: 1px solid lightgrey;
             padding: 8px;
         }
 
@@ -37,7 +37,6 @@
             font-size: 16px;
             cursor: pointer;
         }
-
     </style>
 </head>
 
@@ -45,8 +44,8 @@
 
     <h1>Remove Rehab Specialists</h1>
 
-    <form action="{{ route('remove1.specialist') }}" method="POST">
-    <table id="specialistTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
+
+    <table id="specialistTable" style="width: 70%; margin: 0 auto; table-layout: fixed; border-collapse: collapse;">
         <thead style="background-color: #3498db; color: #fff; border-bottom: 2px solid lightblue;">
             <tr>
                 <th style="padding: 6px;">Specialist ID</th>
@@ -57,17 +56,23 @@
         </thead>
         <tbody>
             @foreach ($specialists as $specialist)
-                <tr style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
-                    <td>{{ $specialist->csUserID }}</td>
-                    <td>{{ $specialist->cExperience }}</td>
-                    <td>{{ $specialist->cOff_Address }}</td>
-                    <td>{{ $specialist->cType }}</td>
-                    <td><button type="submit" id="selectBtn" name="selectedRowId" value="{{ $specialist->csUserID }}">Delete</button></td> 
-                </tr>
+            <tr style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
+                <td>{{ $specialist->csUserID }}</td>
+                <td>{{ $specialist->cExperience }}</td>
+                <td>{{ $specialist->cOff_Address }}</td>
+                <td>{{ $specialist->cType }}</td>
+                <td>
+                    <form action="{{ route('destroy.specialist', ['csUserID'=>$specialist->csUserID]) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" id="selectBtn" name="selectedRowId">Delete</button>
+                    </form>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
-    </form>
+
 
 
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>

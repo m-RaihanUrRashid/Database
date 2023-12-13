@@ -13,6 +13,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\PsychiatristController;
 use App\Http\Controllers\rehabViewSpecialistController;
 use App\Http\Controllers\rehabAddSpecialistController;
+use App\Http\Controllers\rehabRemoveSpecialistController;
 
 
 /*
@@ -178,10 +179,6 @@ Route::get('/rehabAddSpecialist', function () {
     return view('rehabAddSpecialist');
 });
 
-Route::get('/rehabRemoveSpecialist', function () {
-    return view('rehabRemoveSpecialist');
-});
-
 Route::get('/rehabViewSpecialists', function () {
     return view('rehabViewSpecialists');
 });
@@ -190,8 +187,8 @@ Route::post('/rehabAddSpecialist', [rehabAddSpecialistController::class ,'addSpe
 
 Route::get('/rehabViewSpecialists', [rehabViewSpecialistController::class, 'viewSpecialist'])->name('view.specialist');
 
-Route::get('/rehabRemoveSpecialists', [rehabRemoveSpecialistController::class, 'viewSpecialist'])->name('remove.specialist');
-Route::delete('/rehabRemoveSpecialists', [rehabRemoveSpecialistController::class, 'removeSpecialist'])->name('remove1.specialist');
+Route::get('/rehabRemoveSpecialist', [rehabRemoveSpecialistController::class, 'viewSpecialist'])->name('remove.specialist');
+Route::delete('/rehabRemoveSpecialist/{csUserID}', [rehabRemoveSpecialistController::class, 'removeSpecialist'])->name('destroy.specialist');
 
 
 #Michael Jackson
