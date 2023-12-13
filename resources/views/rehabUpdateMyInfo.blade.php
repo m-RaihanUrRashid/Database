@@ -70,26 +70,26 @@
     @csrf <!-- Include CSRF token field in the form -->
         <div class="d-flex">
             <div style="margin: 42px">
-                <label for="supervisorName">Name:</label>
-                <input type="text" id="supervisorName" name="supervisorName" >
+                <label for="Fname">Fname:</label>
+                <input type="text" id="Fname" name="Fname">
 
-                <label for="Title">Title:</label>
-                <input type="text" id="Title" name="Title" >
+                <label for="Lname">Lname:</label>
+                <input type="text" id="Lname" name="Lname">
 
-                <label for="officeAddress">Office Address:</label>
-                <input type="text" id="officeAddress" name="officeAddress" >
+                <label for="dDOB">Date of Birth:</label>
+                <input type="text" id="dDOB" name="DOB">
 
 
             </div>
             <div style="margin: 42px">
-                <label for="ID">ID No:</label>
-                <input type="text" id="ID" name="ID" >
+                <label for="cGender">Gender: </label>
+                <input type="text" id="cGender" name="Gender" >
 
-                <label for="contactNo">Contact No:</label>
-                <input type="text" id="contactNo" name="contactNo" >
+                <label for="cAddress">Address:</label>
+                <input type="text" id="cAddress" name="Address" >
 
-                <label for="rehab">Rehab:</label>
-                <input type="text" id="rehab" name="rehab" >
+                <label for="cEmail">Email:</label>
+                <input type="text" id="cEmail" name="Email" >
             </div>
         </div>
         <div class="container" style="justify-items: center;">
