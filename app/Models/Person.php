@@ -18,6 +18,7 @@ class Person extends Model
         'cFname',
         'cLname',
         'dDOB',
+        'cGender',
         'cAddress',
         'cEmail',
         'cType',

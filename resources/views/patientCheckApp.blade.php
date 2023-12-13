@@ -58,6 +58,7 @@
                     <tr >
                         <th style="padding: 6px;">Specialist ID</th>
                         <th style="padding: 6px;width: 200px;">Name</th>
+                        <th style="padding: 6px;">Type</th>
                         <th style="padding: 6px; width: 150px;">Location</th>
                         <th style="padding: 6px;">Date</th>
                         <th style="padding: 6px;">Time</th>
@@ -79,6 +80,8 @@
                                 @endif
                             </td>
 
+                            <td>{{$app->specialist->cType}}</td>
+
                             <td>{{$app->specialist->cOff_Address}}</td>
                             <td>{{$app->dappDate}}</td>
                             <td>{{$app->dappTime}}</td>
@@ -91,7 +94,7 @@
                                 ]) }}" style="margin-top: 5px;">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn" type="submit" name="delete">Delete</button>
+                                    <button onclick="t(this)" class="btn" type="submit" name="delete">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -101,5 +104,11 @@
         </div>
     </form>
 </div>
+
+<script>
+    function t() {
+        console.log(this);
+    }
+</script>
 
 @endsection

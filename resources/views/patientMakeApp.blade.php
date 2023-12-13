@@ -8,7 +8,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+        height: 90vh;
     }
 
     /* Style the scrollable div */
@@ -99,23 +99,39 @@
     button{
         font-size: 18px;
     }
+
+    .bold {
+        font-weight: bold;
+        font-family: 'Georgia', serif;
+    }
+
+    .italic {
+        font-style: italic;
+    }
 </style>
+
+@if(session()->has('success'))
+    <div class="alert alert-danger" role="alert"> 
+        {{session('success')}}
+    </div>
+@endif
 
 <div class="parent">
     <div>
         <div class="scrollable-div" style="border-radius: 10px; margin: 40px;">
             <ul id='myList'>
                 @foreach($specs as $spec)
-                @foreach($spec as $person)
+                    @foreach($spec as $person)
 
-                <li onclick="selectListItem(this)" id="spec" value="{{ $person->cUserID }}">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                        style="height: 50px; width: 50px">
+                    <li onclick="selectListItem(this)" id="spec" value="{{ $person->cUserID }}">
+                        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                            style="height: 50px; width: 50px">
 
-                    &nbsp;&nbsp;&nbsp;<label style="font-family: 'Georgia', serif; font-size: 16px;">{{$person->cFname.'
-                        '.$person->cLname}}</label>
-                </li>
-                @endforeach
+                        &nbsp;&nbsp;&nbsp;
+                        <span class="bold">{{$person->cFname.' '.$person->cLname}}</span>
+                        <span class="italic" style="float: right;">{{$person->cType}}</span>
+                    </li>
+                    @endforeach
                 @endforeach
             </ul>
         </div>
@@ -130,7 +146,7 @@
         </div>
         <div class="d-flex justify-content-center">
             <button onclick="saveApp()">Make Appointment</button> &nbsp;&nbsp;&nbsp;
-            <button>Back to Home</button>
+            <button onclick="goHome()">Back to Home</button>
 
         </div>
     </div>
@@ -140,25 +156,23 @@
 <script>
 
     var spec;
-    //for listening for selected item value
+    
     document.getElementById('myList').addEventListener('click', function (event) {
         //alert('You clicked on ' + event.target.innerText);
         //var spec = myList.
-        console.log(document.getElementById("spec").value);
-        spec = document.getElementById("spec").value;
+        //console.log(document.getElementById("spec").value);
+        //spec = document.getElementById("spec").value;
     });
 
     function enableTime() {
-        //document.getElementById("time").disabled = false; 
+
+        document.getElementById("time").innerHTML = '';
+
         if (datepicker.value !== "") {
             document.getElementById("time").disabled = false;
         }
 
         var times = [];
-        times.push("asd");
-        console.log(times);
-
-        console.log(datepicker.value);
 
         @foreach($apps as $app)
             @foreach($app as $appt)
@@ -212,22 +226,16 @@
             if (xhr.status === 200) {
                 var responseData = JSON.parse(xhr.responseText);
 
-                // Check if the status is 'success'
                 if (responseData.status === 'success') {
-                    // Show an alert on the website
                     alert('Operation successful!');
-
-                    // You can perform additional actions here if needed
                 } else {
-                    // Handle other statuses if necessary
                 }
             } else {
                 console.error('Request failed. Status:', xhr.status);
-                // Handle errors
             }
         };
 
-        console.log(spec + date + time);
+        console.log(spec + " " + date + " " + time);
 
         var formData = 'spec=' + encodeURIComponent(spec) +
                     '&date=' + encodeURIComponent(date) +
@@ -236,20 +244,27 @@
         xhr.send(formData);
     }
 
-    //to show selected item
     function selectListItem(item) {
-        // Remove the 'selected' class from all list items
+
+        console.log(item.value);
+
+        spec = item.value;
+
         var listItems = document.querySelectorAll('#myList li');
         listItems.forEach(function (li) {
             li.classList.remove('selected');
         });
 
-        // Add the 'selected' class to the clicked list item
         item.classList.add('selected');
 
         document.getElementById("datepicker").disabled = false;
 
     }
+
+    function goHome() {
+        window.location.href = "/patientHome";
+    }
+
 </script>
 
 @endsection

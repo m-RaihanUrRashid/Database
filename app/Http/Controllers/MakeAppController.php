@@ -46,7 +46,7 @@ class MakeAppController extends Controller
         
         return response()->json(['status' => 'success']);
 
-        //return redirect(route('patientHome'));
+        //return view('patientHome')->with('appmade', "Appointment Created!");
        
     }
 

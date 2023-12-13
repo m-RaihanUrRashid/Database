@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -63,15 +64,39 @@ class AuthController extends Controller
 
     function signUpPost(Request $request){
         $request->validate([
-            'name' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
+            'DOB' => 'required',
+            'gender'=> 'required',
+            'address'=> 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'mHistory'=> 'nullable',
         ]);
 
-        $data['name'] = $request->name;
+        $patient = new Patient();
+
+        $person = new Person();
+        $person->cUserID = strval(mt_rand(1000000, 9999999));
+        $patient->cpUserID = $person->cUserID;
+        $person->cFname = $request->fname;
+        $person->cLname = $request->lname;
+        $person->dDOB = $request->DOB;
+        $person->cGender = $request->gender;
+        $person->cAddress = $request->address;
+        $person->cEmail = $request->email;
+        $person->cType = "Patient";
+        $person->save();
+
+        $patient->cMedicalHistory = $request->mHistory;
+        $patient->cArea = $request->g_area;
+        $patient->save();
+
+        $data['name'] = $request->fname;
         $data['email'] = $request->email;
         $data['password'] = Hash :: make($request->password);
         $user = User:: create($data);
+
         if(!$user){
             return redirect(route('signUp'))->with("error", "Retry");
         }
