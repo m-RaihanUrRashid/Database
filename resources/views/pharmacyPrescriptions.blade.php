@@ -66,7 +66,6 @@
 </head>
 
 <body>
-    {{dd(@prescriptions);}}
     <h1>Prescriptions</h1>
     <button class="load" onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 

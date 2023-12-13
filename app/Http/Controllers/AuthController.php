@@ -88,7 +88,8 @@ class AuthController extends Controller
         $person->cType = "Patient";
         $person->save();
 
-        $patient->cMedical_History = $request->mHistory;
+        $patient->cMedicalHistory = $request->mHistory;
+        $patient->cArea = $request->g_area;
         $patient->save();
 
         $data['name'] = $request->fname;
