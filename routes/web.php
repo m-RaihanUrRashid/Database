@@ -190,7 +190,7 @@ Route::get('/rehabViewSpecialists', [rehabViewSpecialistController::class, 'view
 Route::get('/rehabRemoveSpecialist', [rehabRemoveSpecialistController::class, 'viewSpecialist'])->name('remove.specialist');
 Route::delete('/rehabRemoveSpecialist/{csUserID}', [rehabRemoveSpecialistController::class, 'removeSpecialist'])->name('destroy.specialist');
 
-Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class ,'updateInformation'])->name('update.information');
+//Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class ,'updateInformation'])->name('update.information');
 
 Route::get('/rehabUpdateMyInfo', 'rehabUpdateMyInfoController@showUpdateForm')->name('rehabUpdateMyInfo'); #new
 Route::post('/rehabUpdateMyInfo', 'rehabUpdateMyInfoController@updateInformation')->name('rehabUpdateMyInfo.post'); #new
