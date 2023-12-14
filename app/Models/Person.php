@@ -10,6 +10,7 @@ class Person extends Model
     use HasFactory;
 
     protected $table = "person_t";
+    protected $primaryKey = 'cUserID';
     public $timestamps = false;
 
 

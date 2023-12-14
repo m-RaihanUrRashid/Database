@@ -192,9 +192,12 @@ Route::delete('/rehabRemoveSpecialist/{csUserID}', [rehabRemoveSpecialistControl
 
 //Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class ,'updateInformation'])->name('update.information');
 
-Route::get('/rehabUpdateMyInfo', 'rehabUpdateMyInfoController@showUpdateForm')->name('rehabUpdateMyInfo'); #new
-Route::post('/rehabUpdateMyInfo', 'rehabUpdateMyInfoController@updateInformation')->name('rehabUpdateMyInfo.post'); #new
+//Route::get('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class , 'showUpdateForm'])->name('rehabUpdateMyInfo'); #new
+Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController:: class, 'updateInformation'])->name('rehabUpdateMyInfo.post'); #new
 
+Route::get('/rehabUpdateMyInfo', function () {
+    return view('rehabUpdateMyInfo');
+});
 
 
 #Michael Jackson

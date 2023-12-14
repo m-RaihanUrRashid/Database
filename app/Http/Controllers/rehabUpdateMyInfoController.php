@@ -29,23 +29,18 @@ class rehabUpdateMyInfoController extends Controller
 
     // rehabUpdateMyInfoController.php
 
-    public function showUpdateForm()  #new
-    {
-        // Retrieve the logged-in specialist
-        $specialist = Specialist::find(auth()->id());
-
-        return view('rehabUpdateMyInfo', compact('specialist'));
-        // Assuming 'rehabUpdateMyInfo' is the Blade file name
-    }
+    
 
     // rehabUpdateMyInfoController.php
 
     public function updateInformation(Request $request)
     {
         // Retrieve the logged-in specialist
-        $specialist = Specialist::find(auth()->id());
+        $user = $request->session()->get('user');
+        $specialist = Person:: where ('cUserID', $user->cUserID)->first();
 
         // Update Specialist model properties based on form input
+        $specialist->cUserID = $user-> cUserID;
         $specialist->cFname = $request->input('Fname');
         $specialist->cLname = $request->input('Lname');
         $specialist->dDOB = $request->input('DOB');
@@ -57,6 +52,6 @@ class rehabUpdateMyInfoController extends Controller
         $specialist->save();
 
         // Redirect back to the same page or any other page you desire
-        return redirect()->route('rehabUpdateMyInfo')->with('success', 'Information updated successfully');
+        return view('rehabUpdateMyInfo')->with('success', 'Information updated successfully');
     }
 }
