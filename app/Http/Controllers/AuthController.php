@@ -8,79 +8,99 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Person;
-use App\Models\Psychiatrist;
-use App\Models\Therapist;
+use App\Models\Ngo;
+use App\Models\Pharma;
 
 
 class AuthController extends Controller
 {
-    function login(){
+    function login()
+    {
         return view('login');
     }
 
-    function signUp(){
+    function signUp()
+    {
         return view('signUp');
     }
 
-    function patientHome(){
+    function patientHome()
+    {
         return view('patientHome');
     }
 
-    function loginPost(Request $request){
+    function loginPost(Request $request)
+    {
         $request->validate([
-                'email' => 'required',
-                'password' => 'required'
+            'email' => 'required',
+            'password' => 'required'
         ]);
 
         $user = null;
-
-        $user = Person::where('cEmail', $request->email)->first();
-
+        $user = User::where('email', $request->email)->first();
         $credentials = $request->only('email', 'password');
 
-        if(Auth ::attempt($credentials)){
+        // dd($user, $credentials);
 
-            session(['user' => $user]);
+        if (Auth::attempt($credentials)) {
 
+            // session(['user' => $user]);
 
-            if($user->cType == 'Patient'){
+            if ($user->cType == 'Patient') {
+                $user = Person::where('cEmail', $request->email)->first();
+                session(['user' => $user]);
                 return redirect()->intended(route('patientHome'));
-            }elseif($user->cType == 'Psychiatrist'){
+            } elseif ($user->cType == 'Psychiatrist') {
+                $user = Person::where('cEmail', $request->email)->first();
+                session(['user' => $user]);
                 return redirect()->intended(route('psychiatristHome'));
-            }elseif($user->cType == 'Therapist'){
+            } elseif ($user->cType == 'Therapist') {
+                $user = Person::where('cEmail', $request->email)->first();
+                session(['user' => $user]);
                 return redirect()->intended(route('therapistdb'));
-            }elseif($user->cType == 'Admin'){
+            } elseif ($user->cType == 'Admin') {
                 return redirect()->intended(route('admin'));
-            }/*elseif($user->type == 'Pharmacy'){
+            } elseif ($user->cType == 'Pharmacy') {
+                $user = Pharma::where('cManagerEmail', $request->email)->first();
+                session(['user' => $user]);
                 return redirect()->intended(route('pharmacyHome'));
-            }elseif($user->type == 'NGO'){
+            } elseif ($user->cType == 'NGO') {
+                $user = Ngo::where('cManagerEmail', $request->email)->first();
+                session(['user' => $user]);
                 return redirect()->intended(route('ngo'));
-            }*/elseif($user->cType == 'Rehab'){
+            }
+            /*
+            Might not need this, as supervisor manages rehab
+
+            elseif ($user->cType == 'Rehab') {
                 return redirect()->intended(route('rehabSupervisorHome'));
             }
+            
+            */
         }
 
 
         return redirect(route('login'))->with("error", "Wrong Email or Password");
     }
 
-    function signUpPost(Request $request){
+    function signUpPost(Request $request)
+    {
         $request->validate([
             'fname' => 'required',
             'lname' => 'required',
             'DOB' => 'required',
-            'gender'=> 'required',
-            'address'=> 'required',
+            'gender' => 'required',
+            'address' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'mHistory'=> 'nullable',
+            'mHistory' => 'nullable',
         ]);
 
-        //$patient = new Patient();
-
+        $patient = new Patient();
         $person = new Person();
+
         $person->cUserID = strval(mt_rand(1000000, 9999999));
-        //$patient->cpUserID = $person->cUserID;
+        $patient->cpUserID = $person->cUserID;
         $person->cFname = $request->fname;
         $person->cLname = $request->lname;
         $person->dDOB = $request->DOB;
@@ -90,19 +110,18 @@ class AuthController extends Controller
         $person->cType = "Patient";
         $person->save();
 
-        // $patient->cMedicalHistory = $request->mHistory;
-        // $patient->cArea = $request->g_area;
-        // $patient->save();
+        $patient->cMedicalHistory = $request->mHistory;
+        $patient->cArea = $request->g_area;
+        $patient->save();
 
         $data['name'] = $request->fname;
         $data['email'] = $request->email;
-        $data['password'] = Hash :: make($request->password);
-        $user = User:: create($data);
+        $data['password'] = Hash::make($request->password);
+        $user = User::create($data);
 
-        if(!$user){
+        if (!$user) {
             return redirect(route('signUp'))->with("error", "Retry");
         }
         return redirect(route('login'))->with("success", "Success! You can login now.");
-
     }
 }

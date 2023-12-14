@@ -84,13 +84,13 @@
 
                             <td>{{$app->specialist->cOff_Address}}</td>
                             <td>{{$app->dappDate}}</td>
-                            <td>{{$app->dappTime}}</td>
+                            <td>{{$app->cappTime}}</td>
                             <td>
                                 <form method="post" action="{{ route('psychAppt.delete', [
                                     'cpUserID' => $app->cpUserID,
                                     'csUserID' => $app->csUserID,
                                     'dappDate' => $app->dappDate,
-                                    'dappTime' => $app->dappTime,
+                                    'cappTime' => $app->cappTime,
                                 ]) }}" style="margin-top: 5px;">
                                     @csrf
                                     @method('delete')

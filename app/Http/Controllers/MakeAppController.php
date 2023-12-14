@@ -40,7 +40,7 @@ class MakeAppController extends Controller
         $appointment->cpUserID = $user->cUserID;
         $appointment->csUserID = $request->input('spec');
         $appointment->dappDate = Carbon::parse($request->input('date'));
-        $appointment->dappTime = $request->input('time');
+        $appointment->cappTime = $request->input('time');
         $appointment->cappStatus= "no";
         $appointment->save();
         

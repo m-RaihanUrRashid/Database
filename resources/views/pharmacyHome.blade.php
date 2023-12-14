@@ -71,6 +71,11 @@
 </head>
 
 <body>
+    @if(session()->has('error'))
+        <div class="alert alert-danger" role="alert"> 
+            {{session('error')}}
+        </div>
+    @endif
 
     <h1>Welcome, Pharmacist!</h1>
 
@@ -91,6 +96,15 @@
             window.location.href = "/";
             console.log("AAAA")
         }
+
+        window.onload = function() {
+            document.getElementById('pharmacyName').value = {{$user->cName;}};
+            document.getElementById('street').value = '21/12/2000';
+            document.getElementById('road').value = 'Aftabuddin Ahmed Road';
+            document.getElementById('city').value = 'raihan@gmail.com';
+            document.getElementById('contact1').value = '+8801784553315';
+            document.getElementById('contact2').value = '+8801784553315';
+        };
 
     </script>
 </body>

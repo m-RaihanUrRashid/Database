@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2023 at 09:14 AM
+-- Generation Time: Dec 14, 2023 at 09:28 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -364,21 +364,22 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `cType` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Showndorjo', 'dhara@hotmail.com', NULL, '$2y$12$wXv9hySHfI060v4Z8n90LOj6zmbOqf2wo3oPSljxyfN/l9a4yYUn6', NULL, '2023-12-03 04:27:47', '2023-12-03 04:27:47'),
-(3, 'Gaji', 'gazi@tank.com', NULL, '$2y$12$5FLVioPY/9yVsicnCoUdweaoJ3nO2iqY87FC/RFsI5kjx10nDtStq', NULL, '2023-12-03 11:04:40', '2023-12-03 11:04:40'),
-(4, 'Ikram', 'ikram@abc.com', NULL, '$2y$12$fX1jxc7f5Bf.384QS04B6.1QZzqAJ4sGmgrbDanBzZLj7heTp8JvK', NULL, '2023-12-07 16:18:09', '2023-12-07 16:18:09'),
-(6, 'Steeve', 'steve@gmail.com', NULL, '$2y$12$UQbHOjYWDePaejYIVY3.PeP/wbBnvdQaQtc3nWTlk2b3/C4nEoF0W', NULL, '2023-12-07 22:26:57', '2023-12-07 22:26:57'),
-(7, 'nazifa', 'nazifa@gmail.com', NULL, '$2y$12$oGkyvGh49PJ.320c0BlZeut0hqVSBJgXOEdBaLkALwmoVrQrZnD0a', NULL, '2023-12-07 22:27:33', '2023-12-07 22:27:33'),
-(9, 'Raihan', 'raihan@gmail.com', NULL, '$2y$12$dAKYQUkxKunq6PjIypxaPOtRaeYfHeHojL9kl0MOAqqSm3oPqPvX6', NULL, '2023-12-13 11:17:18', '2023-12-13 11:17:18'),
-(10, 'Admin', 'admin@super.com', NULL, '$2y$12$lzQtpKUDNaT6fATET7L6auFuuOBJB.L5.j4J6OjYl994zSUQKtl8m', NULL, '2023-12-13 17:02:21', '2023-12-13 17:02:21');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `cType`) VALUES
+(2, 'Showndorjo', 'dhara@hotmail.com', NULL, '$2y$12$wXv9hySHfI060v4Z8n90LOj6zmbOqf2wo3oPSljxyfN/l9a4yYUn6', NULL, '2023-12-03 04:27:47', '2023-12-03 04:27:47', 'Psychiatrist'),
+(3, 'Gaji', 'gazi@tank.com', NULL, '$2y$12$5FLVioPY/9yVsicnCoUdweaoJ3nO2iqY87FC/RFsI5kjx10nDtStq', NULL, '2023-12-03 11:04:40', '2023-12-03 11:04:40', 'Therapist'),
+(4, 'Ikram', 'ikram@abc.com', NULL, '$2y$12$fX1jxc7f5Bf.384QS04B6.1QZzqAJ4sGmgrbDanBzZLj7heTp8JvK', NULL, '2023-12-07 16:18:09', '2023-12-07 16:18:09', 'Psychiatrist'),
+(6, 'Steeve', 'steve@gmail.com', NULL, '$2y$12$UQbHOjYWDePaejYIVY3.PeP/wbBnvdQaQtc3nWTlk2b3/C4nEoF0W', NULL, '2023-12-07 22:26:57', '2023-12-07 22:26:57', 'Psychiatrist'),
+(7, 'nazifa', 'nazifa@gmail.com', NULL, '$2y$12$oGkyvGh49PJ.320c0BlZeut0hqVSBJgXOEdBaLkALwmoVrQrZnD0a', NULL, '2023-12-07 22:27:33', '2023-12-07 22:27:33', 'Therapist'),
+(9, 'Raihan', 'raihan@gmail.com', NULL, '$2y$12$dAKYQUkxKunq6PjIypxaPOtRaeYfHeHojL9kl0MOAqqSm3oPqPvX6', NULL, '2023-12-13 11:17:18', '2023-12-13 11:17:18', 'Patient'),
+(10, 'Admin', 'admin@super.com', NULL, '$2y$12$lzQtpKUDNaT6fATET7L6auFuuOBJB.L5.j4J6OjYl994zSUQKtl8m', NULL, '2023-12-13 17:02:21', '2023-12-13 17:02:21', 'Admin');
 
 --
 -- Indexes for dumped tables

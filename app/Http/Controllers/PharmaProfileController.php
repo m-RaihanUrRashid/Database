@@ -3,18 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
-use App\Models\Person;
 use Illuminate\Http\Request;
 
-class CheckAppntController extends Controller
+class PharmaProfileController extends Controller
 {
-    public function loadApps(Request $request){
-        
+    public function loadProfile(Request $request){
         $user = $request->session()->get('user');
-
-        $apps = Appointment::with('specialist.person')->where('cpUserID', $user->cUserID)->get();
-
-        return view("patientCheckApp" , ["apps"=> $apps]);
+        return view("pharmacyHome" , ["user"=> $user]);
     }
 
     public function destroy(Request $request, $cpUserID, $csUserID, $dappDate, $cappTime){

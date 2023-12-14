@@ -19,14 +19,14 @@ class AppController extends Controller
         return view('psychAppt', ['appointments' => $appointments]);
     }
 
-    public function toggle(Request $request, $cpUserID, $csUserID, $dappDate, $dappTime)
+    public function toggle(Request $request, $cpUserID, $csUserID, $dappDate, $cappTime)
     {
         
 
         $appointment = Appointment::where('cpUserID', $cpUserID)
             ->where('csUserID', $csUserID)
             ->where('dappDate', $dappDate)
-            ->where('dappTime', $dappTime)
+            ->where('cappTime', $cappTime)
             ->update(['cappStatus' => 'yes']);
             
         // $appointment->cappStatus = 'yes';
@@ -48,12 +48,12 @@ class AppController extends Controller
     return view('pastAppts', ['appointments' => $appointments]);
 }
 
-public function delete(Request $request, $cpUserID, $csUserID, $dappDate, $dappTime)
+public function delete(Request $request, $cpUserID, $csUserID, $dappDate, $cappTime)
 {
     $appointment = Appointment::where('cpUserID', $cpUserID)
         ->where('csUserID', $csUserID)
         ->where('dappDate', $dappDate)
-        ->where('dappTime', $dappTime)
+        ->where('cappTime', $cappTime)
         ->delete();
 
     return redirect()->back()->with('success', 'Appointment deleted successfully.');

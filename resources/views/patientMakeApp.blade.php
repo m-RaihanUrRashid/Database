@@ -179,7 +179,7 @@
 
                 if (spec == {{ $appt -> csUserID }} ) {
                     if (datepicker.value == "{{ $appt->dappDate }}") {
-                        times.push("{{ $appt->dappTime }}");
+                        times.push("{{ $appt->cappTime }}");
                     }
                 }
             //console.log({{ $appt-> dappDate}});

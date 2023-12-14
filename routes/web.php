@@ -11,7 +11,7 @@ use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\PharmaPrescriptionController;
 use App\Http\Controllers\rehabUpdateMyInfoController;
 use App\Http\Controllers\AppController;
-use App\Http\Controllers\PsychiatristController;
+use App\Http\Controllers\PharmaProfileController;
 use App\Http\Controllers\ngoController;
 use App\Http\Controllers\rehabViewSpecialistController;
 use App\Http\Controllers\rehabAddSpecialistController;
@@ -70,15 +70,13 @@ Route::get('/patientProfile', function () {
 # Ikram
 Route::get('/pharmacyHome', function () {
     return view('pharmacyHome');
-});
+})->name('pharmacyHome');
 
 Route::get('/pharmacyPrescriptions', function () {
     return view('pharmacyPrescriptions');
 });
 
-Route::get('/pharmacyProfile', function () {
-    return view('pharmacyProfile');
-});
+Route::get('/pharmacyProfile', [PharmaProfileController::class, 'loadProfile'])->name('loadProfile'); 
 
 Route::get('/admin', function () {
     return view('admin');
@@ -92,11 +90,11 @@ Route::get('/addNGO', function () {
 Route::get('/addRehab', function () {
     return view('addRehab');
 })->name('addRehab');;
-// Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
+// Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{cappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
 
 
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');
-Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
+Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{cappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
 
 Route::get('/pharmacyPrescriptions', [PharmaPrescriptionController::class, 'index'])->name('pharmacyPrescriptions.index');
 
@@ -149,9 +147,9 @@ Route::delete('/prescription/{id}', [PrescriptionController::class, 'destroy'])-
 // Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.view');
 // Route::post('/psychAppt', [AppController::class, 'toggle'])->name('psychAppt.toggle');
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');
-Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
+Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{cappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
 Route::get('/pastAppt', [AppController::class, 'past'])->name('psychAppt.past');
-Route::delete('/psychAppt/delete/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'delete'])->name('psychAppt.delete');
+Route::delete('/psychAppt/delete/{cpUserID}/{csUserID}/{dappDate}/{cappTime}', [AppController::class, 'delete'])->name('psychAppt.delete');
 // Route::post('/psychAppt/togle/{compositeKey}', [AppController::class, 'toggle']  )->name('psychAppt.toggle');
 
 
@@ -198,7 +196,7 @@ Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class ,'updateIn
 #Michael Jackson
 Route::get('/ngo', function () {
     return view('ngo');
-});
+})->name("ngo");
 
 Route::get('/ngo1', function () {
     return view('ngo1');
