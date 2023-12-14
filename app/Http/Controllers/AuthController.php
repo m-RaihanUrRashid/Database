@@ -49,6 +49,8 @@ class AuthController extends Controller
                 return redirect()->intended(route('psychiatristHome'));
             }elseif($user->cType == 'Therapist'){
                 return redirect()->intended(route('therapistdb'));
+            }elseif($user->cType == 'Admin'){
+                return redirect()->intended(route('admin'));
             }/*elseif($user->type == 'Pharmacy'){
                 return redirect()->intended(route('pharmacyHome'));
             }elseif($user->type == 'NGO'){

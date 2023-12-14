@@ -12,6 +12,7 @@ use App\Http\Controllers\PharmaPrescriptionController;
 use App\Http\Controllers\rehabUpdateMyInfoController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\PsychiatristController;
+use App\Http\Controllers\ngoController;
 use App\Http\Controllers\rehabViewSpecialistController;
 use App\Http\Controllers\rehabAddSpecialistController;
 use App\Http\Controllers\rehabRemoveSpecialistController;
@@ -78,6 +79,20 @@ Route::get('/pharmacyPrescriptions', function () {
 Route::get('/pharmacyProfile', function () {
     return view('pharmacyProfile');
 });
+
+Route::get('/admin', function () {
+    return view('admin');
+})->name('admin');;
+Route::get('/addPharma', function () {
+    return view('addPharma');
+})->name('addPharma');;
+Route::get('/addNGO', function () {
+    return view('addNGO');
+})->name('addNGO');;
+Route::get('/addRehab', function () {
+    return view('addRehab');
+})->name('addRehab');;
+// Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
 
 
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');

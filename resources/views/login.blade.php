@@ -17,8 +17,6 @@
     margin-top: 5px;
   }
 
-  /*Literally for the button
-   unnecessary css code*/
   body {
     background: hsl(220deg, 10%, 97%);
     margin: 0;
@@ -46,7 +44,7 @@
     color: hsl(190deg, 10%, 95%);
 
     box-shadow: 0 0px 0px hsla(190deg, 15%, 5%, .2);
-    transfrom: translateY(0);
+    transform: translateY(0);
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -122,7 +120,6 @@
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
-
       <input type="password" class="form-control" id="exampleInputPassword1" name="password">
     </div>
     <button type="submit" class="btn btn-primary" style=background-color:cadetblue;>Login</button>
