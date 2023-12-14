@@ -51,6 +51,13 @@
     <button onclick="rehabUpdateMyInfo()">Update My Information</button>
     <button onclick="rehabManageSpecialist()">Manage Specialist</button>
     <button onclick="rehabViewSpecialists()">View Specialists</button>
+    @if( session('user')->cType == 'Psychiatrist')
+      <button onclick="psychiatrist()" style="position: absolute; right: 0; top: 0; margin: 30px;">Psychiatrist window</button>
+    @endif
+    @if( session('user')->cType == 'Therapist')
+      <button onclick="therapist()" style="position: absolute; right: 0; top: 0; margin: 30px;">Therapist window</button>
+    @endif
+    
     
     
     <script>
@@ -69,6 +76,14 @@
 
       function rehabInfo() {
         window.location.href = "/rehabInfo";
+      }
+
+      function psychiatrist() {
+        window.location.href = "/psychiatristHome";
+      }
+
+      function therapist() {
+        window.location.href = "/therapistdb";
       }
     </script>
 </body>

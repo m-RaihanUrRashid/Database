@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use App\Models\Rehab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -52,12 +53,14 @@ class AuthController extends Controller
                 return redirect()->intended(route('patientHome'));
             } elseif ($user->cType == 'Psychiatrist') {
                 $user = Person::where('cEmail', $request->email)->first();
-                session(['user' => $user]);
-                return redirect()->intended(route('psychiatristHome'));
+                $supervisor = Rehab::where('cSupervisorID', $user->cUserID)->first();
+                session(['user' => $user, 'supervisor'=> $supervisor]);
+                return view('psychiatristHome');
             } elseif ($user->cType == 'Therapist') {
                 $user = Person::where('cEmail', $request->email)->first();
-                session(['user' => $user]);
-                return redirect()->intended(route('therapistdb'));
+                $supervisor = Rehab::where('cSupervisorID', $user->cUserID)->first();
+                session(['user' => $user, 'supervisor'=> $supervisor]);
+                return view('therapistdb');
             } elseif ($user->cType == 'Admin') {
                 return redirect()->intended(route('admin'));
             } elseif ($user->cType == 'Pharmacy') {

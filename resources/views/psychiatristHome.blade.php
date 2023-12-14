@@ -53,7 +53,9 @@
     <button onclick="prescriptionsView()">View Prescriptions</button>
     <button onclick="myInfo()">My Information</button>
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Log Out</button>
-
+    @if( session('supervisor') )
+      <button onclick="supervisor()" style="position: absolute; right: 0; top: 0; margin: 30px;">Supervisor window</button>
+    @endif
 
     <script>
       function psychAppt() {
@@ -79,6 +81,10 @@
       function goHome() {
             window.location.href = "/";
         }
+
+      function supervisor() {
+          window.location.href = "/rehabSupervisorHome";
+      }
     </script>
 </body>
 </html>
