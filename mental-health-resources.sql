@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2023 at 06:20 PM
+-- Generation Time: Dec 14, 2023 at 09:14 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -96,7 +96,8 @@ CREATE TABLE `ngo_t` (
   `cNGO_ID` varchar(7) NOT NULL,
   `cArea` varchar(50) NOT NULL,
   `cAddress` varchar(150) NOT NULL,
-  `cOwner` varchar(20) NOT NULL
+  `cOwner` varchar(20) NOT NULL,
+  `cManagerEmail` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -181,6 +182,7 @@ CREATE TABLE `person_t` (
 
 INSERT INTO `person_t` (`cUserID`, `cFname`, `cLname`, `cGender`, `dDOB`, `cAddress`, `cEmail`, `cType`) VALUES
 ('2234453', 'Gazi', 'Tank', 'Tank', '2023-12-06', 'Dhanmondi', 'gazi@tank.com', 'Therapist'),
+('3958756', 'Admin', 'Boss', 'Code', '1918-11-11', 'Brain', 'admin@super.com', 'Admin'),
 ('3987298', 'Shwondujrp', 'Dhara', 'Female', '2023-12-12', 'Mirpur 1', 'dhara@hotmail.com', 'Psychiatrist'),
 ('4', 'Ikram', 'Hossain', 'Male', '2023-12-07', 'Uttara', 'ikram@abc.com', 'Psychiatrist'),
 ('5098802', 'Steve', 'Carol', 'Car', '2023-12-13', 'Dhaka', 'steve@gmail.com', 'Psychiatrist'),
@@ -210,7 +212,8 @@ CREATE TABLE `pharmacy_t` (
   `cPharmaID` varchar(7) NOT NULL,
   `cPharmaName` varchar(50) NOT NULL,
   `cArea` varchar(50) NOT NULL,
-  `cAddress` varchar(150) NOT NULL
+  `cAddress` varchar(150) NOT NULL,
+  `cManagerEmail` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -374,7 +377,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (4, 'Ikram', 'ikram@abc.com', NULL, '$2y$12$fX1jxc7f5Bf.384QS04B6.1QZzqAJ4sGmgrbDanBzZLj7heTp8JvK', NULL, '2023-12-07 16:18:09', '2023-12-07 16:18:09'),
 (6, 'Steeve', 'steve@gmail.com', NULL, '$2y$12$UQbHOjYWDePaejYIVY3.PeP/wbBnvdQaQtc3nWTlk2b3/C4nEoF0W', NULL, '2023-12-07 22:26:57', '2023-12-07 22:26:57'),
 (7, 'nazifa', 'nazifa@gmail.com', NULL, '$2y$12$oGkyvGh49PJ.320c0BlZeut0hqVSBJgXOEdBaLkALwmoVrQrZnD0a', NULL, '2023-12-07 22:27:33', '2023-12-07 22:27:33'),
-(9, 'Raihan', 'raihan@gmail.com', NULL, '$2y$12$dAKYQUkxKunq6PjIypxaPOtRaeYfHeHojL9kl0MOAqqSm3oPqPvX6', NULL, '2023-12-13 11:17:18', '2023-12-13 11:17:18');
+(9, 'Raihan', 'raihan@gmail.com', NULL, '$2y$12$dAKYQUkxKunq6PjIypxaPOtRaeYfHeHojL9kl0MOAqqSm3oPqPvX6', NULL, '2023-12-13 11:17:18', '2023-12-13 11:17:18'),
+(10, 'Admin', 'admin@super.com', NULL, '$2y$12$lzQtpKUDNaT6fATET7L6auFuuOBJB.L5.j4J6OjYl994zSUQKtl8m', NULL, '2023-12-13 17:02:21', '2023-12-13 17:02:21');
 
 --
 -- Indexes for dumped tables
@@ -543,7 +547,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
