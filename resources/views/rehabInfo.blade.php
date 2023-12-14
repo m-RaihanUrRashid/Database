@@ -43,16 +43,16 @@
 
 <body>
     <h1>My Information</h1>
-    <p> Name:  {{session('user')->cFname}} 
-    {{session('user')->cLname}} </p>
+    <p> Name:  {{$specialist->cFname}} 
+    {{$specialist->cLname}} </p>
     <br>
-    <p> Date of Birth:  {{session('user')->dDOB}} </p>
+    <p> Date of Birth:  {{$specialist->dDOB}} </p>
     <br>
-    <p> Gender:  {{session('user')->cGender}} </p>
+    <p> Gender:  {{$specialist->cGender}} </p>
     <br>
-    <p> Address:  {{session('user')->cAddress}} </p>
+    <p> Address:  {{$specialist->cAddress}} </p>
     <br>
-    <p> Email:  {{session('user')->cEmail}} </p>
+    <p> Email:  {{$specialist->cEmail}} </p>
 
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 

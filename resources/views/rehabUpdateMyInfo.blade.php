@@ -72,24 +72,24 @@
         <div class="d-flex">
             <div style="margin: 42px">
                 <label for="Fname">First Name:</label>
-                <input type="text" id="Fname" name="Fname" value="{{ session('user')->cFname }}">
+                <input type="text" id="Fname" name="Fname" value="{{ $specialist->cFname }}">
 
                 <label for="Lname">Last Name:</label>
-                <input type="text" id="Lname" name="Lname" value="{{ session('user')->cLname }}">
+                <input type="text" id="Lname" name="Lname" value="{{ $specialist->cLname }}">
 
                 <label for="DOB">Date of Birth:</label>
-                <input type="text" id="DOB" name="DOB" value="{{ session('user')->dDOB }}">
+                <input type="text" id="DOB" name="DOB" value="{{ $specialist->dDOB }}">
 
             </div>
             <div style="margin: 42px">
                 <label for="Gender">Gender:</label>
-                <input type="text" id="Gender" name="Gender" value="{{ session('user')->cGender }}">
+                <input type="text" id="Gender" name="Gender" value="{{ $specialist->cGender }}">
 
                 <label for="Address">Address:</label>
-                <input type="text" id="Address" name="Address" value="{{ session('user')->cAddress }}">
+                <input type="text" id="Address" name="Address" value="{{ $specialist->cAddress }}">
 
                 <label for="Email">Email:</label>
-                <input type="text" id="Email" name="Email" value="{{ session('user')->cEmail }}">
+                <input type="text" id="Email" name="Email" value="{{ $specialist->cEmail }}">
             </div>
         </div>
         <div class="container" style="justify-items: center;">

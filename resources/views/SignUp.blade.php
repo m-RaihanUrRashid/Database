@@ -49,7 +49,7 @@
 <div class="parent">
   <div style="margin: 30px; width: 300px;">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Fist name: </label>
+      <label for="exampleInputEmail1" class="form-label">First name: </label>
       <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp" name="fname">
     </div>
     <div class="mb-3">

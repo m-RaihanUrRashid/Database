@@ -21,6 +21,7 @@ class Specialist extends Model
         'cExperience',
         'cOff_Address',
         'cType',
+        'cArea',
     ];
 
     public function specsPat()

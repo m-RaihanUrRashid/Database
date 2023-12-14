@@ -16,7 +16,7 @@ use App\Http\Controllers\ngoController;
 use App\Http\Controllers\rehabViewSpecialistController;
 use App\Http\Controllers\rehabAddSpecialistController;
 use App\Http\Controllers\rehabRemoveSpecialistController;
-
+use App\Http\Controllers\rehabInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -156,8 +156,6 @@ Route::delete('/psychAppt/delete/{cpUserID}/{csUserID}/{dappDate}/{cappTime}', [
 Route::get('/psychInfo', [App\Http\Controllers\PsychiatristController::class, 'index'])->name('psychInfo.index');
 
 
-
-
 #Nazifa
 Route::get('/rehabSupervisorHome', function () {
     return view('rehabSupervisorHome');
@@ -165,14 +163,6 @@ Route::get('/rehabSupervisorHome', function () {
 
 Route::get('/rehabManageSpecialist', function () {
     return view('rehabManageSpecialist');
-});
-
-Route::get('/rehabInfo', function () {
-    return view('rehabInfo');
-});
-
-Route::get('/rehabUpdateMyInfo', function () {
-    return view('rehabUpdateMyInfo');
 });
 
 Route::get('/rehabAddSpecialist', function () {
@@ -190,15 +180,10 @@ Route::get('/rehabViewSpecialists', [rehabViewSpecialistController::class, 'view
 Route::get('/rehabRemoveSpecialist', [rehabRemoveSpecialistController::class, 'viewSpecialist'])->name('remove.specialist');
 Route::delete('/rehabRemoveSpecialist/{csUserID}', [rehabRemoveSpecialistController::class, 'removeSpecialist'])->name('destroy.specialist');
 
-//Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class ,'updateInformation'])->name('update.information');
-
-//Route::get('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class , 'showUpdateForm'])->name('rehabUpdateMyInfo'); #new
+Route::get('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class , 'loadInfo'])->name('rehabUpdateMyInfo'); #new
 Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController:: class, 'updateInformation'])->name('rehabUpdateMyInfo.post'); #new
 
-Route::get('/rehabUpdateMyInfo', function () {
-    return view('rehabUpdateMyInfo');
-});
-
+Route::get('/rehabInfo', [rehabInfoController::class , 'loadInfo'])->name('rehabInfo'); #new
 
 #Michael Jackson
 Route::get('/ngo', function () {

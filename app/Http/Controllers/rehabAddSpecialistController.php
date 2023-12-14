@@ -7,7 +7,7 @@ use App\Models\Specialist;
 use Illuminate\Http\Request;
 
 class rehabAddSpecialistController extends Controller
-{ // rehabAddSpecialistController.php
+{ 
 
     public function addSpecialist(Request $request)
     {
@@ -31,6 +31,10 @@ class rehabAddSpecialistController extends Controller
         $person->cUserID = $request->input('specialistID');
         $person->cAddress = $request->input('homeAddress');
         $person->cType = $request->input('Type');
+        $person->cGender = $request->input('cGender');
+
+
+
 
         $person->save();
 
@@ -40,6 +44,7 @@ class rehabAddSpecialistController extends Controller
         $specialist->cExperience = $request->input('Experience');
         $specialist->cOff_Address = $request->input('officeAddress');
         $specialist->cType = $request->input('Type');
+        $specialist->cArea = $request->input('cArea');
 
         $specialist->save();
 

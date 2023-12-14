@@ -92,6 +92,12 @@
                 <label for="Lname">Lname:</label>
                 <input type="text" id="Lname" name="Lname">
 
+                <label for="cGender">Gender:</label>
+                <input type="text" id="cGender" name="cGender">
+
+                <label for="cArea">General Area:</label>
+                <input type="text" id="cArea" name="cArea">
+
             </div>
             <div style="margin: 42px">
                 <label for="cOff_Address">Address:</label>
