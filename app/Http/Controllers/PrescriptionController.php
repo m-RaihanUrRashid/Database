@@ -37,7 +37,8 @@ class PrescriptionController extends Controller
         $prescription->dIssueDate = now();
         $prescription->cpUserID = $request->input('cpUserID');
       
-        $prescription->cpsUserID =$user-> cUserID; ;
+        $prescription->cpsUserID =$user-> cUserID; 
+        $prescription -> cDelivered = "no";
         $prescription->save();
  
         foreach ($medicines as $medicine) {
