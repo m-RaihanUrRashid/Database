@@ -2,26 +2,60 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointment;
 use Illuminate\Http\Request;
+use App\Models\PharmaContact;
 
 class PharmaProfileController extends Controller
 {
-    public function loadProfile(Request $request){
+    public function pharmaLoadProfile(Request $request)
+    {
         $user = $request->session()->get('user');
-        return view("pharmacyHome" , ["user"=> $user]);
+        $contacts = PharmaContact::where('cPharmaID', $user->cPharmaID)->get();
+        return view("pharmacyProfile", ["user" => $user, "contacts" => $contacts]);
     }
 
-    public function destroy(Request $request, $cpUserID, $csUserID, $dappDate, $cappTime){
+    public function updateProfile(Request $request)
+    {
+        $user = $request->session()->get('user');
+        $request->validate([
+            'contacts' => 'required|array',
+        ]);
+
+        $oldContacts = PharmaContact::where('cPharmaID', $user->cPharmaID)->get();
+        $newContacts = $request->input('contacts');
+        $i = 0;
+        foreach ($oldContacts as $tempContact) {
+            PharmaContact::where('cPharmaID', $user->cPharmaID)
+            ->where('cContact', $tempContact->cContact)
+            ->update(['cContact' => $newContacts[$i]]);
+            $i++;
+        }
+
+        if(count($oldContacts) < count($newContacts)){
+            for ($i = count($oldContacts); $i < count($newContacts); $i++) {
+                $pharmaContact = new PharmaContact();
+                $pharmaContact->cPharmaID = $user->cPharmaID;;
+                $pharmaContact->cContact = $newContacts[$i];
+                $pharmaContact->save();
+            }
+        }
         
+        $contacts = PharmaContact::where('cPharmaID', $user->cPharmaID)->get();
+        return view("pharmacyProfile", ["user" => $user, "contacts" => $contacts]);
+    }
+
+
+    public function destroy(Request $request, $cpUserID, $csUserID, $dappDate, $cappTime)
+    {
+
         $user = $request->session()->get('user');
 
-        $app = Appointment::where('cpUserID', $user->cUserID)
-                    ->where('csUserID', $csUserID)
-                    ->where('dappDate', $dappDate)
-                    ->where('cappTime', $cappTime)
-                    ->delete();
+        // $app = Appointment::where('cpUserID', $user->cUserID)
+        //             ->where('csUserID', $csUserID)
+        //             ->where('dappDate', $dappDate)
+        //             ->where('cappTime', $cappTime)
+        //             ->delete();
 
-        return redirect()->route('loadApps')->with('success','Appointment Deleted');
+        return redirect()->route('loadApps')->with('success', 'Appointment Deleted');
     }
 }

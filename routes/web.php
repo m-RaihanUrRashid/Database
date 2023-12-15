@@ -12,6 +12,7 @@ use App\Http\Controllers\PharmaPrescriptionController;
 use App\Http\Controllers\rehabUpdateMyInfoController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\PharmaProfileController;
+use App\Http\Controllers\PharmaPrescController;
 use App\Http\Controllers\ngoController;
 use App\Http\Controllers\rehabViewSpecialistController;
 use App\Http\Controllers\rehabAddSpecialistController;
@@ -72,11 +73,11 @@ Route::get('/pharmacyHome', function () {
     return view('pharmacyHome');
 })->name('pharmacyHome');
 
-Route::get('/pharmacyPrescriptions', function () {
-    return view('pharmacyPrescriptions');
-});
+Route::get('/pharmacyPrescriptions', [PharmaPrescController::class, 'pharmaLoadPresc'])->name('pharmaLoadPresc');
+Route::post('/pharmacyPrescriptions/{id}', [PharmaPrescController::class, 'pharmaUpdatePresc'])->name('pharmaUpdatePresc');
 
-Route::get('/pharmacyProfile', [PharmaProfileController::class, 'loadProfile'])->name('loadProfile'); 
+Route::get('/pharmacyProfile', [PharmaProfileController::class, 'pharmaLoadProfile'])->name('pharmaLoadProfile'); 
+Route::post('/pharmacyProfile', [PharmaProfileController::class, 'updateProfile'])->name('pharmaUpdateProfile');
 
 Route::get('/admin', function () {
     return view('admin');
@@ -95,9 +96,6 @@ Route::get('/addRehab', function () {
 
 Route::get('/psychAppt', [AppController::class, 'view'])->name('psychAppt.index');
 Route::post('/psychAppt/toggle/{cpUserID}/{csUserID}/{dappDate}/{cappTime}', [AppController::class, 'toggle'])->name('psychAppt.toggle');
-
-Route::get('/pharmacyPrescriptions', [PharmaPrescriptionController::class, 'index'])->name('pharmacyPrescriptions.index');
-
 
 # Gazi
 Route::get('/therapistHome', function () {

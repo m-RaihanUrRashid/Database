@@ -31,14 +31,15 @@ class PrescriptionController extends Controller
         $medicines = $request->input('medicines');
 
         $prescription = new Prescription();
-        $id = substr(hexdec(uniqid()),9,16);
+        $id = strval(mt_rand(1000000, 9999999));
         $prescription->cPrescID =$id ; 
       
         $prescription->dIssueDate = now();
         $prescription->cpUserID = $request->input('cpUserID');
       
         $prescription->cpsUserID =$user-> cUserID; 
-        $prescription -> cDelivered = "no";
+        $prescription -> cDelivered = "No";
+        // dd($prescription, $medicines);
         $prescription->save();
 
  

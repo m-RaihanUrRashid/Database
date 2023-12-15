@@ -44,7 +44,6 @@ class AuthController extends Controller
         // dd($user, $credentials);
 
         if (Auth::attempt($credentials)) {
-
             // session(['user' => $user]);
 
             if ($user->cType == 'Patient') {
@@ -96,7 +95,7 @@ class AuthController extends Controller
             'address' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'mHistory' => 'nullable',
+            'mHistory' => 'required',
         ]);
 
         $patient = new Patient();
@@ -106,8 +105,8 @@ class AuthController extends Controller
         $patient->cpUserID = $person->cUserID;
         $person->cFname = $request->fname;
         $person->cLname = $request->lname;
-        $person->dDOB = $request->DOB;
         $person->cGender = $request->gender;
+        $person->dDOB = $request->DOB;
         $person->cAddress = $request->address;
         $person->cEmail = $request->email;
         $person->cType = "Patient";
@@ -117,6 +116,7 @@ class AuthController extends Controller
         $patient->cArea = $request->g_area;
         $patient->save();
 
+        $data['cType'] = "Patient";
         $data['name'] = $request->fname;
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password);

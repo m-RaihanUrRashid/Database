@@ -95,34 +95,36 @@
 </head>
 
 <body>
-
     <h1 id="heading">My Profile</h1>
     <button class="load" onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
-    <form class="load" id="pharmacyForm">
+    @if ($errors->has('contacts'))
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->get('contacts') as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    <form class="load" id="pharmacyForm" action="{{ route('pharmaUpdateProfile') }}" method="post">
+        @csrf
         <div class="d-flex">
-            <div style="margin: 42px">
+            <div id="info-container" style="margin: 42px">
                 <label for="pharmacyName">Pharmacy Name:</label>
-                <input type="text" id="pharmacyName" name="pharmacyName" readonly>
+                <input type="text" id="pharmacyName" name="pharmacyName" value="{{session()->get('user')->cPharmaName;}}" readonly>
 
-                <label for="street">Street:</label>
-                <input type="text" id="street" name="street" readonly>
+                <label for="area">Area:</label>
+                <input type="text" id="area" name="area" value="{{session()->get('user')->cArea;}}" readonly>
 
-                <label for="road">Road:</label>
-                <input type="text" id="road" name="road" readonly>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" value="{{session()->get('user')->cAddress;}}" readonly>
             </div>
-            <div style="margin: 42px">
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" readonly>
-
-                <label for="contact1">Contact #1:</label>
-                <input type="text" id="contact1" name="contact1" readonly>
-
-                <label for="contact2">Contact #2:</label>
-                <input type="text" id="contact2" name="contact2" readonly>
-
-                <label for="contact3">Contact #3:</label>
-                <input type="text" id="contact3" name="contact3" readonly>
+            <div id="contact-container" style="margin: 42px">
+                @foreach($contacts as $contact)
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contacts[]" value="{{ $contact->getAttributes()['cContact'] }}" readonly>
+                @endforeach
             </div>
         </div>
         <div class="container" style="justify-items: center;">
@@ -130,7 +132,10 @@
                 <button type="button" onclick="enableEditing()">Edit Info</button>
             </div>
             <div style="margin: 10px">
-                <button type="submit" id="saveBtn" style="display: none;" onclick="submitForm()">Save Changes</button>
+                <button type="button" onclick="addContact()" id="contactBtn" style="display: none;">Add New Contact</button>
+            </div>
+            <div style="margin: 10px">
+                <button type="submit" id="saveBtn" style="display: none;">Save Changes</button>
             </div>
         </div>
     </form>
@@ -145,21 +150,19 @@
             }
 
             document.getElementById('saveBtn').style.display = 'block';
+            document.getElementById('contactBtn').style.display = 'block';
         }
 
-        function submitForm() {
-            alert('Changes saved!');
+        function addContact() {
+            var container = document.getElementById('contact-container');
+            var newContact = document.createElement('div');
+            // newContact.classList.add('medicine-input-container');
+            newContact.innerHTML = `
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contacts[]">
+            `;
+            container.appendChild(newContact);
         }
-
-        window.onload = function() {
-            document.getElementById('pharmacyName').value = 'My Pharmacy';
-            document.getElementById('street').value = 'Main Street';
-            document.getElementById('road').value = 'Aftabuddin Ahmed Road';
-            document.getElementById('city').value = 'Dhaka';
-            document.getElementById('contact1').value = '+8801784553315';
-            document.getElementById('contact2').value = '+8801784553315';
-            document.getElementById('contact3').value = '+8801784553315';
-        };
 
         function goHome() {
             window.location.href = "/pharmacyHome";

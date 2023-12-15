@@ -17,7 +17,8 @@ class Prescription extends Model
         'cPrescID',
         'dIssueDate',
         'cpUserID',
-        'cpsUserID'
+        'cpsUserID',
+        'cDelivered'
     ];
 
 
