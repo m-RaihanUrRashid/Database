@@ -45,6 +45,12 @@
 </head>
 <body>
 
+@if(session()->has('success'))
+        <div class="alert alert-danger" role="alert"> 
+            {{session('success')}}
+        </div>
+    @endif
+
     <h1>Welcome, Psychiatrist!</h1>
 
     <button onclick="psychAppt()">My Appointments</button>

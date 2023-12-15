@@ -40,6 +40,7 @@ class PrescriptionController extends Controller
         $prescription->cpsUserID =$user-> cUserID; 
         $prescription -> cDelivered = "no";
         $prescription->save();
+
  
         foreach ($medicines as $medicine) {
             $prescriptionMedicine = new PrescriptionMedicine();
@@ -49,7 +50,9 @@ class PrescriptionController extends Controller
         }
 
        
-        return response()->json(['message' => 'Prescription created successfully'], 200);
+        //return response()->json(['message' => 'Prescription created successfully'], 200);
+        return  redirect()->route('psychiatristHome')  ->with('success' , 'Prescription added.');
+
     }
 
     public function showPrescriptions(Request $request)
