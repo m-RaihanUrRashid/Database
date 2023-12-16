@@ -3,6 +3,9 @@ This is a student project for the Database Management System course, Department 
 
 This web application aims to showcase the uses of relational database systems in real life; namely to help people find mental health resources.
 
+# Link to the paper
+[View the paper on Overleaf!](https://www.overleaf.com/project/652a632a6ece88dceabf1d30)
+
 # Team
 - Showndorjo Dhara
 
@@ -12,7 +15,7 @@ This web application aims to showcase the uses of relational database systems in
 
 - Mohammad Gazi Mobasher
 
-- Mohammad Raihan Ur Rashid
+- Mohammed Raihan Ur Rashid
 
 - Marcel Jupiter Gomes
 
