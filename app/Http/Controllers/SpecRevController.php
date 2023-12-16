@@ -41,7 +41,7 @@ class SpecRevController extends Controller
             return view('patientReviewSpec', ['seenSpec' => $specs]);
         }else {
             // Handle the case where no patient specialties are found
-            return redirect(route('patientHome'))->with('error', 'No specialties found for the patient.');
+            return redirect(route('patientHome'))->with('error', 'No specialist(s) found for the patient.');
         }
     }
 

@@ -45,6 +45,12 @@
 </head>
 <body>
 
+@if(session()->has('success'))
+        <div class="alert alert-danger" role="alert"> 
+            {{session('success')}}
+        </div>
+    @endif
+
     <h1>Welcome, Psychiatrist!</h1>
 
     <button onclick="psychAppt()">My Appointments</button>
@@ -53,7 +59,9 @@
     <button onclick="prescriptionsView()">View Prescriptions</button>
     <button onclick="myInfo()">My Information</button>
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Log Out</button>
-
+    @if( session('supervisor') )
+      <button onclick="supervisor()" style="position: absolute; right: 0; top: 0; margin: 30px;">Supervisor window</button>
+    @endif
 
     <script>
       function psychAppt() {
@@ -79,6 +87,10 @@
       function goHome() {
             window.location.href = "/";
         }
+
+      function supervisor() {
+          window.location.href = "/rehabSupervisorHome";
+      }
     </script>
 </body>
 </html>

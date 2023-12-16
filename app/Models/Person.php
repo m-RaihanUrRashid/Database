@@ -10,6 +10,7 @@ class Person extends Model
     use HasFactory;
 
     protected $table = "person_t";
+    protected $primaryKey = 'cUserID';
     public $timestamps = false;
 
 
@@ -18,12 +19,13 @@ class Person extends Model
         'cFname',
         'cLname',
         'dDOB',
+        'cGender',
         'cAddress',
         'cEmail',
         'cType',
     ];
 
-    public function specs()
+    public function specialist()
     {
         return $this->hasMany(Specialist::class);
     }

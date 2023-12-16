@@ -21,6 +21,7 @@ class Rehab extends Model
         'cRoad',
         'cCity',
         'cSupervisor',
+        'cNGO_ID',
     ];
 
     public function specs()

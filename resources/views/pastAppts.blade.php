@@ -72,7 +72,7 @@
                 <td>{{ $appointment->cpUserID }}</td>
                 <td>{{ $appointment->csUserID }}</td>
                 <td>{{ $appointment->dappDate }}</td>
-                <td>{{ $appointment->dappTime }}</td>
+                <td>{{ $appointment->cappTime }}</td>
                 
                 
                     

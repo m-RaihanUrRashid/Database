@@ -71,30 +71,29 @@
 </head>
 
 <body>
-    @if(session()->has('error'))
-        <div class="alert alert-danger" role="alert"> 
-            {{session('error')}}
-        </div>
-    @endif
 
-    <h1>Welcome, Pharmacist!</h1>
+    <h1>Welcome, Admin!</h1>
 
     <button class="load" onclick="logOut()" style="position: absolute; left: 0; top: 0; margin: 30px;">Log Out</button>
-    <button class="load" onclick="pharmaProfile()">My Profile</button>
-    <button class="load" onclick="prescriptions()">Prescriptions</button>
+    <button class="load" onclick="addPharma()">Add Pharmacy</button>
+    <button class="load" onclick="addNGO()">Add NGO Owner</button>
+    <button class="load" onclick="addRehab()">Add Rehab Centre</button>
 
     <script>
-        function pharmaProfile() {
-            window.location.href = "/pharmacyProfile";
+        function addPharma() {
+            window.location.href = "/addPharma";
         }
 
-        function prescriptions() {
-            window.location.href = "/pharmacyPrescriptions";
+        function addNGO() {
+            window.location.href = "/addNGO";
+        }
+
+        function addRehab() {
+            window.location.href = "/addRehab";
         }
 
         function logOut() {
             window.location.href = "/";
-            console.log("AAAA")
         }
 
     </script>

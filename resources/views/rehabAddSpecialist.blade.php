@@ -18,7 +18,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: 125vh;
         }
 
         h1 {
@@ -30,7 +30,7 @@
 
         form {
             background-color: white;
-            padding: 20px;
+            
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -58,6 +58,16 @@
             justify-content: center;
             align-items: center;
         }
+
+        #datepicker {
+            border-radius: 5px;
+        }
+
+        #time {
+            border-radius: 5px;
+            width: 70px;
+            height: 23px;
+        }
     </style>
 
 </head>
@@ -67,44 +77,50 @@
     <h1 id="heading">Add Specialist</h1>
 
     <form id="AddSpecialistForm" method="post" action="{{ route('add.specialist') }}">
-    @csrf <!-- Include CSRF token field in the form -->
+        @csrf <!-- Include CSRF token field in the form -->
         <div class="d-flex">
             <div style="margin: 42px">
                 <label for="csUserID">ID:</label>
-                <input type="text" id="csUserID" name="specialistID" >
+                <input type="text" id="csUserID" name="specialistID">
 
                 <label for="cExperience">Experience:</label>
-                <input type="text" id="cExperience" name="Experience" >
+                <input type="text" id="cExperience" name="Experience">
 
                 <label for="Fname">Fname:</label>
-                <input type="text" id="Fname" name="Fname" >
+                <input type="text" id="Fname" name="Fname">
 
                 <label for="Lname">Lname:</label>
-                <input type="text" id="Lname" name="Lname" >
+                <input type="text" id="Lname" name="Lname">
+
+                <label for="cGender">Gender:</label>
+                <input type="text" id="cGender" name="cGender">
+
+                <label for="cArea">General Area:</label>
+                <input type="text" id="cArea" name="cArea">
 
             </div>
             <div style="margin: 42px">
                 <label for="cOff_Address">Address:</label>
-                <input type="text" id="cOff_Address" name="officeAddress" >
+                <input type="text" id="cOff_Address" name="officeAddress">
 
                 <label for="cType">Type:</label>
-                <input type="text" id="cType" name="Type" >
+                <input type="text" id="cType" name="Type">
 
-                <label for="DOB">DOB:</label>
-                <input type="text" id="DOB" name="DOB" >
+                <label for="datepicker">DOB:</label>
+                <input type="date" id="DOB" name="datepicker">
 
                 <label for="Email">Email:</label>
-                <input type="text" id="Email" name="Email" >
+                <input type="text" id="Email" name="Email">
 
                 <label for="cAddress">Home address:</label>
-                <input type="text" id="cAddress" name="homeAddress" >
+                <input type="text" id="cAddress" name="homeAddress">
 
             </div>
         </div>
         <div class="container" style="justify-items: center;">
             <div style="margin: 10px">
-                
-                <button type="submit">Save Changes</button> 
+
+                <button type="submit">Save Changes</button>
             </div>
 
         </div>
@@ -127,5 +143,4 @@
 </body>
 
 </html>
-
 @endsection

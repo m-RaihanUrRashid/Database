@@ -124,7 +124,7 @@
                 </table>
                 <button onclick="goHome()" style="font-size: 20px; margin: 30px;">Back to Home</button>
             </div>*/ ?>
-            <div style="bg-color: white;">
+            <div style="background-color: white;">
                 <p><h4>Review of Specialist:</h4></p>
                 <label>Rating: </label>
                 <select id="rating" class="styled-select" name="rating">

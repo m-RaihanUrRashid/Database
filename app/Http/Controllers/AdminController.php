@@ -13,29 +13,32 @@ use App\Models\Ngo;
 use App\Models\Pharma;
 
 
-class AuthController extends Controller
+class AdminController extends Controller
 {
-    function login()
+    function addPharma() 
     {
-        return view('login');
+        return view('addPharma');
+    }
+    
+    function addRehab()
+    {
+        return view('addRehab');
     }
 
-    function signUp()
+    function addNGO()
     {
-        return view('signUp');
+        return view('addNGO');
     }
 
-    function patientHome()
-    {
-        return view('patientHome');
-    }
-
-    function loginPost(Request $request)
+    function newPharma(Request $request)
     {
         $request->validate([
-            'email' => 'required',
-            'password' => 'required'
+            'pharmacyName' => 'required',
+            'area' => 'required',
+            'address' => 'required',
+            'contacts' => 'array'
         ]);
+        dd($request);
 
         $user = null;
         $user = User::where('email', $request->email)->first();

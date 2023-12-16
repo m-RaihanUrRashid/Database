@@ -82,75 +82,46 @@
             justify-content: center;
             align-items: center;
         }
-
-        .medicine-container {
-            margin: 20px;
-        }
-
-        .medicine-input-container {
-            margin-bottom: 20px;
-        }
     </style>
 
 </head>
 
 <body>
-    <h1 id="heading">My Profile</h1>
+
+    <h1 id="heading">Add Pharmacy</h1>
     <button class="load" onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
-    @if ($errors->has('contacts'))
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->get('contacts') as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-    <form class="load" id="pharmacyForm" action="{{ route('pharmaUpdateProfile') }}" method="post">
+    <form class="load" id="pharmacyForm" action="{{ route('addPharma.save') }}" method="post">
         @csrf
         <div class="d-flex">
-            <div id="info-container" style="margin: 42px">
+            <div style="margin: 42px">
                 <label for="pharmacyName">Pharmacy Name:</label>
-                <input type="text" id="pharmacyName" name="pharmacyName" value="{{$user->cPharmaName;}}" readonly>
+                <input type="text" id="pharmacyName" name="pharmacyName">
 
                 <label for="area">Area:</label>
-                <input type="text" id="area" name="area" value="{{$user->cArea;}}" readonly>
+                <input type="text" id="area" name="area">
 
                 <label for="address">Address:</label>
-                <input type="text" id="address" name="address" value="{{$user->cAddress;}}" readonly>
+                <input type="text" id="address" name="address">
             </div>
             <div id="contact-container" style="margin: 42px">
-                @foreach($contacts as $contact)
                 <label for="contact">Contact:</label>
-                <input type="text" id="contact" name="contacts[]" value="{{ $contact->getAttributes()['cContact'] }}" readonly>
-                @endforeach
+                <input type="text" id="contact" name="contacts[]">
             </div>
         </div>
         <div class="container" style="justify-items: center;">
             <div style="margin: 10px">
-                <button type="button" onclick="enableEditing()">Edit Info</button>
+                <button type="button" onclick="addContact()" id="contactBtn">Add New Contact</button>
             </div>
             <div style="margin: 10px">
-                <button type="button" onclick="addContact()" id="contactBtn" style="display: none;">Add New Contact</button>
-            </div>
-            <div style="margin: 10px">
-                <button type="submit" id="saveBtn" style="display: none;">Save Changes</button>
+                <button type="submit" id="saveBtn">Add New Pharmacy</button>
             </div>
         </div>
     </form>
 
     <script>
-        function enableEditing() {
-            var form = document.getElementById('pharmacyForm');
-            var inputs = form.querySelectorAll('input[readonly]');
-
-            for (var i = 0; i < inputs.length; i++) {
-                inputs[i].removeAttribute('readonly');
-            }
-
-            document.getElementById('saveBtn').style.display = 'block';
-            document.getElementById('contactBtn').style.display = 'block';
+        function goHome() {
+            window.location.href = "/admin";
         }
 
         function addContact() {
@@ -161,10 +132,6 @@
             <input type="text" id="contact" name="contacts[]">
             `;
             container.appendChild(newContact);
-        }
-
-        function goHome() {
-            window.location.href = "/pharmacyHome";
         }
     </script>
 

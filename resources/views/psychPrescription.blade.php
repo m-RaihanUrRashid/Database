@@ -103,9 +103,7 @@
         function goHome() {
             window.location.href = "/psychiatristHome";
         }
-    </script>
-
-    <script>
+        
         function addMedicine() {
             var medicinesContainer = document.getElementById('medicinesContainer');
             var newMedicineInput = document.createElement('div');

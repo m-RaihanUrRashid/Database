@@ -66,40 +66,39 @@
 
     <h1 id="heading">Update Information</h1>
 
-    <form id="InformationForm" method="post" action="{{ route('update.information') }}">
-    @csrf <!-- Include CSRF token field in the form -->
+    <!-- rehabUpdateMyInfo.blade.php -->
+    <form method="post" action="{{ route('rehabUpdateMyInfo.post') }}"> <!-- new  -->
+        @csrf
         <div class="d-flex">
             <div style="margin: 42px">
-                <label for="supervisorName">Name:</label>
-                <input type="text" id="supervisorName" name="supervisorName" >
+                <label for="Fname">First Name:</label>
+                <input type="text" id="Fname" name="Fname" value="{{ $specialist->cFname }}">
 
-                <label for="Title">Title:</label>
-                <input type="text" id="Title" name="Title" >
+                <label for="Lname">Last Name:</label>
+                <input type="text" id="Lname" name="Lname" value="{{ $specialist->cLname }}">
 
-                <label for="officeAddress">Office Address:</label>
-                <input type="text" id="officeAddress" name="officeAddress" >
-
+                <label for="DOB">Date of Birth:</label>
+                <input type="text" id="DOB" name="DOB" value="{{ $specialist->dDOB }}">
 
             </div>
             <div style="margin: 42px">
-                <label for="ID">ID No:</label>
-                <input type="text" id="ID" name="ID" >
+                <label for="Gender">Gender:</label>
+                <input type="text" id="Gender" name="Gender" value="{{ $specialist->cGender }}">
 
-                <label for="contactNo">Contact No:</label>
-                <input type="text" id="contactNo" name="contactNo" >
+                <label for="Address">Address:</label>
+                <input type="text" id="Address" name="Address" value="{{ $specialist->cAddress }}">
 
-                <label for="rehab">Rehab:</label>
-                <input type="text" id="rehab" name="rehab" >
+                <label for="Email">Email:</label>
+                <input type="text" id="Email" name="Email" value="{{ $specialist->cEmail }}">
             </div>
         </div>
         <div class="container" style="justify-items: center;">
             <div style="margin: 10px">
-                <!--<button type="button" onclick="saveChanges()">Save Changes</button> -->
-                <button type="submit">Save Changes</button> <!-- Change to type="submit" -->
+                <button type="submit">Update Information</button>
             </div>
-
         </div>
     </form>
+
 
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 

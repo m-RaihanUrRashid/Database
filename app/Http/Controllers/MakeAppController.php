@@ -37,16 +37,16 @@ class MakeAppController extends Controller
 
         
         $appointment = new Appointment();
-        $appointment->cpUserID = $user->cpUserID;
+        $appointment->cpUserID = $user->cUserID;
         $appointment->csUserID = $request->input('spec');
-        //$appointment->dappDate = Carbon::parse($request->input('date'));
-        $appointment->dappTime = $request->input('time');
+        $appointment->dappDate = Carbon::parse($request->input('date'));
+        $appointment->cappTime = $request->input('time');
         $appointment->cappStatus= "no";
         $appointment->save();
         
         return response()->json(['status' => 'success']);
 
-        //return redirect(route('patientHome'));
+        //return view('patientHome')->with('appmade', "Appointment Created!");
        
     }
 

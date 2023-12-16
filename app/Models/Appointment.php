@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
-    protected $primaryKey = ['cpUserID', 'csUserID', 'dappDate', 'dappTime'];
+    protected $primaryKey = ['cpUserID', 'csUserID', 'dappDate', 'cappTime'];
     use HasFactory;
     protected $table = "appointment_t";
     public $timestamps = False;
@@ -17,7 +17,7 @@ class Appointment extends Model
         'cpUserID',
         'csUserID',
         'dappDate',
-        'dappTime',
+        'cappTime',
         'cappStatus'
     ];
 
@@ -33,6 +33,6 @@ class Appointment extends Model
 
         public function specialist()
         {
-            return $this->belongsTo(Specialist::class);
+            return $this->belongsTo(Specialist::class, 'csUserID', 'csUserID');
         }
 }

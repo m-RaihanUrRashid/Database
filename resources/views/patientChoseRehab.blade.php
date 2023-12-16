@@ -78,36 +78,35 @@
     <div>
         <h4>Chose a Rehab Centre with your preferred location:</h4><br>
     </div>
-    <table class="table table-hover" id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
-        <thead style="background-color: #3366CC; color: #fff; border-bottom: 2px solid lightblue;">
-            <tr >
-                <th style="padding: 6px;">Rehab ID</th>
-                <th style="padding: 6px;">Name</th>
-                <th style="padding: 6px;">Location</th>
-                <th style="padding: 6px;">Speciality(ies)</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="clickable-row" onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
-                <td>1234</td>
-                <td>Dhanmondi Major Rehab Center</td>
-                <td> Address</td>
-                <td>Alcoholism<br>Drug Addiction</td>
-
-                
-            </tr>
-            <tr class="clickable-row" onclick="markAsDone(2)" style="margin: 10px; background-color: #fff;">
-                <td>3456</td>
-                <td>Chittaong Apollo Rehab</td>
-                <td> Address</td>
-                <td>Substance Abuse and Addiction<br> Eating disorders</td>
-               
-            </tr>
-        </tbody>
-    </table>
     <div>
-        <button type="button" style="font-size: 20px;"> Make Appointment </button>
+        <form class="d-flex align-items-center justify-content-center" action="">
+        <table class="table table-hover" id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
+            <thead style="background-color: #3366CC; color: #fff; border-bottom: 2px solid lightblue;">
+                <tr >
+                    <th style="padding: 6px;">Rehab ID</th>
+                    <th style="padding: 6px;">Name</th>
+                    <th style="padding: 6px;">Location</th>
+                    <th style="padding: 6px; text-align: center;">Admit</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($rehabs as $rehab)
+                    <tr class="clickable-row" onclick="markAsDone(1)" style="margin: 10px; background-color: #fff; border-bottom: 1px solid lightgrey;">
+                        <td>{{$rehab->cRehabID}}</td>
+                        <td>{{$rehab->RehabName}}</td>
+                        <td>{{$rehab->cStreet.', '.$rehab->cRoad.', '.$rehab->cCity}}</td>
+                        <td style="text-align: center;">
+                            <button type="submit" id="selectBtn" name="selectedRowId" value="{{ $rehab }}">Admit</button>
+                        </td>
+                    </tr>
+                @endforeach
+
+            </tbody>
+        </table>
+        </form>
+    </div>
+    <div>
         <button onclick="goHome()" style="font-size: 20px; margin: 30px;">Back to Home</button>
 
     </div>

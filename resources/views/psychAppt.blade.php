@@ -72,14 +72,14 @@
                 <td>{{ $appointment->cpUserID }}</td>
                 <td>{{ $appointment->csUserID }}</td>
                 <td>{{ $appointment->dappDate }}</td>
-                <td>{{ $appointment->dappTime }}</td>
+                <td>{{ $appointment->cappTime }}</td>
 
                 <td style="text-align: center;">
                     <form method="post" action="{{ route('psychAppt.toggle', [
                         'cpUserID' => $appointment->cpUserID,
                         'csUserID' => $appointment->csUserID,
                         'dappDate' => $appointment->dappDate,
-                        'dappTime' => $appointment->dappTime,
+                        'cappTime' => $appointment->cappTime,
                     ]) }}">
                         @csrf
                         @method('post')
@@ -90,7 +90,7 @@
                             'cpUserID' => $appointment->cpUserID,
                             'csUserID' => $appointment->csUserID,
                             'dappDate' => $appointment->dappDate,
-                            'dappTime' => $appointment->dappTime,
+                            'cappTime' => $appointment->cappTime,
                         ]) }}" style="margin-top: 5px;">
                         @csrf
                         @method('delete')

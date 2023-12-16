@@ -43,13 +43,16 @@
 
 <body>
     <h1>My Information</h1>
-    <p>Nazifa Chowdhury</p>
-    <p>Head Supervisor</p>
-    <p>Office Address: Dhanmondi 4 number road</p>
-    <p>ID No: 000000</p>
-    <p>Contact No: 01752549080</p>
-    <p>Rehab: MS paint rehab ltd</p>
-
+    <p> Name:  {{$specialist->cFname}} 
+    {{$specialist->cLname}} </p>
+    <br>
+    <p> Date of Birth:  {{$specialist->dDOB}} </p>
+    <br>
+    <p> Gender:  {{$specialist->cGender}} </p>
+    <br>
+    <p> Address:  {{$specialist->cAddress}} </p>
+    <br>
+    <p> Email:  {{$specialist->cEmail}} </p>
 
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
