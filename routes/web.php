@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdmitRehabController;
 use App\Http\Controllers\CheckAppntController;
+use App\Http\Controllers\PatientProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SpecRevController;
@@ -49,9 +50,15 @@ Route::get('/patientMakeApp', [MakeAppController::class, 'loadSpecs'])->name('lo
 Route::post('/patientMakeApp', [MakeAppController::class, 'saveApp'])->name('saveApp');
 
 Route::get('/patientCheckApp', [CheckAppntController::class, 'loadApps'])->name('loadApps');
-Route::delete('/patientCheckApp', [CheckAppntController::class, 'destroy'])->name('destroy.app');
+Route::delete('/patientCheckApp/destry/{cpUserID}/{csUserID}/{dappDate}/{cappTime}', [CheckAppntController::class, 'destroy'])->name('destroy.app');
 
 Route::get('/patientChoseRehab', [AdmitRehabController::class, 'loadRehabs'])->name('loadRehabs');
+
+Route::get('/patientProfile', [PatientProfileController::class, 'viewInfo'])->name('patientProfile.viewInfo');
+
+Route::get('/patientProfileEdit', [PatientProfileController::class, 'editViewInfo'])->name('editViewInfo');
+Route::post('/patientProfileEdit', [PatientProfileController::class, 'updateInfo'])->name('patientProfile.updateInfo'); 
+
 
 Route::get('/patientHome', function () {
     return view('patientHome');
@@ -65,9 +72,9 @@ Route::get('/calendar.calendar', function () {
     return view('calendar.calendar');
 });
 
-Route::get('/patientProfile', function () {
-    return view('patientProfile');
-});
+// Route::get('/patientProfile', function () {
+//     return view('patientProfile');
+// });
 
 # Ikram
 Route::get('/pharmacyHome', function () {
@@ -82,13 +89,13 @@ Route::post('/pharmacyProfile', [PharmaProfileController::class, 'updateProfile'
 
 Route::get('/admin', function () {
     return view('admin');
-})->name('admin');;
+})->name('admin');
 
 Route::get('/addPharma', [AdminController::class, 'addPharma'])->name('addPharma');;
 Route::post('/addPharma', [AdminController::class, 'newPharma'])->name('addPharma.save');
-Route::get('/addNGO', function () {
-    return view('addNGO');
-})->name('addNGO');;
+Route::get('/addNGO', [AdminController::class, 'addNGO'])->name('addNGO');;
+Route::post('/addNGO', [AdminController::class, 'newNGO'])->name('addNGO.save');
+
 Route::get('/addRehab', function () {
     return view('addRehab');
 })->name('addRehab');;
@@ -197,4 +204,5 @@ Route::get('/ngo', function () {
 Route::get('/ngo1', function () {
     return view('ngo1');
 });
-Route::get('/rehabs', [ngoController::class, 'index'])->name('rehabs.index');
+Route::get('/rehabs', [NgoController::class, 'index'])->name('rehabs.index');
+Route::post('/rehab/store', [NgoController::class, 'store'])->name('rehab.store');

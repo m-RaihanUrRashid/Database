@@ -10,6 +10,9 @@ class Patient extends Model
     use HasFactory;
 
     protected $table = "patient_t";
+
+    protected $primaryKey = "cpUserID";
+
     public $timestamps = false;
     protected $primaryKey = 'cpUserID';
 

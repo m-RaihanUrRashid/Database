@@ -49,9 +49,6 @@
 @endif
 
 <div class="parent">
-    <form method="post" action="{{ route('destroy.app') }}">
-        @csrf
-        @method('DELETE')
         <div class="d-flex justify-content-center">
             <table class="table table-hover" id="specialistid" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
                 <thead style="background-color: #3366CC; color: #fff; border-bottom: 2px solid lightblue;">
@@ -86,7 +83,7 @@
                             <td>{{$app->dappDate}}</td>
                             <td>{{$app->cappTime}}</td>
                             <td>
-                                <form method="post" action="{{ route('psychAppt.delete', [
+                                <form method="post" action="{{ route('destroy.app', [
                                     'cpUserID' => $app->cpUserID,
                                     'csUserID' => $app->csUserID,
                                     'dappDate' => $app->dappDate,
@@ -102,7 +99,7 @@
                 </tbody>
             </table>
         </div>
-    </form>
+    <!-- </form> -->
 </div>
 
 <script>

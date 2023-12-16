@@ -2,28 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Patient;
 use App\Models\Rehab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use App\Models\Person;
 use App\Models\Ngo;
+use App\Models\NgoContact;
+use App\Models\NgoHotline;
 use App\Models\Pharma;
+use App\Models\PharmaContact;
 
 
 class AdminController extends Controller
 {
-    function addPharma() 
+    function addPharma()
     {
         return view('addPharma');
     }
-    
-    function addRehab()
-    {
-        return view('addRehab');
-    }
+
+    // function addRehab()
+    // {
+    //     return view('addRehab');
+    // }
 
     function addNGO()
     {
@@ -36,98 +37,80 @@ class AdminController extends Controller
             'pharmacyName' => 'required',
             'area' => 'required',
             'address' => 'required',
+            'email' => 'required',
+            'password' => 'required',
             'contacts' => 'array'
         ]);
-        dd($request);
 
-        $user = null;
-        $user = User::where('email', $request->email)->first();
-        $credentials = $request->only('email', 'password');
+        $pharma = new Pharma();
+        $newID = strval(mt_rand(1000000, 9999999));
+        $pharma->cPharmaID = $newID;
+        $pharma->cPharmaName = $request->pharmacyName;
+        $pharma->cArea = $request->area;
+        $pharma->cAddress = $request->address;
+        $pharma->cManagerEmail = $request->email;
+        $pharma->save();
 
-        // dd($user, $credentials);
-
-        if (Auth::attempt($credentials)) {
-            // session(['user' => $user]);
-
-            if ($user->cType == 'Patient') {
-                $user = Person::where('cEmail', $request->email)->first();
-                session(['user' => $user]);
-                return redirect()->intended(route('patientHome'));
-            } elseif ($user->cType == 'Psychiatrist') {
-                $user = Person::where('cEmail', $request->email)->first();
-                $supervisor = Rehab::where('cSupervisorID', $user->cUserID)->first();
-                session(['user' => $user, 'supervisor'=> $supervisor]);
-                return view('psychiatristHome');
-            } elseif ($user->cType == 'Therapist') {
-                $user = Person::where('cEmail', $request->email)->first();
-                $supervisor = Rehab::where('cSupervisorID', $user->cUserID)->first();
-                session(['user' => $user, 'supervisor'=> $supervisor]);
-                return view('therapistdb');
-            } elseif ($user->cType == 'Admin') {
-                return redirect()->intended(route('admin'));
-            } elseif ($user->cType == 'Pharmacy') {
-                $user = Pharma::where('cManagerEmail', $request->email)->first();
-                session(['user' => $user]);
-                return redirect()->intended(route('pharmacyHome'));
-            } elseif ($user->cType == 'NGO') {
-                $user = Ngo::where('cManagerEmail', $request->email)->first();
-                session(['user' => $user]);
-                return redirect()->intended(route('ngo'));
-            }
-            /*
-            Might not need this, as supervisor manages rehab
-
-            elseif ($user->cType == 'Rehab') {
-                return redirect()->intended(route('rehabSupervisorHome'));
-            }
-            
-            */
+        $cArr = $request->contacts;
+        for ($i = 0; $i < count($cArr); $i++) {
+            $pharmaC = new PharmaContact();
+            $pharmaC->cPharmaID = $newID;
+            $pharmaC->cContact = $cArr[$i];
+            $pharmaC->save();
         }
 
+        $data['cType'] = "Pharmacy";
+        $data['name'] = $request->pharmacyName;
+        $data['email'] = $request->email;
+        $data['password'] = Hash::make($request->password);
+        User::create($data);
 
-        return redirect(route('login'))->with("error", "Wrong Email or Password");
+        return view('addPharma');
     }
 
-    function signUpPost(Request $request)
+    function newNGO(Request $request)
     {
         $request->validate([
-            'fname' => 'required',
-            'lname' => 'required',
-            'DOB' => 'required',
-            'gender' => 'required',
+            'owner' => 'required',
+            'area' => 'required',
             'address' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'mHistory' => 'required',
+            'contacts' => 'array',
+            'hotlines' => 'array'
         ]);
 
-        $patient = new Patient();
-        $person = new Person();
+        $ngo = new Ngo();
+        $newID = strval(mt_rand(1000000, 9999999));
+        $ngo->cNGO_ID = $newID;
+        $ngo->cOwner = $request->owner;
+        $ngo->cArea = $request->area;
+        $ngo->cAddress = $request->address;
+        $ngo->cManagerEmail = $request->email;
+        $ngo->save();
 
-        $person->cUserID = strval(mt_rand(1000000, 9999999));
-        $patient->cpUserID = $person->cUserID;
-        $person->cFname = $request->fname;
-        $person->cLname = $request->lname;
-        $person->cGender = $request->gender;
-        $person->dDOB = $request->DOB;
-        $person->cAddress = $request->address;
-        $person->cEmail = $request->email;
-        $person->cType = "Patient";
-        $person->save();
+        $cArr = $request->contacts;
+        for ($i = 0; $i < count($cArr); $i++) {
+            $ngoC = new NgoContact();
+            $ngoC->cNGO_ID = $newID;
+            $ngoC->cContact = $cArr[$i];
+            $ngoC->save();
+        }
 
-        $patient->cMedicalHistory = $request->mHistory;
-        $patient->cArea = $request->g_area;
-        $patient->save();
+        $hArr = $request->hotlines;
+        for ($i = 0; $i < count($hArr); $i++) {
+            $ngoC = new NgoHotline();
+            $ngoC->cNGO_ID = $newID;
+            $ngoC->cSP_Hotline = $hArr[$i];
+            $ngoC->save();
+        }
 
-        $data['cType'] = "Patient";
-        $data['name'] = $request->fname;
+        $data['cType'] = "NGO";
+        $data['name'] = $request->owner;
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password);
-        $user = User::create($data);
+        User::create($data);
 
-        if (!$user) {
-            return redirect(route('signUp'))->with("error", "Retry");
-        }
-        return redirect(route('login'))->with("success", "Success! You can login now.");
+        return view('addNGO');
     }
 }
