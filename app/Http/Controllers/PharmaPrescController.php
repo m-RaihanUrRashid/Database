@@ -15,7 +15,6 @@ class PharmaPrescController extends Controller
         $prescriptions = Prescription::join('patient_t', 'prescription_t.cpUserID', '=', 'patient_t.cpUserID')
             ->where('patient_t.cArea', '=', $myArea)
             ->get(['prescription_t.*']);
-
         $prescriptionData = [];
 
         foreach ($prescriptions as $prescription) {

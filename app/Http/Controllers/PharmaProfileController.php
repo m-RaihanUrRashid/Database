@@ -51,6 +51,7 @@ class PharmaProfileController extends Controller
 
         $contacts = PharmaContact::where('cPharmaID', $user->cPharmaID)->get();
         $user = Pharma::where('cPharmaID', $user->cPharmaID)->first();
+        $request->session()->put('user', $user);
         return view("pharmacyProfile", ["user" => $user, "contacts" => $contacts]);
     }
 
