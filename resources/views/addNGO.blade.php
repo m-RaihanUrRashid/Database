@@ -91,7 +91,8 @@
     <h1 id="heading">Add NGO</h1>
     <button class="load" onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
-    <form class="load" id="NGOForm">
+    <form class="load" id="NGOForm" action="{{ route('addNGO.save') }}" method="post">
+        @csrf
         <div class="d-flex">
             <div style="margin: 42px">
                 <label for="owner">NGO Owner</label>
@@ -102,31 +103,31 @@
 
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="address">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
             </div>
-            <div style="margin: 42px">
-                <label for="contact1">Contact #1:</label>
-                <input type="text" id="contact1" name="contact1">
-
-                <label for="contact2">Contact #2:</label>
-                <input type="text" id="contact2" name="contact2">
-
-                <label for="contact3">Contact #3:</label>
-                <input type="text" id="contact3" name="contact3">
+            <div id="contact-container" style="margin: 42px">
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contacts[]">
             </div>
-            <div style="margin: 42px">
-                <label for="hotline1">Hotline #1:</label>
-                <input type="text" id="hotline1" name="hotline1">
-
-                <label for="hotline2">Hotline #2:</label>
-                <input type="text" id="hotline2" name="hotline2">
-
-                <label for="hotline3">Hotline #3:</label>
-                <input type="text" id="hotline3" name="hotline3">
+            <div id="hotline-container" style="margin: 42px">
+                <label for="hotline">Hotline:</label>
+                <input type="text" id="hotline" name="hotlines[]">
             </div>
         </div>
         <div class="container" style="justify-items: center;">
             <div style="margin: 10px">
-                <button type="submit" id="saveBtn">Add New Pharmacist</button>
+                <button type="button" onclick="addContact()" id="contactBtn">Add New Contact</button>
+            </div>
+            <div style="margin: 10px">
+                <button type="button" onclick="addHotline()" id="contactBtn">Add New Hotline</button>
+            </div>
+            <div style="margin: 10px">
+                <button type="submit" id="saveBtn">Add New NGO</button>
             </div>
         </div>
     </form>
@@ -134,6 +135,26 @@
     <script>
         function goHome() {
             window.location.href = "/admin";
+        }
+
+        function addContact() {
+            var container = document.getElementById('contact-container');
+            var newContact = document.createElement('div');
+            newContact.innerHTML = `
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contacts[]">
+            `;
+            container.appendChild(newContact);
+        }
+
+        function addHotline() {
+            var container = document.getElementById('hotline-container');
+            var newHotline = document.createElement('div');
+            newHotline.innerHTML = `
+            <label for="hotline">Hotline:</label>
+            <input type="text" id="hotline" name="hotlines[]">
+            `;
+            container.appendChild(newHotline);
         }
     </script>
 

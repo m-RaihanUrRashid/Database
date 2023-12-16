@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2023 at 10:15 AM
+-- Generation Time: Dec 16, 2023 at 12:22 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -73,6 +73,14 @@ CREATE TABLE `ngo_contact_t` (
   `cContact` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `ngo_contact_t`
+--
+
+INSERT INTO `ngo_contact_t` (`cNGO_ID`, `cContact`) VALUES
+('6238988', '01256345988'),
+('6238988', '01798952147');
+
 -- --------------------------------------------------------
 
 --
@@ -84,6 +92,14 @@ CREATE TABLE `ngo_hotline_t` (
   `cNGO_ID` varchar(7) NOT NULL,
   `cSP_Hotline` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ngo_hotline_t`
+--
+
+INSERT INTO `ngo_hotline_t` (`cNGO_ID`, `cSP_Hotline`) VALUES
+('6238988', '01558877449'),
+('6238988', '88553346128');
 
 -- --------------------------------------------------------
 
@@ -105,7 +121,8 @@ CREATE TABLE `ngo_t` (
 --
 
 INSERT INTO `ngo_t` (`cNGO_ID`, `cArea`, `cAddress`, `cOwner`, `cManagerEmail`) VALUES
-('1', 'Uttara', 'House 88, Road 6/A, Sector 5, Uttara, Dhaka', 'Nguyen', 'ngo@abc.com');
+('1', 'Uttara', 'House 88, Road 6/A, Sector 5, Uttara, Dhaka', 'Nguyen', 'ngo@abc.com'),
+('6238988', 'Bashundhara R/A', 'IUB, Block B, Bashundhara R/A', 'Marcel', 'marcel@abc.com');
 
 -- --------------------------------------------------------
 
@@ -228,7 +245,9 @@ CREATE TABLE `pharmacy_contact_t` (
 INSERT INTO `pharmacy_contact_t` (`cPharmaID`, `cContact`) VALUES
 ('1', '01234567888'),
 ('1', '01798952147'),
-('1', '09876543211');
+('1', '09876543211'),
+('4101340', '01256345988'),
+('4101340', '09876543211');
 
 -- --------------------------------------------------------
 
@@ -250,7 +269,8 @@ CREATE TABLE `pharmacy_t` (
 --
 
 INSERT INTO `pharmacy_t` (`cPharmaID`, `cPharmaName`, `cArea`, `cAddress`, `cManagerEmail`) VALUES
-('1', 'Razz Pharma', 'Uttara', 'House 150, Road 50, Sector 3, Uttara', 'pharma@abc.com');
+('1', 'Razz Pharma', 'Uttara', 'House 150, Road 50, Sector 3, Uttara', 'pharma@abc.com'),
+('4101340', 'Mannan Pharmacy', 'Bashundhara R/A', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'mannan@abc.com');
 
 -- --------------------------------------------------------
 
@@ -269,7 +289,10 @@ CREATE TABLE `prescription_med_t` (
 --
 
 INSERT INTO `prescription_med_t` (`cPrescID`, `cMedicine`) VALUES
-('5389668', 'Napa');
+('5389668', 'Napa'),
+('9241433', 'Ceevit'),
+('9241433', 'Fexo'),
+('9241433', 'Napa');
 
 -- --------------------------------------------------------
 
@@ -291,7 +314,8 @@ CREATE TABLE `prescription_t` (
 --
 
 INSERT INTO `prescription_t` (`cPrescID`, `dIssueDate`, `cpUserID`, `cpsUserID`, `cDelivered`) VALUES
-('5389668', '2023-12-15', '9796158', '4', 'Yes');
+('5389668', '2023-12-15', '9796158', '4', 'Yes'),
+('9241433', '2023-12-16', '7995226', '4', 'No');
 
 -- --------------------------------------------------------
 
@@ -461,7 +485,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (10, 'Admin', 'admin@super.com', NULL, '$2y$12$lzQtpKUDNaT6fATET7L6auFuuOBJB.L5.j4J6OjYl994zSUQKtl8m', NULL, '2023-12-13 17:02:21', '2023-12-13 17:02:21', 'Admin'),
 (13, 'Walter', 'pharma@abc.com', NULL, '$2y$12$p6x9V9pFIYuJd9qC4CoSxucB4kGzQwqWawabR2.fWkb6R0VmR9T3W', NULL, '2023-12-14 03:15:42', '2023-12-14 03:15:42', 'Pharmacy'),
 (14, 'Nguyen', 'ngo@abc.com', NULL, '$2y$12$P7oPfwLHWY9kVdkvD0gD9O1swA695DOaxzNZW6xJH5b732Ri5Yox2', NULL, '2023-12-14 03:15:54', '2023-12-14 03:15:54', 'NGO'),
-(16, 'Pat', 'pat@abc.com', NULL, '$2y$12$1S6gIeYHXy7LZd1YkSpaGOPvRypuwrW4zgRWesWiMlz/uuAykYOAG', NULL, '2023-12-15 13:08:09', '2023-12-15 13:08:09', 'Patient');
+(16, 'Pat', 'pat@abc.com', NULL, '$2y$12$1S6gIeYHXy7LZd1YkSpaGOPvRypuwrW4zgRWesWiMlz/uuAykYOAG', NULL, '2023-12-15 13:08:09', '2023-12-15 13:08:09', 'Patient'),
+(22, 'Mannan Pharmacy', 'mannan@abc.com', NULL, '$2y$12$0sgd4EoF9e2aa9WkWyTjt.YjwVHscHOnV4r2rp/IDp2wwaZWkvy2G', NULL, '2023-12-16 04:11:27', '2023-12-16 04:11:27', 'Pharmacy'),
+(23, 'Marcel', 'marcel@abc.com', NULL, '$2y$12$PFp.BV.XobY109oOz0Jn9emYvnhkz4OlzbTobJqRTrFqeHIbkDX0u', NULL, '2023-12-16 05:20:16', '2023-12-16 05:20:16', 'NGO');
 
 --
 -- Indexes for dumped tables
@@ -630,7 +656,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables

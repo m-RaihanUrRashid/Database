@@ -103,6 +103,12 @@
 
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="address">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
             </div>
             <div id="contact-container" style="margin: 42px">
                 <label for="contact">Contact:</label>

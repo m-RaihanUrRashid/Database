@@ -82,13 +82,13 @@ Route::post('/pharmacyProfile', [PharmaProfileController::class, 'updateProfile'
 
 Route::get('/admin', function () {
     return view('admin');
-})->name('admin');;
+})->name('admin');
 
 Route::get('/addPharma', [AdminController::class, 'addPharma'])->name('addPharma');;
 Route::post('/addPharma', [AdminController::class, 'newPharma'])->name('addPharma.save');
-Route::get('/addNGO', function () {
-    return view('addNGO');
-})->name('addNGO');;
+Route::get('/addNGO', [AdminController::class, 'addNGO'])->name('addNGO');;
+Route::post('/addNGO', [AdminController::class, 'newNGO'])->name('addNGO.save');
+
 Route::get('/addRehab', function () {
     return view('addRehab');
 })->name('addRehab');;
