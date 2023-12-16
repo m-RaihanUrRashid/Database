@@ -16,7 +16,8 @@ class Note extends Model
 
         'ctsUserID',
         'cpUserID',
-        'cNotes'
+        'cNotes',
+        'dDate',
 
     ];
 

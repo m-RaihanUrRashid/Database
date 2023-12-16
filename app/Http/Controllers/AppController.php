@@ -29,9 +29,6 @@ class AppController extends Controller
             ->where('cappTime', $cappTime)
             ->update(['cappStatus' => 'yes']);
             
-        // $appointment->cappStatus = 'yes';
-        // dd($appointment);
-        // $appointment->save();
         
         return redirect()->back()->with('success', 'Appointment status updated.');
     }
@@ -57,5 +54,25 @@ public function delete(Request $request, $cpUserID, $csUserID, $dappDate, $cappT
         ->delete();
 
     return redirect()->back()->with('success', 'Appointment deleted successfully.');
+}
+
+    public function tview(Request $request)
+    {
+        $user = $request->session()->get('user');
+
+        $appointments = Appointment::where('csUserID', $user->cUserID)
+        ->where('cappStatus', 'no')
+        ->get();
+        return view('therapistHome', ['appointments' => $appointments]);
+    }
+    public function tpast(Request $request)
+{
+    $user = $request->session()->get('user');
+
+    $appointments = Appointment::where('csUserID', $user->cUserID)
+        ->where('cappStatus', 'yes')
+        ->get();
+
+    return view('therapistpa', ['appointments' => $appointments]);
 }
 }

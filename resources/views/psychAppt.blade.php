@@ -86,17 +86,17 @@
                         <button class="btn" type="submit" name="markasdone">Mark As Done</button>
                     </form>
 
-                        <form method="post" action="{{ route('psychAppt.delete', [
+                    <form method="post" action="{{ route('psychAppt.delete', [
                             'cpUserID' => $appointment->cpUserID,
                             'csUserID' => $appointment->csUserID,
                             'dappDate' => $appointment->dappDate,
                             'cappTime' => $appointment->cappTime,
                         ]) }}" style="margin-top: 5px;">
-                            @csrf
-                            @method('delete')
-                            <button class="btn" type="submit" name="delete">Delete</button>
-                        </form>
-                    </td>
+                        @csrf
+                        @method('delete')
+                        <button class="btn" type="submit" name="delete">Delete</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

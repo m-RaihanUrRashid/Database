@@ -88,10 +88,11 @@
 
 <body>
 
-    <h1 id="heading">Add Pharmacist</h1>
+    <h1 id="heading">Add Pharmacy</h1>
     <button class="load" onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 
-    <form class="load" id="pharmacyForm">
+    <form class="load" id="pharmacyForm" action="{{ route('addPharma.save') }}" method="post">
+        @csrf
         <div class="d-flex">
             <div style="margin: 42px">
                 <label for="pharmacyName">Pharmacy Name:</label>
@@ -102,21 +103,24 @@
 
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="address">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
             </div>
-            <div style="margin: 42px">
-                <label for="contact1">Contact #1:</label>
-                <input type="text" id="contact1" name="contact1">
-
-                <label for="contact2">Contact #2:</label>
-                <input type="text" id="contact2" name="contact2">
-
-                <label for="contact3">Contact #3:</label>
-                <input type="text" id="contact3" name="contact3">
+            <div id="contact-container" style="margin: 42px">
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contacts[]">
             </div>
         </div>
         <div class="container" style="justify-items: center;">
             <div style="margin: 10px">
-                <button type="submit" id="saveBtn">Add New Pharmacist</button>
+                <button type="button" onclick="addContact()" id="contactBtn">Add New Contact</button>
+            </div>
+            <div style="margin: 10px">
+                <button type="submit" id="saveBtn">Add New Pharmacy</button>
             </div>
         </div>
     </form>
@@ -124,6 +128,16 @@
     <script>
         function goHome() {
             window.location.href = "/admin";
+        }
+
+        function addContact() {
+            var container = document.getElementById('contact-container');
+            var newContact = document.createElement('div');
+            newContact.innerHTML = `
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contacts[]">
+            `;
+            container.appendChild(newContact);
         }
     </script>
 

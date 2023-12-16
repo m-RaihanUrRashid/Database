@@ -184,7 +184,14 @@
         background-color: cadetblue; /* Change the background color */
         color: white;
         cursor: pointer;
-        margin-bottom: 100px;}
+        margin-bottom: 40px;}
+
+    .sbm:hover{
+        background-color: #095151!important;
+        color: black;
+        transition: 0.2s!important;
+    }
+
 </style>
 
 
@@ -193,8 +200,15 @@
     @csrf
     @method('post')
     <!-- Input box with a label -->
-    <label for="Therapist ID">Therapist ID</label>
-    <input type="text" name="ctsUserID" placeholder="Enter Therapist ID" pattern="[0-9]+" title="Please enter only numbers" required><br>
+    <label for="Therapist ID">Therapist Name</label>
+    <div style = "border: 1.2px solid darkblue; padding: 10px">
+    <label>{{ session('user')->cFname.' '.session('user')->cLname }}</label>
+    </div> <br> 
+
+    @if(session()->has('error'))
+      {{ session('error') }}
+      <br> <br>
+    @endif
 
     <label for="Patient ID">Patient ID</label>
     <input type="text" name="cpUserID" placeholder="Enter Patient ID" pattern="[0-9]+" title="Please enter only numbers" required><br>
@@ -204,8 +218,13 @@
 
     <div style = "align-items: center; text-align: center;">
     <input type="submit" value="Create" class="sbm" />
+    
     </div>
 </form>
+
+<div style = "text-align: center">
+<button type="submit" class = "sbm"><a style = "text-decoration: none; color: white;" href = "http://127.0.0.1:8000/thnotes">See Chart</a></button>
+</div>
 
 
 

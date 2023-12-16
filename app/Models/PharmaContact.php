@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class PharmaContact extends Model
 {
-
+    
     use HasFactory;
-
+    
     protected $table = "pharmacy_contact_t";
-    public $timestamps = False;
     protected $primaryKey = ['cPharmaID', 'cContact'];
+    public $incrementing = False;
+    public $timestamps = False;
     protected $fillable = [
         'cPharmaID',
         'cContact'
@@ -20,6 +21,6 @@ class PharmaContact extends Model
 
     public function PharmaContact()
     {
-        return $this->belongsTo(Ngo::class);
+        return $this->belongsTo(Pharma::class);
     }
 }
