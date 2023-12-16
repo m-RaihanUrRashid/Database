@@ -63,16 +63,12 @@ class NoteController extends Controller
 
     public function update(Request $request, $ctsUserID, $cpUserID){
 
-        $user = $request->session()->get('user');
 
         $note = Note::where('ctsUserID', $ctsUserID)
-        ->where('cpUserID', $cpUserID)->first();
+        ->where('cpUserID', $cpUserID)->update(['cNotes' => $request->input('cNotes')]);
 
-        $note->cNotes = $request->input('cNotes');
-        $note->dDate = now();
 
-        $note->save();
-        return redirect()->route('therapistdb')->with('success', 'Information updated successfully');
+        return redirect()->route('note.index')->with('success', 'Information updated successfully');
 
     }
 
