@@ -9,7 +9,7 @@ class NgoController extends Controller
 {
     public function index() {
         $ngoId = Auth::user()->ngo_id;
-        $rehabs = Rehab::where('ngo_id', $ngoId)->get();
+        $rehabs = Rehab::where('NGO ID', $ngoId)->get();
         return view('rehabs.index', compact('rehabs'));
     }
 
