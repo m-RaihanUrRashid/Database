@@ -143,7 +143,7 @@
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/notebook.png" width="30" height="30" alt="nb"></div>
-            <a href="http://127.0.0.1:8000/therapistnotes">Notes</a> 
+            <a href="http://127.0.0.1:8000/thnotes/create">Notes</a> 
         </section>
         <span class="navb"></span>
         <section style= "display: flex;">
@@ -185,8 +185,10 @@
 <br>
 
 <div>
-<p>ID: 003300</p>
-<p>Name: Gazi Muhammad Mobasher</p>
-<p>Location: Dhanmondi 4 Number Road</p>
-<p>Email: 2221407@iub.edu.bd</p>
+<p>User ID: {{ $therapistData->ctsUserID }}</p>
+<p>Name: {{ $therapistData->cFname }} {{ $therapistData->cLname }}</p>
+<p>Email: {{ $therapistData->cEmail }}</p>
+<p>Type: {{ $therapistData->cType }}</p>
+<p>Experience: {{ $therapistData->cExperience }}</p>
+<p>cSpeciality: {{ $therapistData->cSpeciality }}</p>
 </div>

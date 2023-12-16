@@ -154,3 +154,12 @@
 </div> <br>
 
 <h2 style="text-align: center;">Please hover upward to navigate.</h2>
+
+@if(session('supervisor')')
+      <button onclick="supervisor()" style="position: absolute; right: 0; top: 0; margin: 30px;">Supervisor window</button>
+    @endif
+<script>
+function supervisor() {
+          window.location.href = "/rehabSupervisorHome";
+      }
+</script>

@@ -13,6 +13,8 @@ use App\Http\Controllers\PsychiatristController;
 use App\Http\Controllers\rehabViewSpecialistController;
 
 use App\Http\Controllers\rehabAddSpecialistController;
+use App\Http\Controllers\TherapistController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -105,13 +107,17 @@ Route::get('/therapistdb', function () {
 Route::get('/therapistcalendar', function () {
     return view('therapistcalendar');
 });
-Route::get('/therapistprofile', function () {
-    return view('therapistprofile');
-});
+
+Route::get('/therapistprofile', [TherapistController::class, 'index'])->name('th.index');
+Route::post('/therapistHome/toggle/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'toggle'])->name('therapistHome.toggle');
+Route::delete('/therapistHome/delete/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'delete'])->name('therapistHome.delete');
+Route::get('/therapistHome', [AppController::class, 'tview'])->name('tHome.tview');
+Route::get('/therapistpa', [AppController::class, 'tpast'])->name('th.past');
 Route::get('/thnotes', [NoteController::class, 'index'])->name('note.index');
 Route::get('/thnotes/create', [NoteController::class, 'create'])->name('note.create');
 Route::post('/thnotes/create', [NoteController::class, 'store'])->name('note.store');
 Route::get('/thnotes/edit', [NoteController::class, 'edit'])->name('note.edit');
+Route::delete('/thnotes/{ctsUserID}/{cpUserID}/{cNotes}/{dDate}', [NoteController::class, 'delete'])->name('note.destroy');
 
 # Dhara
 

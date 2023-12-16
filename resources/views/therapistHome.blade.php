@@ -128,7 +128,7 @@
         <span class="navb"></span>
         <section style= "display: flex;">
             <div style= "padding-top: 6.5px;"> <img src="/img/notebook.png" width="30" height="30" alt="nb"></div>
-            <a href="http://127.0.0.1:8000/thnotes">Notes</a> 
+            <a href="http://127.0.0.1:8000/thnotes/create">Notes</a> 
         </section>
         <span class="navb"></span>
         <section style= "display: flex;">
@@ -146,9 +146,9 @@
 
 <h1 style="text-align: center;">Appointment Section</h1> <br> <br> <br>
 
-<section style="display: flex; margin-bottom: 5%">
-    <p style="font-size: 1.5em; padding-left: 170px; margin-bottom: 0%">Appointment Chart</p>
-    <a href="http://127.0.0.1:8000/therapistcalendar"><button class="eb">Edit</button></a>
+<section style="display: flex; margin: 0 auto;">
+    <p style="font-size: 1.5em; margin-left: 170px; padding-right: 40px">Appointment Chart</p>
+    <a href="http://127.0.0.1:8000/therapistpa"><button class="eb">See Past Appointments</button></a>
 </section>
 
 <!-- Appointment table properties -->
@@ -156,7 +156,6 @@
     /* Add a border to all cells */
     table{
         width: 80%; /* Set the width of the table */
-        height: 500px;
         border-collapse: collapse; /* Collapse the borders */
         margin: 20px; /* Add margin for spacing */
         margin: 0 auto;
@@ -173,111 +172,71 @@
     .buttonbox{
         border-radius:  10px;
         width: 80%;
-        height: 500px;
         margin: 20px; /* Add margin for spacing */
         margin: 0 auto;
         margin-bottom: 80px;
         background-color: azure;
     }
-    th:hover{color:blue; cursor: pointer; transition: 0.2s!important;}
-    td:hover{color:blue; cursor: pointer; transition: 0.2s!important;}
+    .buttonbox, table{
+        height: 70px;
+    }
+
 </style>
 
 <!-- Appointment table -->
 <div class="buttonbox"; style="width: 95%;">
-    <table border="2">
-    <thead>
-        <tr>
-            <th>Patient ID</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Contact</th>
-            <th>Condition</th>
-        </tr>
-        
-    </thead>
+    <table id="prescriptionsTable" style="width: 70%; table-layout: fixed; border-collapse: collapse;">
+        <thead style="background-color: #3498db; color: #fff; border-bottom: 2px solid lightblue;">
+            <tr>
+                <th style="padding: 6px;">Patient ID</th>
+                <th style="padding: 6px;">psych ID</th>
+                <th style="padding: 6px;">Date</th>
+                <th style="padding: 6px;">Time</th>
+                <th style="padding: 6px;">Actions</th>
+            </tr>
+        </thead>
     <tbody>
+        @foreach($appointments as $appointment)
         <tr>
-            <th>patientID1</th>
-            <td>29/11/23</td>
-            <td>9:30 - 11:00 AM</td>
-            <td>Marcel</td>
-            <td>Farmgate</td>
-            <td>01834523699</td>
-            <td>Good</td>
-        </tr>
+            <td>{{ $appointment->cpUserID }}</td>
+            <td>{{ $appointment->csUserID }}</td>
+            <td>{{ $appointment->dappDate }}</td>
+            <td>{{ $appointment->dappTime }}</td>
 
-        <tr>
-            <th>patientID2</th>
-            <td>30/11/23</td>
-            <td>11:30 - 1:00 PM</td>
-            <td>Dhara</td>
-            <td>Mirpur</td>
-            <td>01834523699</td>
-            <td>Bad</td>
-        </tr>
+            <td>
+                <form method="post" action="{{ route('therapistHome.toggle', [
+                    'cpUserID' => $appointment->cpUserID,
+                    'csUserID' => $appointment->csUserID,
+                    'dappDate' => $appointment->dappDate,
+                    'dappTime' => $appointment->dappTime,
+                ]) }}">
+                    @csrf
+                    @method('post')
+                    <button class = "eb" type="submit" name="markasdone">Mark As Done</button>
+                </form>
 
-        <tr>
-            <th>patientID3</th>
-            <td>1/12/23</td>
-            <td>1:30 - 3:00 PM</td>
-            <td>Nazifa</td>
-            <td>Mirpur</td>
-            <td>018345463699</td>
-            <td>Average</td>
+                <form method="post" action="{{ route('therapistHome.delete', [
+                    'cpUserID' => $appointment->cpUserID,
+                    'csUserID' => $appointment->csUserID,
+                    'dappDate' => $appointment->dappDate,
+                    'dappTime' => $appointment->dappTime,
+                    ]) }}" style="margin-top: 5px;">
+                    @csrf
+                    @method('delete')
+                    <button class = "eb" type="submit" name="delete">Delete</button>
+                </form>
+                </td>
         </tr>
-
-        <tr>
-            <th>patientID4</th>
-            <td>2/12/23</td>
-            <td>4:00 - 5:30 AM</td>
-            <td>Azwad</td>
-            <td>Bashundhara</td>
-            <td>01934523699</td>
-            <td>Good</td>
-        </tr>
-
-        <tr>
-            <th>patientID5</th>
-            <td>3/12/23</td>
-            <td>6:30 - 8:00 PM</td>
-            <td>Ikram</td>
-            <td>Uttara</td>
-            <td>01834523699</td>
-            <td>Bad</td>
-        </tr>
-
-        <tr>
-            <th>patientID6</th>
-            <td>4/12/23</td>
-            <td>1:00 - 12:30 PM</td>
-            <td>Raihan</td>
-            <td>Bashundhara</td>
-            <td>01734523699</td>
-            <td>Average</td>
-        </tr>
-
-        <tr>
-            <th>patientID7</th>
-            <td>5/12/23</td>
-            <td>9:30 - 11:00 AM</td>
-            <td>Gazi</td>
-            <td>Lalmatia</td>
-            <td>01934523699</td>
-            <td>Good</td>
-        </tr>
-
-    </tbody>
+        @endforeach
+    </tbody>    
     </table>
 </div>
 
 <!-- Edit Button properties -->
 <style>
     .eb{
-        margin-left: 500px;
-        padding: 5px 20px;
+        margin: 0 auto;
+        padding: 5px 10px;
         font-size: 16px;
         text-align: center;
         text-decoration: none;
