@@ -75,9 +75,9 @@
     <h1>Welcome, Admin!</h1>
 
     <button class="load" onclick="logOut()" style="position: absolute; left: 0; top: 0; margin: 30px;">Log Out</button>
-    <button class="load" onclick="addPharma()">Add Pharmacist</button>
+    <button class="load" onclick="addPharma()">Add Pharmacy</button>
     <button class="load" onclick="addNGO()">Add NGO Owner</button>
-    <button class="load" onclick="addRehab()">Add Rehab Centre Manager</button>
+    <button class="load" onclick="addRehab()">Add Rehab Centre</button>
 
     <script>
         function addPharma() {

@@ -112,13 +112,13 @@
         <div class="d-flex">
             <div id="info-container" style="margin: 42px">
                 <label for="pharmacyName">Pharmacy Name:</label>
-                <input type="text" id="pharmacyName" name="pharmacyName" value="{{session()->get('user')->cPharmaName;}}" readonly>
+                <input type="text" id="pharmacyName" name="pharmacyName" value="{{$user->cPharmaName;}}" readonly>
 
                 <label for="area">Area:</label>
-                <input type="text" id="area" name="area" value="{{session()->get('user')->cArea;}}" readonly>
+                <input type="text" id="area" name="area" value="{{$user->cArea;}}" readonly>
 
                 <label for="address">Address:</label>
-                <input type="text" id="address" name="address" value="{{session()->get('user')->cAddress;}}" readonly>
+                <input type="text" id="address" name="address" value="{{$user->cAddress;}}" readonly>
             </div>
             <div id="contact-container" style="margin: 42px">
                 @foreach($contacts as $contact)
@@ -156,7 +156,6 @@
         function addContact() {
             var container = document.getElementById('contact-container');
             var newContact = document.createElement('div');
-            // newContact.classList.add('medicine-input-container');
             newContact.innerHTML = `
             <label for="contact">Contact:</label>
             <input type="text" id="contact" name="contacts[]">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdmitRehabController;
 use App\Http\Controllers\CheckAppntController;
 use Illuminate\Support\Facades\Route;
@@ -8,7 +9,6 @@ use App\Http\Controllers\SpecRevController;
 use App\Http\Controllers\MakeAppController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PrescriptionController;
-use App\Http\Controllers\PharmaPrescriptionController;
 use App\Http\Controllers\rehabUpdateMyInfoController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\PharmaProfileController;
@@ -38,19 +38,19 @@ Route::post('/', [AuthController::class, 'loginPost'])->name('login.post');
 Route::get('/signUp', [AuthController::class, 'signUp'])->name('signUp');
 Route::post('/signUp', [AuthController::class, 'signUpPost'])->name('signUp.post');
 
-Route::get('/patientReviewSpec', [SpecRevController::class, 'patRevSpec'])->name('patRevSpec'); 
-Route::post('/patientReviewSpec2', [SpecRevController::class, 'postRev'])->name('postRev'); 
+Route::get('/patientReviewSpec', [SpecRevController::class, 'patRevSpec'])->name('patRevSpec');
+Route::post('/patientReviewSpec2', [SpecRevController::class, 'postRev'])->name('postRev');
 //Route::post('/patientReviewSpec2', [SpecRevController::class, 'postRev'])->name('postRev'); 
 
-Route::post('/patientReviewSpec', [SpecRevController::class, 'postRev2'])->name('postRev2'); 
+Route::post('/patientReviewSpec', [SpecRevController::class, 'postRev2'])->name('postRev2');
 
-Route::get('/patientMakeApp', [MakeAppController::class, 'loadSpecs'])->name('loadSpecs'); 
-Route::post('/patientMakeApp', [MakeAppController::class, 'saveApp'])->name('saveApp'); 
+Route::get('/patientMakeApp', [MakeAppController::class, 'loadSpecs'])->name('loadSpecs');
+Route::post('/patientMakeApp', [MakeAppController::class, 'saveApp'])->name('saveApp');
 
-Route::get('/patientCheckApp', [CheckAppntController::class, 'loadApps'])->name('loadApps'); 
+Route::get('/patientCheckApp', [CheckAppntController::class, 'loadApps'])->name('loadApps');
 Route::delete('/patientCheckApp', [CheckAppntController::class, 'destroy'])->name('destroy.app');
 
-Route::get('/patientChoseRehab', [AdmitRehabController::class, 'loadRehabs'])->name('loadRehabs'); 
+Route::get('/patientChoseRehab', [AdmitRehabController::class, 'loadRehabs'])->name('loadRehabs');
 
 Route::get('/patientHome', function () {
     return view('patientHome');
@@ -76,15 +76,15 @@ Route::get('/pharmacyHome', function () {
 Route::get('/pharmacyPrescriptions', [PharmaPrescController::class, 'pharmaLoadPresc'])->name('pharmaLoadPresc');
 Route::post('/pharmacyPrescriptions/{id}', [PharmaPrescController::class, 'pharmaUpdatePresc'])->name('pharmaUpdatePresc');
 
-Route::get('/pharmacyProfile', [PharmaProfileController::class, 'pharmaLoadProfile'])->name('pharmaLoadProfile'); 
+Route::get('/pharmacyProfile', [PharmaProfileController::class, 'pharmaLoadProfile'])->name('pharmaLoadProfile');
 Route::post('/pharmacyProfile', [PharmaProfileController::class, 'updateProfile'])->name('pharmaUpdateProfile');
 
 Route::get('/admin', function () {
     return view('admin');
 })->name('admin');;
-Route::get('/addPharma', function () {
-    return view('addPharma');
-})->name('addPharma');;
+
+Route::get('/addPharma', [AdminController::class, 'addPharma'])->name('addPharma');;
+Route::post('/addPharma', [AdminController::class, 'newPharma'])->name('addPharma.save');
 Route::get('/addNGO', function () {
     return view('addNGO');
 })->name('addNGO');;
@@ -171,17 +171,17 @@ Route::get('/rehabViewSpecialists', function () {
     return view('rehabViewSpecialists');
 });
 
-Route::post('/rehabAddSpecialist', [rehabAddSpecialistController::class ,'addSpecialist'])->name('add.specialist');
+Route::post('/rehabAddSpecialist', [rehabAddSpecialistController::class, 'addSpecialist'])->name('add.specialist');
 
 Route::get('/rehabViewSpecialists', [rehabViewSpecialistController::class, 'viewSpecialist'])->name('view.specialist');
 
 Route::get('/rehabRemoveSpecialist', [rehabRemoveSpecialistController::class, 'viewSpecialist'])->name('remove.specialist');
 Route::delete('/rehabRemoveSpecialist/{csUserID}', [rehabRemoveSpecialistController::class, 'removeSpecialist'])->name('destroy.specialist');
 
-Route::get('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class , 'loadInfo'])->name('rehabUpdateMyInfo'); #new
-Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController:: class, 'updateInformation'])->name('rehabUpdateMyInfo.post'); #new
+Route::get('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class, 'loadInfo'])->name('rehabUpdateMyInfo'); #new
+Route::post('/rehabUpdateMyInfo', [rehabUpdateMyInfoController::class, 'updateInformation'])->name('rehabUpdateMyInfo.post'); #new
 
-Route::get('/rehabInfo', [rehabInfoController::class , 'loadInfo'])->name('rehabInfo'); #new
+Route::get('/rehabInfo', [rehabInfoController::class, 'loadInfo'])->name('rehabInfo'); #new
 
 #Michael Jackson
 Route::get('/ngo', function () {

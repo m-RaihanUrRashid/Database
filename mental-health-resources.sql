@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2023 at 09:28 AM
+-- Generation Time: Dec 16, 2023 at 09:52 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -100,6 +100,13 @@ CREATE TABLE `ngo_t` (
   `cManagerEmail` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `ngo_t`
+--
+
+INSERT INTO `ngo_t` (`cNGO_ID`, `cArea`, `cAddress`, `cOwner`, `cManagerEmail`) VALUES
+('1', 'Uttara', 'House 88, Road 6/A, Sector 5, Uttara, Dhaka', 'Nguyen', 'ngo@abc.com');
+
 -- --------------------------------------------------------
 
 --
@@ -144,7 +151,8 @@ CREATE TABLE `patient_t` (
 --
 
 INSERT INTO `patient_t` (`cpUserID`, `cMedicalHistory`, `cArea`) VALUES
-('7995226', 'I used to have lupus', 'Bashundhara R/A');
+('7995226', 'I used to have lupus', 'Bashundhara R/A'),
+('9796158', 'I did not die', 'Uttara');
 
 -- --------------------------------------------------------
 
@@ -157,6 +165,14 @@ CREATE TABLE `person_contact_t` (
   `cUserID` varchar(7) NOT NULL,
   `cContact` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `person_contact_t`
+--
+
+INSERT INTO `person_contact_t` (`cUserID`, `cContact`) VALUES
+('4', '01234567891'),
+('4', '01987654321');
 
 -- --------------------------------------------------------
 
@@ -182,12 +198,16 @@ CREATE TABLE `person_t` (
 
 INSERT INTO `person_t` (`cUserID`, `cFname`, `cLname`, `cGender`, `dDOB`, `cAddress`, `cEmail`, `cType`) VALUES
 ('2234453', 'Gazi', 'Tank', 'Tank', '2023-12-06', 'Dhanmondi', 'gazi@tank.com', 'Therapist'),
+('3445102', 'Pat', 'Hugh', 'Male', '2023-12-06', 'House 9, Road 7, Sector 5, Uttara, Dhaka', 'pat@abc.com', 'Patient'),
 ('3958756', 'Admin', 'Boss', 'Code', '1918-11-11', 'Brain', 'admin@super.com', 'Admin'),
 ('3987298', 'Shwondujrp', 'Dhara', 'Female', '2023-12-12', 'Mirpur 1', 'dhara@hotmail.com', 'Psychiatrist'),
 ('4', 'Ikram', 'Hossain', 'Male', '2023-12-07', 'Uttara', 'ikram@abc.com', 'Psychiatrist'),
 ('5098802', 'Steve', 'Carol', 'Car', '2023-12-13', 'Dhaka', 'steve@gmail.com', 'Psychiatrist'),
+('553', 'Mark', 'Jacobs', 'Male', '2023-11-29', 'House 8, Road 33, Block F, Bashundhara R/A, Dhaka', 'mark@abc.com', 'Therapist'),
+('6886361', 'Pat', 'Hugh', 'Male', '2023-12-07', 'House 9, Road 7, Sector 5, Uttara, Dhaka', 'pat@abc.com', 'Patient'),
 ('6908394', 'Nazifa', 'Chy', 'Female', '2023-12-26', 'Cumilla', 'nazifa@gmaiil.com', 'Therapist'),
-('7995226', 'Raihan', 'Rashid', 'Male', '2023-12-06', 'House 1, Road 2, Sector 3', 'raihan@gmail.com', 'Patient');
+('7995226', 'Raihan', 'Rashid', 'Male', '2023-12-06', 'House 1, Road 2, Sector 3', 'raihan@gmail.com', 'Patient'),
+('9796158', 'Pat', 'Hugh', 'Male', '2023-12-06', 'House 9, Road 7, Sector 5, Uttara, Dhaka', 'pat@abc.com', 'Patient');
 
 -- --------------------------------------------------------
 
@@ -200,6 +220,15 @@ CREATE TABLE `pharmacy_contact_t` (
   `cPharmaID` varchar(7) NOT NULL,
   `cContact` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pharmacy_contact_t`
+--
+
+INSERT INTO `pharmacy_contact_t` (`cPharmaID`, `cContact`) VALUES
+('1', '01234567888'),
+('1', '01798952147'),
+('1', '09876543211');
 
 -- --------------------------------------------------------
 
@@ -216,6 +245,13 @@ CREATE TABLE `pharmacy_t` (
   `cManagerEmail` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `pharmacy_t`
+--
+
+INSERT INTO `pharmacy_t` (`cPharmaID`, `cPharmaName`, `cArea`, `cAddress`, `cManagerEmail`) VALUES
+('1', 'Razz Pharma2', 'Uttara2', 'H2ouse 150, Road 50, Sector 3, Uttara', 'pharma@abc.com');
+
 -- --------------------------------------------------------
 
 --
@@ -227,6 +263,13 @@ CREATE TABLE `prescription_med_t` (
   `cPrescID` varchar(7) NOT NULL,
   `cMedicine` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prescription_med_t`
+--
+
+INSERT INTO `prescription_med_t` (`cPrescID`, `cMedicine`) VALUES
+('5389668', 'Napa');
 
 -- --------------------------------------------------------
 
@@ -243,6 +286,13 @@ CREATE TABLE `prescription_t` (
   `cDelivered` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `prescription_t`
+--
+
+INSERT INTO `prescription_t` (`cPrescID`, `dIssueDate`, `cpUserID`, `cpsUserID`, `cDelivered`) VALUES
+('5389668', '2023-12-15', '9796158', '4', 'Yes');
+
 -- --------------------------------------------------------
 
 --
@@ -255,6 +305,13 @@ CREATE TABLE `psychiatrist_t` (
   `cRehabID` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `psychiatrist_t`
+--
+
+INSERT INTO `psychiatrist_t` (`cpsUserID`, `cRehabID`) VALUES
+('4', '111');
+
 -- --------------------------------------------------------
 
 --
@@ -266,8 +323,15 @@ CREATE TABLE `psychiatrist_work_records_t` (
   `cpsUserID` varchar(7) NOT NULL,
   `cRehabID` varchar(7) NOT NULL,
   `dJ_Date` date NOT NULL,
-  `dL_Date` date NOT NULL
+  `dL_Date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `psychiatrist_work_records_t`
+--
+
+INSERT INTO `psychiatrist_work_records_t` (`cpsUserID`, `cRehabID`, `dJ_Date`, `dL_Date`) VALUES
+('4', '111', '2023-12-01', NULL);
 
 -- --------------------------------------------------------
 
@@ -295,6 +359,13 @@ CREATE TABLE `rehab_centre_t` (
   `cSupervisorID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `rehab_centre_t`
+--
+
+INSERT INTO `rehab_centre_t` (`cRehabID`, `cArea`, `cAddress`, `cSupervisorID`) VALUES
+('111', 'Uttara', 'House 12, Road 5, Sector 14, Uttara, Dhaka', '4');
+
 -- --------------------------------------------------------
 
 --
@@ -309,6 +380,14 @@ CREATE TABLE `specialist_t` (
   `cType` varchar(15) NOT NULL,
   `cArea` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `specialist_t`
+--
+
+INSERT INTO `specialist_t` (`csUserID`, `cExperience`, `cOff_Address`, `cType`, `cArea`) VALUES
+('4', 'I cracked skulls', 'Uttara Centre', 'Psychiatrist', 'Uttara'),
+('553', 'Vietnam', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'Therapist', 'Bashundhara R/A');
 
 -- --------------------------------------------------------
 
@@ -379,7 +458,10 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (6, 'Steeve', 'steve@gmail.com', NULL, '$2y$12$UQbHOjYWDePaejYIVY3.PeP/wbBnvdQaQtc3nWTlk2b3/C4nEoF0W', NULL, '2023-12-07 22:26:57', '2023-12-07 22:26:57', 'Psychiatrist'),
 (7, 'nazifa', 'nazifa@gmail.com', NULL, '$2y$12$oGkyvGh49PJ.320c0BlZeut0hqVSBJgXOEdBaLkALwmoVrQrZnD0a', NULL, '2023-12-07 22:27:33', '2023-12-07 22:27:33', 'Therapist'),
 (9, 'Raihan', 'raihan@gmail.com', NULL, '$2y$12$dAKYQUkxKunq6PjIypxaPOtRaeYfHeHojL9kl0MOAqqSm3oPqPvX6', NULL, '2023-12-13 11:17:18', '2023-12-13 11:17:18', 'Patient'),
-(10, 'Admin', 'admin@super.com', NULL, '$2y$12$lzQtpKUDNaT6fATET7L6auFuuOBJB.L5.j4J6OjYl994zSUQKtl8m', NULL, '2023-12-13 17:02:21', '2023-12-13 17:02:21', 'Admin');
+(10, 'Admin', 'admin@super.com', NULL, '$2y$12$lzQtpKUDNaT6fATET7L6auFuuOBJB.L5.j4J6OjYl994zSUQKtl8m', NULL, '2023-12-13 17:02:21', '2023-12-13 17:02:21', 'Admin'),
+(13, 'Walter', 'pharma@abc.com', NULL, '$2y$12$p6x9V9pFIYuJd9qC4CoSxucB4kGzQwqWawabR2.fWkb6R0VmR9T3W', NULL, '2023-12-14 03:15:42', '2023-12-14 03:15:42', 'Pharmacy'),
+(14, 'Nguyen', 'ngo@abc.com', NULL, '$2y$12$P7oPfwLHWY9kVdkvD0gD9O1swA695DOaxzNZW6xJH5b732Ri5Yox2', NULL, '2023-12-14 03:15:54', '2023-12-14 03:15:54', 'NGO'),
+(16, 'Pat', 'pat@abc.com', NULL, '$2y$12$1S6gIeYHXy7LZd1YkSpaGOPvRypuwrW4zgRWesWiMlz/uuAykYOAG', NULL, '2023-12-15 13:08:09', '2023-12-15 13:08:09', 'Patient');
 
 --
 -- Indexes for dumped tables
@@ -548,7 +630,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables

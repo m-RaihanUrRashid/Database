@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pharma;
 use App\Models\PharmaContact;
 
 class PharmaProfileController extends Controller
@@ -11,6 +12,7 @@ class PharmaProfileController extends Controller
     {
         $user = $request->session()->get('user');
         $contacts = PharmaContact::where('cPharmaID', $user->cPharmaID)->get();
+        $user = Pharma::where('cPharmaID', $user->cPharmaID)->first();
         return view("pharmacyProfile", ["user" => $user, "contacts" => $contacts]);
     }
 
@@ -21,17 +23,24 @@ class PharmaProfileController extends Controller
             'contacts' => 'required|array',
         ]);
 
+        Pharma::where('cPharmaID', $user->cPharmaID)
+            ->update([
+                'cPharmaName' => $request->input('pharmacyName'),
+                'cArea' => $request->input('area'),
+                'cAddress' => $request->input('address')
+            ]);
+
         $oldContacts = PharmaContact::where('cPharmaID', $user->cPharmaID)->get();
         $newContacts = $request->input('contacts');
         $i = 0;
         foreach ($oldContacts as $tempContact) {
             PharmaContact::where('cPharmaID', $user->cPharmaID)
-            ->where('cContact', $tempContact->cContact)
-            ->update(['cContact' => $newContacts[$i]]);
+                ->where('cContact', $tempContact->cContact)
+                ->update(['cContact' => $newContacts[$i]]);
             $i++;
         }
 
-        if(count($oldContacts) < count($newContacts)){
+        if (count($oldContacts) < count($newContacts)) {
             for ($i = count($oldContacts); $i < count($newContacts); $i++) {
                 $pharmaContact = new PharmaContact();
                 $pharmaContact->cPharmaID = $user->cPharmaID;;
@@ -39,8 +48,9 @@ class PharmaProfileController extends Controller
                 $pharmaContact->save();
             }
         }
-        
+
         $contacts = PharmaContact::where('cPharmaID', $user->cPharmaID)->get();
+        $user = Pharma::where('cPharmaID', $user->cPharmaID)->first();
         return view("pharmacyProfile", ["user" => $user, "contacts" => $contacts]);
     }
 

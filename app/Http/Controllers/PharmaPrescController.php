@@ -50,18 +50,4 @@ class PharmaPrescController extends Controller
         return redirect()->route('pharmaLoadPresc', ['user' => $user]);
     }
 
-
-    public function destroy(Request $request, $cpUserID, $csUserID, $dappDate, $cappTime)
-    {
-
-        $user = $request->session()->get('user');
-
-        // $app = Appointment::where('cpUserID', $user->cUserID)
-        //             ->where('csUserID', $csUserID)
-        //             ->where('dappDate', $dappDate)
-        //             ->where('cappTime', $cappTime)
-        //             ->delete();
-
-        return redirect()->route('loadApps')->with('success', 'Appointment Deleted');
-    }
 }
