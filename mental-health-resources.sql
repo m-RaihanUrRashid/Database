@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2023 at 09:52 AM
+-- Generation Time: Dec 16, 2023 at 10:15 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -250,7 +250,7 @@ CREATE TABLE `pharmacy_t` (
 --
 
 INSERT INTO `pharmacy_t` (`cPharmaID`, `cPharmaName`, `cArea`, `cAddress`, `cManagerEmail`) VALUES
-('1', 'Razz Pharma2', 'Uttara2', 'H2ouse 150, Road 50, Sector 3, Uttara', 'pharma@abc.com');
+('1', 'Razz Pharma', 'Uttara', 'House 150, Road 50, Sector 3, Uttara', 'pharma@abc.com');
 
 -- --------------------------------------------------------
 
