@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdmitRehabController;
 use App\Http\Controllers\CheckAppntController;
+use App\Http\Controllers\PatientProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SpecRevController;
@@ -47,9 +48,15 @@ Route::get('/patientMakeApp', [MakeAppController::class, 'loadSpecs'])->name('lo
 Route::post('/patientMakeApp', [MakeAppController::class, 'saveApp'])->name('saveApp'); 
 
 Route::get('/patientCheckApp', [CheckAppntController::class, 'loadApps'])->name('loadApps'); 
-Route::delete('/patientCheckApp', [CheckAppntController::class, 'destroy'])->name('destroy.app');
+Route::delete('/patientCheckApp/destry/{cpUserID}/{csUserID}/{dappDate}/{cappTime}', [CheckAppntController::class, 'destroy'])->name('destroy.app');
 
 Route::get('/patientChoseRehab', [AdmitRehabController::class, 'loadRehabs'])->name('loadRehabs'); 
+
+Route::get('/patientProfile', [PatientProfileController::class, 'viewInfo'])->name('patientProfile.viewInfo');
+
+Route::get('/patientProfileEdit', [PatientProfileController::class, 'editViewInfo'])->name('editViewInfo');
+Route::post('/patientProfileEdit', [PatientProfileController::class, 'updateInfo'])->name('patientProfile.updateInfo'); 
+
 
 Route::get('/patientHome', function () {
     return view('patientHome');
@@ -63,9 +70,9 @@ Route::get('/calendar.calendar', function () {
     return view('calendar.calendar');
 });
 
-Route::get('/patientProfile', function () {
-    return view('patientProfile');
-});
+// Route::get('/patientProfile', function () {
+//     return view('patientProfile');
+// });
 
 # Ikram
 Route::get('/pharmacyHome', function () {

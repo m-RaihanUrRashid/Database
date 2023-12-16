@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title' , 'My Information')
+@section('title' , 'Update My Information')
 @section('content')
 
 <!DOCTYPE html>
@@ -18,12 +18,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 105vh;
+            height: 125vh;
         }
 
         h1 {
             font-size: 48px;
-            margin-bottom: 0px;
+            margin-bottom: 40px;
             margin-top: 72px;
             text-align: center;
         }
@@ -64,57 +64,49 @@
 
 <body>
 
-    <h1 id="heading">My Information</h1>
+    <h1 id="heading">Update Information</h1>
 
-    <!-- rehabUpdateMyInfo.blade.php -->
-    <!-- <form method="post" action="{{ route('rehabUpdateMyInfo.post') }}"> new  -->
-        <!-- @csrf -->
-        <div class="">
+    <form method="post" action="{{ route('patientProfile.updateInfo') }}">
+        @csrf
+        <div class="pastform">
             <div class="d-flex">
-                <div style="margin-left: 42px; margin-top: 42px; margin-right: 42px;">
+                <div style="margin: 42px">
                     <label for="Fname">First Name:</label>
-                    <input type="text" id="Fname" name="Fname" value="{{ $user->cFname }}" readonly>
+                    <input type="text" id="Fname" name="Fname" value="{{ $user->cFname }}">
                     <label for="Lname">Last Name:</label>
-                    <input type="text" id="Lname" name="Lname" value="{{ $user->cLname }}" readonly>
+                    <input type="text" id="Lname" name="Lname" value="{{ $user->cLname }}">
                     <label for="DOB">Date of Birth:</label>
-                    <input type="text" id="DOB" name="DOB" value="{{ $user->dDOB }}" readonly>
+                    <input type="date" id="DOB" name="DOB" value="{{ $user->dDOB }}">
                 </div>
-                <div style="margin-left: 42px; margin-top: 42px; margin-right: 42px;">
+                <div style="margin: 42px">
                     <label for="Gender">Gender:</label>
-                    <input type="text" id="Gender" name="Gender" value="{{ $user->cGender }}" readonly>
+                    <input type="text" id="Gender" name="Gender" value="{{ $user->cGender }}">
                     <label for="Address">Address:</label>
-                    <input type="text" id="Address" name="Address" value="{{ $user->cAddress }}" readonly>
-                    <label for="Email">Email:</label>
-                    <input type="text" id="Email" name="Email" value="{{ $user->cEmail }}" readonly>
+                    <textarea name="Address" cols="30" rows="6" style= "resize: none;">{{ $user->cAddress }}</textarea>
                 </div>
             </div>
-            <br>
             <div style="margin-left: 42px">
                 <label>Medical History:</label>
-                <textarea name="mHistory" id="" cols="58" rows="6" style= "resize: none;" readonly>{{ $patient->cMedicalHistory }}</textarea>
+                <textarea name="mHistory" id="" cols="65" rows="7" style= "resize: none;">{{ $patient->cMedicalHistory }}</textarea>
             </div>
             <div class="container" style="justify-items: center;">
                 <div style="margin: 10px">
-                    <button onclick="editInfo()" type="button">Edit Information</button>
+                    <button type="submit">Update Information</button>
                 </div>
             </div>
         </div>
-    <!-- </form> -->
+    </form>
 
 
-    <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
+    <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back</button>
 
     <script>
         function saveChanges() {
             alert('Changes Saved');
         }
 
-        function editInfo() {
-            window.location.href = "/patientProfileEdit";
-        }
-
         function goHome() {
-            window.location.href = "/patientHome";
+            window.location.href = "/patientProfile";
         }
     </script>
 
