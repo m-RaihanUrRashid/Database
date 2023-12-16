@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2023 at 12:22 PM
+-- Generation Time: Dec 16, 2023 at 11:56 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -37,6 +37,14 @@ CREATE TABLE `appointment_t` (
   `cappTime` varchar(8) NOT NULL,
   `cappStatus` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `appointment_t`
+--
+
+INSERT INTO `appointment_t` (`cpUserID`, `csUserID`, `dappDate`, `cappTime`, `cappStatus`) VALUES
+('7995226', '4', '2023-12-17', '12pm', 'no'),
+('7995226', '553', '2023-12-12', '9am', 'no');
 
 -- --------------------------------------------------------
 
@@ -138,6 +146,13 @@ CREATE TABLE `patient_review_records_t` (
   `cComment` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `patient_review_records_t`
+--
+
+INSERT INTO `patient_review_records_t` (`cpUserID`, `csUserID`, `nRating`, `cComment`) VALUES
+('7995226', '553', 2, 'He did not drug me');
+
 -- --------------------------------------------------------
 
 --
@@ -149,6 +164,13 @@ CREATE TABLE `patient_review_t` (
   `cpUserID` varchar(7) NOT NULL,
   `csUserID` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `patient_review_t`
+--
+
+INSERT INTO `patient_review_t` (`cpUserID`, `csUserID`) VALUES
+('7995226', '553');
 
 -- --------------------------------------------------------
 
@@ -168,7 +190,8 @@ CREATE TABLE `patient_t` (
 --
 
 INSERT INTO `patient_t` (`cpUserID`, `cMedicalHistory`, `cArea`) VALUES
-('7995226', 'I used to have lupus', 'Bashundhara R/A'),
+('5403874', 'I just want to see', 'Uttara'),
+('7995226', 'I used to have lupus 2.0 pro max', 'Bashundhara R/A'),
 ('9796158', 'I did not die', 'Uttara');
 
 -- --------------------------------------------------------
@@ -214,15 +237,24 @@ CREATE TABLE `person_t` (
 --
 
 INSERT INTO `person_t` (`cUserID`, `cFname`, `cLname`, `cGender`, `dDOB`, `cAddress`, `cEmail`, `cType`) VALUES
+('1111198', 'House', 'MD', 'Male', '2023-12-06', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'house@md.com', 'Psychiatrist'),
+('1228365', 'House', 'MD', 'Male', '2023-12-06', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'house@md.com', 'Psychiatrist'),
 ('2234453', 'Gazi', 'Tank', 'Tank', '2023-12-06', 'Dhanmondi', 'gazi@tank.com', 'Therapist'),
+('2250358', 'House', 'MD', 'Male', '2023-12-06', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'house@md.com', 'Psychiatrist'),
+('3354079', 'House', 'MD', 'Male', '2023-12-06', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'house@md.com', 'Psychiatrist'),
 ('3445102', 'Pat', 'Hugh', 'Male', '2023-12-06', 'House 9, Road 7, Sector 5, Uttara, Dhaka', 'pat@abc.com', 'Patient'),
 ('3958756', 'Admin', 'Boss', 'Code', '1918-11-11', 'Brain', 'admin@super.com', 'Admin'),
 ('3987298', 'Shwondujrp', 'Dhara', 'Female', '2023-12-12', 'Mirpur 1', 'dhara@hotmail.com', 'Psychiatrist'),
 ('4', 'Ikram', 'Hossain', 'Male', '2023-12-07', 'Uttara', 'ikram@abc.com', 'Psychiatrist'),
+('4711697', 'House', 'MD', 'Male', '2023-12-06', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'house@md.com', 'Psychiatrist'),
 ('5098802', 'Steve', 'Carol', 'Car', '2023-12-13', 'Dhaka', 'steve@gmail.com', 'Psychiatrist'),
+('5403874', 'Mark', 'Wahlberg', 'Male', '2023-11-30', 'House 1234, Uttara', 'mark@abc.com', 'Patient'),
 ('553', 'Mark', 'Jacobs', 'Male', '2023-11-29', 'House 8, Road 33, Block F, Bashundhara R/A, Dhaka', 'mark@abc.com', 'Therapist'),
+('5975795', 'House', 'MD', 'Male', '2023-12-06', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'house@md.com', 'Psychiatrist'),
+('5991036', 'House', 'MD', 'Male', '2023-12-06', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'house@md.com', 'Psychiatrist'),
 ('6886361', 'Pat', 'Hugh', 'Male', '2023-12-07', 'House 9, Road 7, Sector 5, Uttara, Dhaka', 'pat@abc.com', 'Patient'),
-('6908394', 'Nazifa', 'Chy', 'Female', '2023-12-26', 'Cumilla', 'nazifa@gmaiil.com', 'Therapist'),
+('6904161', 'House', 'MD', 'Male', '2023-12-06', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'house@md.com', 'Psychiatrist'),
+('6908394', 'Nazifa', 'Chy', 'Female', '2023-12-26', 'Cumilla', 'nazifa@gmail.com', 'Therapist'),
 ('7995226', 'Raihan', 'Rashid', 'Male', '2023-12-06', 'House 1, Road 2, Sector 3', 'raihan@gmail.com', 'Patient'),
 ('9796158', 'Pat', 'Hugh', 'Male', '2023-12-06', 'House 9, Road 7, Sector 5, Uttara, Dhaka', 'pat@abc.com', 'Patient');
 
@@ -326,7 +358,7 @@ INSERT INTO `prescription_t` (`cPrescID`, `dIssueDate`, `cpUserID`, `cpsUserID`,
 DROP TABLE IF EXISTS `psychiatrist_t`;
 CREATE TABLE `psychiatrist_t` (
   `cpsUserID` varchar(7) NOT NULL,
-  `cRehabID` varchar(5) NOT NULL
+  `cRehabID` varchar(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -334,6 +366,7 @@ CREATE TABLE `psychiatrist_t` (
 --
 
 INSERT INTO `psychiatrist_t` (`cpsUserID`, `cRehabID`) VALUES
+('1111198', NULL),
 ('4', '111');
 
 -- --------------------------------------------------------
@@ -355,6 +388,7 @@ CREATE TABLE `psychiatrist_work_records_t` (
 --
 
 INSERT INTO `psychiatrist_work_records_t` (`cpsUserID`, `cRehabID`, `dJ_Date`, `dL_Date`) VALUES
+('1111198', '111', '2023-12-16', NULL),
 ('4', '111', '2023-12-01', NULL);
 
 -- --------------------------------------------------------
@@ -369,6 +403,15 @@ CREATE TABLE `rehab_centre_contact_t` (
   `cContact` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `rehab_centre_contact_t`
+--
+
+INSERT INTO `rehab_centre_contact_t` (`cRehabID`, `cContact`) VALUES
+('111', '01234567891'),
+('111', '03213546851'),
+('111', '68453168453');
+
 -- --------------------------------------------------------
 
 --
@@ -378,6 +421,7 @@ CREATE TABLE `rehab_centre_contact_t` (
 DROP TABLE IF EXISTS `rehab_centre_t`;
 CREATE TABLE `rehab_centre_t` (
   `cRehabID` varchar(5) NOT NULL,
+  `cRehabName` varchar(20) NOT NULL,
   `cArea` varchar(50) NOT NULL,
   `cAddress` varchar(150) NOT NULL,
   `cSupervisorID` varchar(20) NOT NULL
@@ -387,8 +431,8 @@ CREATE TABLE `rehab_centre_t` (
 -- Dumping data for table `rehab_centre_t`
 --
 
-INSERT INTO `rehab_centre_t` (`cRehabID`, `cArea`, `cAddress`, `cSupervisorID`) VALUES
-('111', 'Uttara', 'House 12, Road 5, Sector 14, Uttara, Dhaka', '4');
+INSERT INTO `rehab_centre_t` (`cRehabID`, `cRehabName`, `cArea`, `cAddress`, `cSupervisorID`) VALUES
+('111', 'Mukta Rehab', 'Uttara', 'House 12, Road 5, Sector 14, Uttara, Dhaka', '4');
 
 -- --------------------------------------------------------
 
@@ -410,8 +454,10 @@ CREATE TABLE `specialist_t` (
 --
 
 INSERT INTO `specialist_t` (`csUserID`, `cExperience`, `cOff_Address`, `cType`, `cArea`) VALUES
+('1111198', 'Drugs', 'Westin, Banani', 'Psychiatrist', 'Banani'),
 ('4', 'I cracked skulls', 'Uttara Centre', 'Psychiatrist', 'Uttara'),
-('553', 'Vietnam', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'Therapist', 'Bashundhara R/A');
+('553', 'Vietnam', 'House 5, Road 2/A, Block C, Bashundhara R/A, Dhaka', 'Therapist', 'Bashundhara R/A'),
+('6908394', 'Something', 'Bananaland', 'Therapist', 'Gulshan');
 
 -- --------------------------------------------------------
 
@@ -423,7 +469,8 @@ DROP TABLE IF EXISTS `therapist_notes_t`;
 CREATE TABLE `therapist_notes_t` (
   `ctsUserID` varchar(7) NOT NULL,
   `cpUserID` varchar(7) NOT NULL,
-  `cNotes` varchar(1000) NOT NULL
+  `cNotes` varchar(1000) NOT NULL,
+  `dDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -435,8 +482,15 @@ CREATE TABLE `therapist_notes_t` (
 DROP TABLE IF EXISTS `therapist_t`;
 CREATE TABLE `therapist_t` (
   `ctsUserID` varchar(7) NOT NULL,
-  `cSpecialty` varchar(30) NOT NULL
+  `cSpecialty` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `therapist_t`
+--
+
+INSERT INTO `therapist_t` (`ctsUserID`, `cSpecialty`) VALUES
+('6908394', 'Art Therapy');
 
 -- --------------------------------------------------------
 
@@ -487,7 +541,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (14, 'Nguyen', 'ngo@abc.com', NULL, '$2y$12$P7oPfwLHWY9kVdkvD0gD9O1swA695DOaxzNZW6xJH5b732Ri5Yox2', NULL, '2023-12-14 03:15:54', '2023-12-14 03:15:54', 'NGO'),
 (16, 'Pat', 'pat@abc.com', NULL, '$2y$12$1S6gIeYHXy7LZd1YkSpaGOPvRypuwrW4zgRWesWiMlz/uuAykYOAG', NULL, '2023-12-15 13:08:09', '2023-12-15 13:08:09', 'Patient'),
 (22, 'Mannan Pharmacy', 'mannan@abc.com', NULL, '$2y$12$0sgd4EoF9e2aa9WkWyTjt.YjwVHscHOnV4r2rp/IDp2wwaZWkvy2G', NULL, '2023-12-16 04:11:27', '2023-12-16 04:11:27', 'Pharmacy'),
-(23, 'Marcel', 'marcel@abc.com', NULL, '$2y$12$PFp.BV.XobY109oOz0Jn9emYvnhkz4OlzbTobJqRTrFqeHIbkDX0u', NULL, '2023-12-16 05:20:16', '2023-12-16 05:20:16', 'NGO');
+(23, 'Marcel', 'marcel@abc.com', NULL, '$2y$12$PFp.BV.XobY109oOz0Jn9emYvnhkz4OlzbTobJqRTrFqeHIbkDX0u', NULL, '2023-12-16 05:20:16', '2023-12-16 05:20:16', 'NGO'),
+(24, 'Mark', 'mark@abc.com', NULL, '$2y$12$knUs3kjy8xeSbwsNtWM1heZvvuC.fQ26RU8FwvdvyawbcviIMHvaK', NULL, '2023-12-16 15:26:51', '2023-12-16 15:26:51', 'Patient'),
+(25, 'House', 'house@md.com', NULL, '$2y$12$kzHmycxFwO0bXvDXjrTAQO2VT.kSW7S1ilQR6FoIAn2oFoOOpEUOK', NULL, '2023-12-16 16:30:20', '2023-12-16 16:30:20', 'Psychiatrist');
 
 --
 -- Indexes for dumped tables
@@ -656,7 +712,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables

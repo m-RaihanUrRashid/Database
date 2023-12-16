@@ -11,16 +11,11 @@ class Psychiatrist extends Model
 
     protected $table = "psychiatrist_t";
     public $timestamps = false;
+    protected $fillable = [
+        'cpsUserID',
+        'cRehabID'
+    ];
 
-
-    public function index(Request $request)
-    {
-        // Get the user data from the session
-        $user = $request->session()->get('user');
-
-        // Pass user data to the view
-        return view('psychiatristHome', ['user' => $user]);
-    }
     public function prescription()
     {
         return $this->hasMany(Prescription::class);

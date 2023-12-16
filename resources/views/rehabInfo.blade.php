@@ -43,16 +43,16 @@
 
 <body>
     <h1>My Information</h1>
-    <p> Name:  {{$specialist->cFname}} 
-    {{$specialist->cLname}} </p>
+    <p> Name:  {{$rehab->cRehabName}} </p>
     <br>
-    <p> Date of Birth:  {{$specialist->dDOB}} </p>
+    <p> General Area:  {{$rehab->cArea}} </p>
     <br>
-    <p> Gender:  {{$specialist->cGender}} </p>
+    @foreach($contacts as $contact)
+        <p> Contact:  {{$contact->cContact}} </p>
+        <br>
+    @endforeach
+    <p> Address:  {{$rehab->cAddress}} </p>
     <br>
-    <p> Address:  {{$specialist->cAddress}} </p>
-    <br>
-    <p> Email:  {{$specialist->cEmail}} </p>
 
     <button onclick="goHome()" style="position: absolute; left: 0; top: 0; margin: 30px;">Back to Home Page</button>
 

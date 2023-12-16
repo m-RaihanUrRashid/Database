@@ -71,28 +71,27 @@
         @csrf
         <div class="d-flex">
             <div style="margin: 42px">
-                <label for="Fname">First Name:</label>
-                <input type="text" id="Fname" name="Fname" value="{{ $specialist->cFname }}">
+                <label for="rehabName">Name:</label>
+                <input type="text" id="rehabName" name="rehabName" value="{{ $rehab->cRehabName }}">
 
-                <label for="Lname">Last Name:</label>
-                <input type="text" id="Lname" name="Lname" value="{{ $specialist->cLname }}">
+                <label for="area">General Area:</label>
+                <input type="text" id="area" name="area" value="{{ $rehab->cArea }}">
 
-                <label for="DOB">Date of Birth:</label>
-                <input type="text" id="DOB" name="DOB" value="{{ $specialist->dDOB }}">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" value="{{ $rehab->cAddress }}">
 
             </div>
-            <div style="margin: 42px">
-                <label for="Gender">Gender:</label>
-                <input type="text" id="Gender" name="Gender" value="{{ $specialist->cGender }}">
-
-                <label for="Address">Address:</label>
-                <input type="text" id="Address" name="Address" value="{{ $specialist->cAddress }}">
-
-                <label for="Email">Email:</label>
-                <input type="text" id="Email" name="Email" value="{{ $specialist->cEmail }}">
+            <div id="contact-container" style="margin: 42px">
+                @foreach($contacts as $contact)
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contacts[]" value="{{ $contact->cContact }}">
+                @endforeach
             </div>
         </div>
         <div class="container" style="justify-items: center;">
+            <div style="margin: 10px">
+                <button type="button" onclick="addContact()">Add New Contact</button>
+            </div>
             <div style="margin: 10px">
                 <button type="submit">Update Information</button>
             </div>
@@ -107,7 +106,15 @@
             alert('Changes Saved');
         }
 
-
+        function addContact() {
+            var container = document.getElementById('contact-container');
+            var newContact = document.createElement('div');
+            newContact.innerHTML = `
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contacts[]">
+            `;
+            container.appendChild(newContact);
+        }
 
         function goHome() {
             window.location.href = "/rehabSupervisorHome";

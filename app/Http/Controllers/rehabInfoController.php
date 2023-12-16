@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Person;
+
+use Illuminate\Support\Facades\DB;
+use App\Models\Rehab;
 use Illuminate\Http\Request;
 
 class rehabInfoController extends Controller
@@ -10,9 +12,10 @@ class rehabInfoController extends Controller
 
         $user = $request->session()->get('user');
 
-        $specialist = Person::where('cUserID',$user->cUserID)->first();
+        $rehab = Rehab::where('cSupervisorID',$user->cUserID)->first();
+        $contacts = DB::table('rehab_centre_contact_t')->where('cRehabID', $rehab->cRehabID)->get();
 
-        return view('rehabInfo', ['specialist' => $specialist]);
+        return view('rehabInfo', ['rehab' => $rehab, 'contacts' => $contacts]);
     }
 
 }
