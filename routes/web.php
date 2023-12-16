@@ -112,14 +112,15 @@ Route::get('/therapistcalendar', function () {
 });
 
 Route::get('/therapistprofile', [TherapistController::class, 'index'])->name('th.index');
-Route::post('/therapistHome/toggle/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'toggle'])->name('therapistHome.toggle');
-Route::delete('/therapistHome/delete/{cpUserID}/{csUserID}/{dappDate}/{dappTime}', [AppController::class, 'delete'])->name('therapistHome.delete');
+Route::post('/therapistHome/toggle/{cpUserID}/{csUserID}/{dappDate}/{cappTime}', [AppController::class, 'toggle'])->name('therapistHome.toggle');
+Route::delete('/therapistHome/delete/{cpUserID}/{csUserID}/{dappDate}/{cappTime}', [AppController::class, 'delete'])->name('therapistHome.delete');
 Route::get('/therapistHome', [AppController::class, 'tview'])->name('tHome.tview');
 Route::get('/therapistpa', [AppController::class, 'tpast'])->name('th.past');
 Route::get('/thnotes', [NoteController::class, 'index'])->name('note.index');
 Route::get('/thnotes/create', [NoteController::class, 'create'])->name('note.create');
 Route::post('/thnotes/create', [NoteController::class, 'store'])->name('note.store');
-Route::get('/thnotes/edit', [NoteController::class, 'edit'])->name('note.edit');
+Route::get('/thnotes/edit/{ctsUserID}/{cpUserID}', [NoteController::class, 'edit'])->name('note.edit');
+Route::post('/thnotes/edit/{ctsUserID}/{cpUserID}', [NoteController::class, 'update'])->name('note.update');
 Route::delete('/thnotes/{ctsUserID}/{cpUserID}/{cNotes}/{dDate}', [NoteController::class, 'delete'])->name('note.destroy');
 
 # Dhara

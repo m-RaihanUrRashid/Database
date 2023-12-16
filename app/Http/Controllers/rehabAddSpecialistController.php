@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use App\Models\Specialist;
+use App\Models\Therapist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class rehabAddSpecialistController extends Controller
 { 
@@ -47,6 +49,23 @@ class rehabAddSpecialistController extends Controller
         $specialist->cArea = $request->input('cArea');
 
         $specialist->save();
+
+        // Checking if the type is a Therapist
+        if ($request->input('Type') == 'Therapist'){
+            $newTherapist = new Therapist();
+
+            $newTherapist->ctsUserID = $request->input('specialistID');
+            $newTherapist->cSpecialty = 'test';
+            $newTherapist->save();
+
+            DB::table('therapist_work_records_t')->insert([
+                'ctsUserID' => $request->input('specialistID'),
+                'cRehabID' => null,
+                'dJ_Date' => now(),
+                'dL_Date' => null,
+            ]);
+
+        }
 
         return redirect()->route('rehabSupervisorHome')->with('success', 'Specialist added successfully');
     }

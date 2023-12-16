@@ -29,9 +29,11 @@ class NoteController extends Controller
         $data = $request->validate([
             'cpUserID' => 'required|numeric',
             'cNotes' => 'required'
+
         ]);
 
         $data['ctsUserID'] = $user->cUserID;
+        $data['dDate'] = now();
 
         $patientExists = Patient::where('cpUserID', $data['cpUserID'])->exists();
 
@@ -47,13 +49,39 @@ class NoteController extends Controller
 
         return redirect(route('note.index'));
     }
-    public function edit(Note $note)
+
+
+
+    public function edit(Request $request, $ctsUserID, $cpUserID)
     {
 
-        $notes = Note::all();
+        $note = Note::where('ctsUserID', $ctsUserID)
+        ->where('cpUserID', $cpUserID)->first();
 
-        return view('thnotesedit', ['notes' => $notes]);
+        return view('thnotesedit', ['note' => $note]);
     }
+
+    public function update(Request $request, $ctsUserID, $cpUserID){
+
+        $user = $request->session()->get('user');
+
+        $note = Note::where('ctsUserID', $ctsUserID)
+        ->where('cpUserID', $cpUserID)->first();
+
+        $note->cNotes = $request->input('cNotes');
+        $note->dDate = now();
+
+        $note->save();
+        return redirect()->route('therapistdb')->with('success', 'Information updated successfully');
+
+    }
+
+
+
+
+
+
+
 
     public function delete(Request $request, $ctsUserID, $cpUserID, $cNotes, $dDate)
     {

@@ -190,5 +190,5 @@
 <p>Email: {{ $therapistData->cEmail }}</p>
 <p>Type: {{ $therapistData->cType }}</p>
 <p>Experience: {{ $therapistData->cExperience }}</p>
-<p>cSpeciality: {{ $therapistData->cSpeciality }}</p>
+<p>cSpecialty: {{ $therapistData->cSpecialty }}</p>
 </div>

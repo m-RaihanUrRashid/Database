@@ -149,17 +149,11 @@
 
 <h1 style="text-align: center;">Welcome Therapist</h1> <br> <br> <br>
 
+
 <div style="text-align: center";>
     <img src="/img/Therapy.png" width="300px" height="300px" alt="Therapy">
 </div> <br>
 
+
 <h2 style="text-align: center;">Please hover upward to navigate.</h2>
 
-@if(session('supervisor')')
-      <button onclick="supervisor()" style="position: absolute; right: 0; top: 0; margin: 30px;">Supervisor window</button>
-    @endif
-<script>
-function supervisor() {
-          window.location.href = "/rehabSupervisorHome";
-      }
-</script>

@@ -168,11 +168,69 @@
 </div> 
 <br>
 
+<!-- Form style -->
+<style>
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-family: Georgia;
+        color: darkblue;
+    }
+
+</style>
+<!-- Submit Button -->
+<style>
+    .sbm{
+        font-size: 16px;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 10px;
+        background-color: cadetblue; /* Change the background color */
+        color: white;
+        cursor: pointer;
+        margin-bottom: 40px;}
+
+    .sbm:hover{
+        background-color: #095151!important;
+        color: black;
+        transition: 0.2s!important;
+    }
+
+</style>
+
 <h1 style="text-align: center;">Edit Notes</h1> <br> <br> <br>
 
 <div style="padding: 20px"></div>
 
 
+<!-- Form input stuff-->
+<form method="post" action="{{route('note.update', ['ctsUserID' => $note->ctsUserID,
+                            'cpUserID' => $note->cpUserID,]) }}";>
+    @csrf
+    @method('post')
+    <!-- Input box with a label -->
+    <label for="Therapist ID">Therapist Name</label>
+    <div style = "border: 1.2px solid darkblue; padding: 10px">
+    <label>{{ session('user')->cFname.' '.session('user')->cLname }}</label>
+    </div> <br> 
 
+    @if(session()->has('error'))
+      {{ session('error') }}
+      <br> <br>
+    @endif
+
+    <label for="Patient ID">Patient ID</label>
+    <input type="text" name="cpUserID" placeholder="Enter Patient ID" value="{{$note->cpUserID}}" pattern="[0-9]+" title="Please enter only numbers" readonly><br>
+
+    <label for="Notes">Notes</label>
+    <textarea type="text" name="cNotes" rows="15" cols="40" placeholder="Enter Notes">{{$note->cNotes}}</textarea> <br>
+
+    <div style = "align-items: center; text-align: center;">
+    <input type="submit" value="Update" class="sbm"/>
+    
+    </div>
+</form>
 
 

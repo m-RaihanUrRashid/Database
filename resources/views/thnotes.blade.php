@@ -235,18 +235,25 @@
                     <td>{{$note->cpUserID}}</td>
                     <td>{{$note->cNotes}}</td>
                     <td>{{$note->dDate}}</td>
-                    <td>
-                        <form method="post" action="{{ route('note.destroy', [
-                            'ctsUserID' => $notes->ctsUserID,
-                            'cpUserID' => $notes->cpUserID,
-                            'cNotes' => $notes->cNotes,
-                            'dDate' => $notes->dDate,
+                    <form method="post" action="{{ route('note.destroy', [
+                            'ctsUserID' => $note->ctsUserID,
+                            'cpUserID' => $note->cpUserID,
+                            'cNotes' => $note->cNotes,
+                            'dDate' => $note->dDate,
                         ]) }}" style="margin-top: 5px;">
-                            @csrf
-                            @method('delete')
+                        <td style = "border: 0!important;">
                             <button class="eb" type="submit" name="delete">Delete</button>
-                        </form>
+                        </td>
+                        @csrf
+                        @method('delete')
+                    </form>
+                    <td style = "border: 0!important;">
+                        <a href = "{{ route('note.edit', [
+                            'ctsUserID' => $note->ctsUserID,
+                            'cpUserID' => $note->cpUserID,
+                        ]) }}"><button class="eb">Edit</button></a>
                     </td>
+
                 </tr>
                 @endforeach
             </tbody>
@@ -284,5 +291,4 @@
 
     <section style="display:flex; gap: 20px; justify-content: center">
         <a style="text-decoration: none" href="http://127.0.0.1:8000/thnotes/create"><button class="eb">Create Another</button></a>
-        <a><button class="eb">Edit</button></a>
     </section>

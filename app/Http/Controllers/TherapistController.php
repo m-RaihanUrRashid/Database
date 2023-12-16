@@ -14,7 +14,7 @@ class TherapistController extends Controller
         $therapistData = DB::table('therapist_t')
         ->join('specialist_t', 'therapist_t.ctsUserID', '=', 'specialist_t.csUserID')
         ->join('person_t', 'specialist_t.csUserID', '=', 'person_t.cUserID')
-        ->select('therapist_t.ctsUserID', 'therapist_t.cSpeciality', 'person_t.cLname', 'person_t.cFname', 'person_t.cEmail', 'person_t.cType', 'specialist_t.cExperience')
+        ->select('therapist_t.ctsUserID', 'therapist_t.cSpecialty', 'person_t.cLname', 'person_t.cFname', 'person_t.cEmail', 'person_t.cType', 'specialist_t.cExperience')
         ->where('therapist_t.ctsUserID', $user->cUserID)
         ->first();
 

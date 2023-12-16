@@ -57,9 +57,10 @@ class AuthController extends Controller
                 return view('psychiatristHome');
             } elseif ($user->cType == 'Therapist') {
                 $user = Person::where('cEmail', $request->email)->first();
-                $supervisor = Rehab::where('cSupervisorID', $user->cUserID)->first();
-                session(['user' => $user, 'supervisor'=> $supervisor]);
-                return view('therapistdb');
+                session(['user' => $user]);
+                // $supervisor = Rehab::where('cSupervisorID', $user->cUserID)->first();
+                // session(['user' => $user, 'supervisor'=> $supervisor]);
+                return redirect()->intended(route('therapistdb'));
             } elseif ($user->cType == 'Admin') {
                 return redirect()->intended(route('admin'));
             } elseif ($user->cType == 'Pharmacy') {
