@@ -6,6 +6,10 @@ This web application aims to showcase the uses of relational database systems in
 # Link to the paper
 [View the paper on Overleaf!](https://www.overleaf.com/project/652a632a6ece88dceabf1d30)
 
+# Link to the demo video
+[View the video on YouTube!](https://youtu.be/N-NyFz-Rpzo)
+
+
 # Team
 - Showndorjo Dhara
 
