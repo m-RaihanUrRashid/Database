@@ -172,15 +172,12 @@
     .buttonbox{
         border-radius:  10px;
         width: 80%;
+        height: auto;
         margin: 20px; /* Add margin for spacing */
         margin: 0 auto;
         margin-bottom: 80px;
         background-color: azure;
     }
-    .buttonbox, table{
-        height: 70px;
-    }
-
 </style>
 
 <!-- Appointment table -->
