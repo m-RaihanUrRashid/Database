@@ -18,7 +18,8 @@ class Patient extends Model
 
     protected $fillable = [
         'cpUserID',
-        'cMedical_History',
+        'cMedicalHistory',
+        'cArea'
     ];
 
     public function patientSpecs()

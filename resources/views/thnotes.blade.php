@@ -42,32 +42,6 @@
 </head>
 
 <body>
-    <!-- Buttonbox height increase -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            adjustButtonBoxHeight(); // Call the function initially
-
-            // Add an event listener for window resize
-            window.addEventListener('resize', function() {
-                adjustButtonBoxHeight();
-            });
-        });
-
-        function adjustButtonBoxHeight() {
-            const buttonBox = document.querySelector('.buttonbox');
-            const table = document.getElementById('myTable');
-
-            if (buttonBox && table) {
-                // Calculate the height based on the number of rows in the table
-                const numberOfRows = table.rows.length;
-                const rowHeight = 40; // Adjust this value based on your design
-                const newHeight = numberOfRows * rowHeight;
-
-                // Set the new height to the buttonbox
-                buttonBox.style.height = newHeight + 'px';
-            }
-        }
-    </script>
 
     <!-- Navbar aesthetic properties -->
     <style>

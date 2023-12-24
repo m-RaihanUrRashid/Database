@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Specialist;
 use App\Models\Person;
+use App\Models\PatientSpec;
 use App\Models\Appointment;
 use Carbon\Carbon;
 
@@ -44,6 +45,10 @@ class MakeAppController extends Controller
         $appointment->cappStatus= "no";
         $appointment->save();
         
+        PatientSpec::create([
+            'cpUserID' =>  $user->cUserID,
+            'csUserID' => $request->input('spec')
+        ]);
         return response()->json(['status' => 'success']);
 
         //return view('patientHome')->with('appmade', "Appointment Created!");

@@ -76,7 +76,7 @@
   }
 </style>
 
-<div style="position: absolute; ">
+<!-- <div style="position: absolute; ">
 
   <a href="/patientHome"> Raihan: Patient </a><br>
   <a href="/therapistdb"> Gaji: Therapist </a><br>
@@ -87,7 +87,7 @@
   <div class="buttons-container">
     <a href="/rehabSupervisorHome"><button class="button-arounder">Nafiza: Rehab</button></a><br>
   </div>
-</div>
+</div> -->
 
 <div class="container square-box d-flex justify-content-center align-items-center">
 

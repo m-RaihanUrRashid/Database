@@ -122,8 +122,8 @@
             </div>
             <div id="contact-container" style="margin: 42px">
                 @foreach($contacts as $contact)
-                <label for="contact">Contact:</label>
-                <input type="text" id="contact" name="contacts[]" value="{{ $contact->getAttributes()['cContact'] }}" readonly>
+                    <label for="contact">Contact:</label>
+                    <input type="text" id="contact" name="contacts[]" value="{{ $contact->getAttributes()['cContact'] }}" readonly>
                 @endforeach
             </div>
         </div>

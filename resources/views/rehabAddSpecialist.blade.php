@@ -30,7 +30,7 @@
 
         form {
             background-color: white;
-            
+
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -80,17 +80,14 @@
         @csrf <!-- Include CSRF token field in the form -->
         <div class="d-flex">
             <div style="margin: 42px">
-                <label for="csUserID">ID:</label>
-                <input type="text" id="csUserID" name="specialistID">
+                <label for="Fname">First Name:</label>
+                <input type="text" id="Fname" name="Fname">
+
+                <label for="Lname">Last Name:</label>
+                <input type="text" id="Lname" name="Lname">
 
                 <label for="cExperience">Experience:</label>
                 <input type="text" id="cExperience" name="Experience">
-
-                <label for="Fname">Fname:</label>
-                <input type="text" id="Fname" name="Fname">
-
-                <label for="Lname">Lname:</label>
-                <input type="text" id="Lname" name="Lname">
 
                 <label for="cGender">Gender:</label>
                 <input type="text" id="cGender" name="cGender">
@@ -100,7 +97,7 @@
 
             </div>
             <div style="margin: 42px">
-                <label for="cOff_Address">Address:</label>
+                <label for="cOff_Address">Work Address:</label>
                 <input type="text" id="cOff_Address" name="officeAddress">
 
                 <label for="cType">Type:</label>
@@ -110,7 +107,10 @@
                 <input type="date" id="DOB" name="datepicker">
 
                 <label for="Email">Email:</label>
-                <input type="text" id="Email" name="Email">
+                <input type="email" id="Email" name="Email">
+
+                <label for="Password">Password:</label>
+                <input type="password" id="Password" name="Password">
 
                 <label for="cAddress">Home address:</label>
                 <input type="text" id="cAddress" name="homeAddress">

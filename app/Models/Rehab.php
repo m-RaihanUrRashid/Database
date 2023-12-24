@@ -10,18 +10,16 @@ class Rehab extends Model
     use HasFactory;
 
     protected $table = "rehab_centre_t";
-
+    protected $primaryKey = 'cRehabID';
     public $timestamps = false;
 
 
     protected $fillable = [
         'cRehabID',
-        'Rehabname',
-        'cStreet',
-        'cRoad',
-        'cCity',
-        'cSupervisor',
-        'cNGO_ID',
+        'cRehabName',
+        'cArea',
+        'cAddress',
+        'cSupervisorID'
     ];
 
     public function specs()
